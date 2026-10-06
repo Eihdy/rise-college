@@ -1,0 +1,3626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Learn about RISE College School, its technology programs, student services, and school products.">
+<meta name="theme-color" content="#000052">
+
+<title>RISE COLLEGE SCHOOL | Home</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+    background:#D3D3D3;
+    color:#0F3A6B;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+:root{
+    --primary:#000052;
+    --primary-dark:#000052;
+    --secondary:#0F3A6B;
+    --accent:#A9A9A9;
+    --accent-light:#D3D3D3;
+
+    --dark:#000052;
+    --text:#0F3A6B;
+    --muted:#5f6470;
+
+    --white:#ffffff;
+    --light:#D3D3D3;
+    --border:#A9A9A9;
+
+    --success:#2d9b68;
+    --warning:#A9A9A9;
+
+    --shadow-sm:0 6px 20px rgba(15,45,72,.07);
+    --shadow-md:0 14px 40px rgba(15,45,72,.10);
+    --shadow-lg:0 25px 70px rgba(15,45,72,.16);
+
+    --radius-sm:10px;
+    --radius-md:16px;
+    --radius-lg:24px;
+
+    --max:1240px;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+
+
+::-webkit-scrollbar{
+    width:9px;
+}
+
+::-webkit-scrollbar-track{
+    background:#edf1f6;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#9aafc3;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#6f8ba4;
+}
+
+
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:76px;
+    z-index:1000;
+
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(18,59,99,.08);
+
+    transition:.3s ease;
+}
+
+.header.scrolled{
+    box-shadow:0 8px 30px rgba(15,45,72,.08);
+}
+
+.header-container{
+    width:min(var(--max), calc(100% - 40px));
+    height:100%;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:max-content;
+}
+
+.logo{
+    width:48px;
+    height:48px;
+
+    border-radius:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#eef5fb;
+    border:1px solid #dce8f2;
+
+    overflow:hidden;
+}
+
+.logo img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+.brand-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.brand-title{
+    font-size:15px;
+    font-weight:900;
+    color:var(--primary);
+    letter-spacing:.2px;
+}
+
+.brand-subtitle{
+    font-size:11px;
+    color:var(--muted);
+    font-weight:600;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.nav a{
+    position:relative;
+
+    padding:10px 14px;
+
+    border-radius:9px;
+
+    color:#536276;
+
+    font-size:13px;
+    font-weight:800;
+
+    transition:.25s ease;
+}
+
+.nav a:hover{
+    color:var(--primary);
+    background:#f0f5f9;
+}
+
+.nav a.active{
+    color:var(--primary);
+    background:#edf5fb;
+}
+
+.nav a.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-1px;
+    left:50%;
+
+    width:20px;
+    height:2px;
+
+    transform:translateX(-50%);
+
+    background:var(--accent);
+    border-radius:10px;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.header-login{
+    padding:10px 16px;
+
+    border:1px solid #d9e4ed;
+    border-radius:10px;
+
+    background:#fff;
+
+    color:var(--primary);
+
+    font-size:13px;
+    font-weight:850;
+
+    transition:.25s ease;
+}
+
+.header-login:hover{
+    background:#f0f6fb;
+    border-color:#c5d8e8;
+}
+
+.header-portal{
+    padding:11px 17px;
+
+    border-radius:10px;
+
+    background:var(--primary);
+    color:white;
+
+    font-size:13px;
+    font-weight:850;
+
+    box-shadow:0 8px 20px rgba(18,59,99,.18);
+
+    transition:.25s ease;
+}
+
+.header-portal:hover{
+    background:var(--secondary);
+    transform:translateY(-2px);
+}
+
+.menu-button{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid #dce5ed;
+    border-radius:10px;
+
+    background:white;
+
+    cursor:pointer;
+}
+
+.menu-button span{
+    display:block;
+    width:20px;
+    height:2px;
+    margin:4px auto;
+
+    background:var(--primary);
+}
+
+
+
+
+.hero{
+    position:relative;
+
+    min-height:760px;
+
+    display:flex;
+    align-items:center;
+
+    padding:130px 20px 90px;
+
+    overflow:hidden;
+
+    background:#0a2238;
+}
+
+.hero-image{
+    position:absolute;
+    inset:0;
+
+    background-image:url("assets/images/backgrounds/background.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    transform:scale(1.04);
+
+    opacity:.9;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,25,43,.94) 0%,
+            rgba(7,35,59,.86) 43%,
+            rgba(7,35,59,.45) 72%,
+            rgba(7,35,59,.18) 100%
+        );
+}
+
+.hero-container{
+    position:relative;
+    z-index:2;
+
+    width:min(var(--max), 100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr;
+
+    align-items:center;
+
+    gap:0;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:7px 12px;
+
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    color:#d9ecfb;
+
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.6px;
+
+    backdrop-filter:blur(10px);
+}
+
+.hero-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#69b7ec;
+
+    box-shadow:0 0 0 5px rgba(105,183,236,.12);
+}
+
+.hero h1{
+    margin-top:22px;
+
+    color:white;
+
+    font-size:clamp(42px, 5vw, 72px);
+
+    line-height:1.02;
+
+    letter-spacing:-2.5px;
+
+    font-weight:950;
+}
+
+.hero h1 span{
+    color:#8bc8f0;
+}
+
+.hero-description{
+    max-width:630px;
+
+    margin-top:24px;
+
+    color:#d2dfeb;
+
+    font-size:17px;
+
+    line-height:1.8;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:32px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+
+    min-height:48px;
+
+    padding:0 19px;
+
+    border-radius:11px;
+
+    font-size:13px;
+    font-weight:850;
+
+    transition:.25s ease;
+}
+
+.btn-primary{
+    background:white;
+    color:var(--primary);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 35px rgba(0,0,0,.25);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.25);
+
+    color:white;
+
+    background:rgba(255,255,255,.07);
+
+    backdrop-filter:blur(8px);
+}
+
+.btn-outline:hover{
+    background:rgba(255,255,255,.13);
+    transform:translateY(-3px);
+}
+
+.hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+
+    margin-top:38px;
+}
+
+.hero-meta-item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:#c7d8e6;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.meta-icon{
+    width:27px;
+    height:27px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.1);
+
+    color:#91cef3;
+}
+
+
+
+
+.quick-section{
+    position:relative;
+    z-index:5;
+
+    margin-top:-42px;
+
+    padding:0 20px;
+}
+
+.quick-container{
+    width:min(var(--max),100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    background:white;
+
+    border:1px solid #dfe7ef;
+
+    border-radius:0;
+
+    box-shadow:0 12px 30px rgba(15,45,72,.08);
+
+    overflow:hidden;
+}
+
+.quick-card{
+    position:relative;
+
+    padding:23px;
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    border-right:1px solid #e9eef3;
+    border-bottom:1px solid #f0f4f8;
+
+    transition:.25s ease;
+}
+
+.quick-card::before{
+    content:"";
+    position:absolute;
+    inset:0 auto 0 0;
+    width:3px;
+    background:linear-gradient(180deg,var(--secondary),var(--primary));
+    opacity:.9;
+}
+
+.quick-card:last-child{
+    border-right:none;
+}
+
+.quick-card:hover{
+    background:#f8fbfd;
+}
+
+.quick-icon{
+    width:45px;
+    height:45px;
+
+    flex-shrink:0;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:12px;
+
+    background:#edf5fb;
+
+    color:var(--primary);
+
+    font-size:17px;
+}
+
+.quick-content{
+    min-width:0;
+}
+
+.quick-content strong{
+    display:block;
+
+    color:#1c3045;
+
+    font-size:13px;
+    font-weight:900;
+}
+
+.quick-content span{
+    display:block;
+
+    margin-top:2px;
+
+    color:#7a8797;
+
+    font-size:11px;
+}
+
+.quick-arrow{
+    margin-left:auto;
+
+    color:#a1afbd;
+
+    font-size:17px;
+}
+
+
+
+.section{
+    width:min(var(--max),calc(100% - 40px));
+    margin:0 auto;
+
+    padding:95px 0 0;
+}
+
+.section-heading{
+    max-width:700px;
+
+    margin-bottom:35px;
+}
+
+.section-eyebrow{
+    display:inline-block;
+
+    margin-bottom:9px;
+
+    color:var(--secondary);
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:1.4px;
+
+    text-transform:uppercase;
+}
+
+.section-heading h2{
+    color:#15283d;
+
+    font-size:clamp(28px,3vw,40px);
+
+    line-height:1.15;
+
+    letter-spacing:-1px;
+
+    font-weight:950;
+}
+
+.section-heading p{
+    margin-top:11px;
+
+    color:var(--muted);
+
+    font-size:14px;
+}
+
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    border:1px solid var(--border);
+
+    border-radius:0;
+
+    overflow:hidden;
+
+    background:white;
+
+    box-shadow:0 8px 24px rgba(15,45,72,.05);
+}
+
+.stat{
+    position:relative;
+    padding:28px;
+
+    border-right:1px solid var(--border);
+}
+
+.stat::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));
+}
+
+.stat:last-child{
+    border-right:none;
+}
+
+.stat-number{
+    color:var(--primary);
+
+    font-size:31px;
+    font-weight:950;
+    letter-spacing:-1px;
+}
+
+.stat-label{
+    margin-top:2px;
+
+    color:#7b8898;
+
+    font-size:12px;
+    font-weight:650;
+}
+
+
+
+.mission-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+    align-items:stretch;
+}
+
+.mission-image{
+    position:relative;
+
+    min-height:430px;
+
+    overflow:hidden;
+
+    border-radius:0;
+
+    box-shadow:0 10px 28px rgba(15,45,72,.09);
+    border:1px solid #dfe8f1;
+}
+
+.mission-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s ease;
+}
+
+.mission-image:hover img{
+    transform:scale(1.04);
+}
+
+.image-label{
+    position:absolute;
+
+    left:20px;
+    bottom:20px;
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+    background:rgba(8,30,49,.84);
+
+    color:white;
+
+    font-size:11px;
+    font-weight:800;
+
+    backdrop-filter:blur(10px);
+}
+
+.mission-content{
+    position:relative;
+    padding:38px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    border:1px solid var(--border);
+
+    border-radius:0;
+
+    background:white;
+
+    box-shadow:0 10px 26px rgba(15,45,72,.06);
+}
+
+.mission-content::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));
+}
+
+.mission-content h3{
+    color:#172b40;
+
+    font-size:25px;
+
+    line-height:1.25;
+}
+
+.mission-content p{
+    margin-top:15px;
+
+    color:var(--muted);
+
+    font-size:14px;
+}
+
+.mission-list{
+    display:grid;
+    gap:11px;
+
+    margin-top:23px;
+}
+
+.mission-list-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#3f5063;
+
+    font-size:12px;
+    font-weight:750;
+}
+
+.check{
+    width:23px;
+    height:23px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:7px;
+
+    background:#e9f5ef;
+
+    color:var(--success);
+
+    font-size:11px;
+    font-weight:900;
+}
+
+
+
+.vision-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+}
+
+.vision-card{
+    padding:38px;
+
+    border-radius:0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d3151,
+            #164e78
+        );
+
+    color:white;
+
+    min-height:390px;
+
+    box-shadow:0 12px 28px rgba(8,31,49,.12);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.vision-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    right:-100px;
+    top:-100px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.vision-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-70px;
+    top:-70px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.vision-card h3{
+    position:relative;
+    z-index:2;
+
+    font-size:29px;
+
+    line-height:1.2;
+}
+
+.vision-card p{
+    position:relative;
+    z-index:2;
+
+    margin-top:18px;
+
+    color:#d2e1ed;
+
+    font-size:14px;
+}
+
+.vision-tag{
+    position:absolute;
+
+    left:38px;
+    bottom:35px;
+
+    padding:9px 13px;
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:9px;
+
+    color:#d9eaf5;
+
+    font-size:10px;
+    font-weight:800;
+}
+
+.values{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+}
+
+.value{
+    position:relative;
+    padding:22px;
+
+    border:1px solid var(--border);
+
+    border-radius:0;
+
+    background:white;
+
+    transition:.25s ease;
+}
+
+.value::before{
+    content:"";
+    position:absolute;
+    inset:0 auto 0 0;
+    width:3px;
+    background:linear-gradient(180deg,var(--secondary),var(--accent));
+}
+
+.value:hover{
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-sm);
+
+    border-color:#d3e1ec;
+}
+
+.value-icon{
+    width:37px;
+    height:37px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:10px;
+
+    background:#edf5fb;
+
+    color:var(--primary);
+
+    font-weight:900;
+}
+
+.value h4{
+    margin-top:13px;
+
+    color:#22374c;
+
+    font-size:14px;
+}
+
+.value p{
+    margin-top:5px;
+
+    color:#788697;
+
+    font-size:11px;
+}
+
+
+
+.program-section{
+    background:#edf3f8;
+
+    margin-top:95px;
+
+    padding:95px 0;
+}
+
+.program-wrapper{
+    width:min(var(--max),calc(100% - 40px));
+    margin:auto;
+}
+
+.program-grid{
+    display:grid;
+    grid-template-columns:300px 1fr;
+
+    gap:22px;
+}
+
+.program-tabs{
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.program-tab{
+    padding:15px 17px;
+
+    border:1px solid #dde6ee;
+
+    border-radius:0;
+
+    background:white;
+
+    color:#5f6f81;
+
+    text-align:left;
+
+    font-size:12px;
+    font-weight:850;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.program-tab:hover{
+    border-color:#c5d9e8;
+    color:var(--primary);
+}
+
+.program-tab.active{
+    color:white;
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+
+    box-shadow:0 10px 25px rgba(18,59,99,.16);
+}
+
+.program-display{
+    position:relative;
+
+    min-height:330px;
+
+    padding:37px;
+
+    border-radius:0;
+
+    background:white;
+
+    border:1px solid #dfe7ee;
+
+    box-shadow:0 8px 22px rgba(15,45,72,.05);
+
+    overflow:hidden;
+}
+
+.program-number{
+    position:absolute;
+
+    right:28px;
+    top:15px;
+
+    color:#eef2f6;
+
+    font-size:90px;
+    font-weight:950;
+
+    line-height:1;
+}
+
+.program-display > *{
+    position:relative;
+    z-index:2;
+}
+
+.program-display h3{
+    color:#162b40;
+
+    font-size:28px;
+}
+
+.program-display .program-lead{
+    margin-top:8px;
+
+    color:var(--secondary);
+
+    font-size:14px;
+    font-weight:800;
+}
+
+.program-display p{
+    max-width:650px;
+
+    margin-top:17px;
+
+    color:#6e7c8d;
+
+    font-size:13px;
+}
+
+.program-features{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:25px;
+}
+
+.program-feature{
+    padding:8px 11px;
+
+    border-radius:8px;
+
+    background:#f1f6fa;
+
+    color:#496075;
+
+    font-size:10px;
+    font-weight:800;
+}
+
+
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+}
+
+.service{
+    position:relative;
+    padding:27px;
+
+    border:1px solid var(--border);
+
+    border-radius:0;
+
+    background:white;
+
+    transition:.3s ease;
+}
+
+.service::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(90deg,var(--primary),var(--accent));
+}
+
+.service:hover{
+    transform:translateY(-5px);
+
+    box-shadow:var(--shadow-md);
+
+    border-color:#d4e2ed;
+}
+
+.service-icon{
+    width:46px;
+    height:46px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:13px;
+
+    background:#edf5fb;
+
+    color:var(--primary);
+
+    font-size:18px;
+    font-weight:900;
+}
+
+.service h3{
+    margin-top:16px;
+
+    color:#1b3045;
+
+    font-size:16px;
+}
+
+.service p{
+    margin-top:7px;
+
+    color:#788696;
+
+    font-size:12px;
+}
+
+
+
+.announcement-layout{
+    display:grid;
+    grid-template-columns:1fr 330px;
+
+    gap:20px;
+}
+
+.announcements{
+    display:grid;
+    gap:11px;
+}
+
+.announcement{
+    display:grid;
+    grid-template-columns:68px 1fr auto;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:17px;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    background:white;
+
+    transition:.25s ease;
+}
+
+.announcement:hover{
+    transform:translateX(4px);
+
+    box-shadow:var(--shadow-sm);
+}
+
+.announcement-date{
+    padding:9px 5px;
+
+    text-align:center;
+
+    border-radius:10px;
+
+    background:#edf5fb;
+
+    color:var(--primary);
+}
+
+.announcement-date strong{
+    display:block;
+
+    font-size:19px;
+    line-height:1;
+}
+
+.announcement-date span{
+    display:block;
+
+    margin-top:3px;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:.8px;
+}
+
+.announcement h4{
+    color:#23384d;
+
+    font-size:13px;
+}
+
+.announcement p{
+    margin-top:3px;
+
+    color:#7a8795;
+
+    font-size:10px;
+}
+
+.announcement-tag{
+    padding:6px 8px;
+
+    border-radius:7px;
+
+    background:#f1f4f7;
+
+    color:#647486;
+
+    font-size:8px;
+    font-weight:900;
+}
+
+.notice-card{
+    padding:27px;
+
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #000052,
+            #0F3A6B
+        );
+
+    color:white;
+
+    box-shadow:var(--shadow-md);
+}
+
+.notice-card h3{
+    font-size:22px;
+    line-height:1.25;
+}
+
+.notice-card p{
+    margin-top:11px;
+
+    color:#d3e2ed;
+
+    font-size:12px;
+}
+
+.notice-button{
+    display:inline-flex;
+
+    margin-top:23px;
+
+    padding:10px 14px;
+
+    border-radius:9px;
+
+    background:white;
+
+    color:var(--primary);
+
+    font-size:11px;
+    font-weight:900;
+}
+
+
+
+.cta{
+    width:min(var(--max),calc(100% - 40px));
+
+    margin:95px auto 0;
+
+    padding:52px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            115deg,
+            #0c2d4d,
+            #1b5a8b
+        );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    box-shadow:var(--shadow-lg);
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.cta::after{
+    content:"";
+
+    position:absolute;
+
+    width:340px;
+    height:340px;
+
+    right:-130px;
+    top:-170px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:50%;
+}
+
+.cta-content{
+    position:relative;
+    z-index:2;
+}
+
+.cta h2{
+    font-size:29px;
+    line-height:1.2;
+}
+
+.cta p{
+    max-width:620px;
+
+    margin-top:9px;
+
+    color:#cbdde9;
+
+    font-size:13px;
+}
+
+
+
+.footer{
+    margin-top:95px;
+
+    padding:60px 20px 25px;
+
+    background:#000052;
+
+    color:white;
+}
+
+.footer-grid{
+    width:min(var(--max),100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+
+    gap:45px;
+}
+
+.footer-brand{
+    max-width:340px;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.footer-logo-image{
+    width:42px;
+    height:42px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.08);
+
+    padding:4px;
+}
+
+.footer-brand strong{
+    font-size:14px;
+}
+
+.footer-brand p{
+    margin-top:16px;
+
+    color:#91a5b7;
+
+    font-size:11px;
+}
+
+.footer-column h4{
+    font-size:11px;
+
+    letter-spacing:.7px;
+
+    text-transform:uppercase;
+
+    color:#d8e4ed;
+}
+
+.footer-column a{
+    display:block;
+
+    margin-top:10px;
+
+    color:#8fa2b4;
+
+    font-size:11px;
+
+    transition:.2s ease;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    width:min(var(--max),100%);
+
+    margin:45px auto 0;
+
+    padding-top:18px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:#74899b;
+
+    font-size:10px;
+}
+
+
+
+
+.floating-portal{
+    position:fixed;
+
+    right:24px;
+    bottom:24px;
+
+    z-index:900;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    padding:12px 16px;
+
+    border-radius:30px;
+
+    background:var(--primary);
+
+    color:white;
+
+    box-shadow:0 15px 35px rgba(18,59,99,.25);
+
+    font-size:11px;
+    font-weight:900;
+
+    transition:.3s ease;
+}
+
+.floating-portal:hover{
+    transform:translateY(-4px);
+
+    background:var(--secondary);
+}
+
+.floating-icon{
+    width:25px;
+    height:25px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.13);
+}
+
+
+
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+
+
+@media(max-width:1050px){
+
+    .hero-container{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content{
+        max-width:800px;
+    }
+
+    .quick-section{
+        margin-top:-25px;
+    }
+
+    .quick-container{
+        grid-template-columns:1fr;
+    }
+
+    .quick-card{
+        border-right:none;
+        border-bottom:1px solid #e9eef3;
+    }
+
+    .quick-card:last-child{
+        border-bottom:none;
+    }
+
+    .section{
+        width:calc(100% - 28px);
+
+        padding-top:70px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .stat{
+        border-right:none;
+        border-bottom:1px solid var(--border);
+    }
+
+    .stat:last-child{
+        border-bottom:none;
+    }
+
+    .mission-content,
+    .vision-card,
+    .program-display{
+        padding:25px;
+    }
+
+    .mission-image{
+        min-height:300px;
+    }
+
+    .values{
+        grid-template-columns:1fr;
+    }
+
+    .program-tabs{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .announcement{
+        grid-template-columns:55px 1fr;
+    }
+
+    .announcement-tag{
+        display:none;
+    }
+
+    .cta{
+        width:calc(100% - 28px);
+
+        margin-top:70px;
+
+        padding:32px 25px;
+
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer{
+        margin-top:70px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+
+        gap:30px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .floating-portal{
+        right:14px;
+        bottom:14px;
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .hero h1{
+        font-size:37px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .program-tabs{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+
+
+a:focus-visible,
+button:focus-visible{
+    outline:3px solid rgba(59,142,208,.35);
+    outline-offset:3px;
+}
+
+
+.header {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    background: #000052;
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: none;
+}
+
+.header.scrolled { box-shadow: none; }
+
+.header-container {
+    width: min(1240px, calc(100% - 48px));
+    min-height: 88px;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand { gap: 13px; min-width: 0; }
+
+.logo {
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border: 0;
+    border-radius: 50%;
+}
+
+.logo img { width: 100%; height: 100%; }
+
+.brand-info { line-height: 1.15; }
+
+.brand-title {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.brand-subtitle {
+    margin-top: 5px;
+    color: rgba(255,255,255,0.55);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-left: auto;
+}
+
+.nav a {
+    position: relative;
+    padding: 32px 0;
+    border-radius: 0;
+    color: rgba(255,255,255,0.64);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: auto;
+    bottom: 23px;
+    width: 0;
+    height: 2px;
+    transform: none;
+    border-radius: 0;
+    background: #A9A9A9;
+    transition: width 0.25s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+    color: #ffffff;
+    background: transparent;
+}
+
+.nav a:hover::after,
+.nav a.active::after { width: 100%; }
+
+.nav a.active::after {
+    left: 0;
+    right: auto;
+    bottom: 23px;
+    width: 100%;
+    height: 2px;
+    transform: none;
+    border-radius: 0;
+    background: #A9A9A9;
+}
+
+.header-actions { gap: 9px; }
+
+.header-login,
+.header-portal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 16px;
+    border-radius: 4px;
+    box-shadow: none;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    transition: 0.25s ease;
+}
+
+.header-login {
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.22);
+    background: transparent;
+}
+
+.header-login:hover { background: rgba(255,255,255,0.08); }
+
+.header-portal {
+    color: #000052;
+    background: #A9A9A9;
+}
+
+.header-portal:hover {
+    background: #d3d3d3;
+    transform: translateY(-1px);
+}
+
+.menu-button {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 4px;
+    background: transparent;
+}
+
+.menu-button span {
+    display: block;
+    width: 19px;
+    height: 2px;
+    margin: 4px auto;
+    background: #ffffff;
+}
+
+@media (max-width: 1050px) {
+    .nav { gap: 18px; }
+    .nav a { font-size: 9px; }
+    .header-actions { display: none; }
+}
+
+@media (max-width: 800px) {
+    .header-container { min-height: 74px; }
+    .menu-button { display: block; }
+    .nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 74px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 24px 18px;
+        background: #000052;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav.open { display: flex; }
+    .nav a { padding: 13px 0; font-size: 10px; }
+    .nav a::after { display: none; }
+}
+
+@media (max-width: 600px) {
+    .header-container { width: min(100% - 32px, 1240px); }
+    .brand-title { font-size: 11px; }
+    .brand-subtitle { font-size: 8px; }
+    .logo { width: 42px; height: 42px; }
+}
+
+/* Keep the homepage closer to a straightforward school publication than a dashboard template. */
+html { scroll-behavior: smooth; }
+
+.hero {
+    min-height: 600px;
+    padding: 84px 24px 65px;
+    background: #000052;
+}
+
+.hero-image {
+    opacity: .82;
+    transform: none;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 45, .58);
+}
+
+.hero-content { max-width: 850px; }
+
+.hero-label {
+    display: block;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: #d3d3d3;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    backdrop-filter: none;
+}
+
+.hero-dot { display: none; }
+
+.hero h1 {
+    max-width: 850px;
+    margin-top: 18px;
+    font-size: clamp(42px, 6vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+    font-weight: 800;
+}
+
+.hero h1 span { color: #78b8e7; }
+
+.hero-description {
+    max-width: 700px;
+    margin-top: 28px;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.hero-buttons { gap: 10px; margin-top: 26px; }
+
+.btn {
+    min-height: 44px;
+    border-radius: 0;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.btn-primary {
+    background: #d3d3d3;
+    color: #000052;
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    transform: none;
+    box-shadow: none;
+    background: #fff;
+}
+
+.btn-outline {
+    border-radius: 0;
+    border-color: rgba(255, 255, 255, .62);
+    background: transparent;
+    backdrop-filter: none;
+}
+
+.btn-outline:hover { transform: none; }
+
+.quick-section {
+    margin-top: 0;
+    padding: 0 24px;
+}
+
+.quick-container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 0;
+    border-bottom: 1px solid #A9A9A9;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.quick-card {
+    min-height: 74px;
+    padding: 14px 16px;
+    border: 0;
+    border-right: 1px solid #A9A9A9;
+    background: transparent;
+}
+
+.quick-card:last-child { border-right: 0; }
+.quick-card::before, .quick-icon, .quick-arrow { display: none; }
+.quick-card:hover { background: #f6f6f6; }
+.quick-content strong { color: #000052; font-size: 12px; }
+.quick-content span { color: #5f6470; font-size: 10px; }
+
+.section { padding-top: 76px; }
+
+.section-eyebrow {
+    color: #0f3a6b;
+    font-size: 10px;
+    letter-spacing: 1.1px;
+}
+
+.section-heading h2 {
+    color: #000052;
+    font-size: clamp(27px, 3vw, 36px);
+    letter-spacing: -.5px;
+    font-weight: 800;
+}
+
+.section-heading p { color: #535a65; line-height: 1.7; }
+
+.stats {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.stat { padding: 20px 22px; }
+.stat::before { display: none; }
+.stat-number {
+    color: #000052;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0;
+}
+.stat-label { color: #5f6470; font-size: 11px; }
+
+.mission-grid, .vision-layout { gap: 20px; }
+.mission-image {
+    box-shadow: none;
+    border-color: #A9A9A9;
+}
+.mission-image img, .mission-image:hover img { transform: none; transition: none; }
+.image-label {
+    left: 0;
+    bottom: 0;
+    border-radius: 0;
+    background: rgba(0, 0, 45, .84);
+    backdrop-filter: none;
+}
+
+.mission-content {
+    box-shadow: none;
+    padding: 32px;
+    border-color: #A9A9A9;
+}
+.mission-content::before { display: none; }
+
+.vision-card {
+    background: #0f3a6b;
+    border-radius: 0;
+    box-shadow: none;
+}
+.vision-card::before, .vision-card::after { display: none; }
+
+.values { gap: 0 18px; }
+.value {
+    padding: 18px 12px;
+    border: 0;
+    border-bottom: 1px solid #A9A9A9;
+    border-radius: 0;
+    background: transparent;
+}
+.value::before { display: none; }
+.value:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #d9d9d9;
+}
+.value-icon, .service-icon {
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    background: none;
+    color: #0f3a6b;
+}
+
+.value-icon, .service-icon, .check { display: none; }
+
+.program-section { background: #f1f1f1; }
+.program-tab, .program-display, .program-feature {
+    border-radius: 0;
+    box-shadow: none;
+}
+.program-tab { padding: 13px 15px; }
+.program-tab, .program-display { border-color: #A9A9A9; }
+.program-tab.active { box-shadow: none; }
+.program-number { display: none; }
+.program-features {
+    gap: 0;
+    border-top: 1px solid #A9A9A9;
+}
+.program-feature {
+    padding: 9px 12px 0 0;
+    margin-right: 12px;
+    background: transparent;
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.service {
+    border-radius: 0;
+    transition: border-color .15s ease;
+    border-color: #A9A9A9;
+}
+.service::before { display: none; }
+.service:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #0f3a6b;
+}
+
+.announcement-layout { grid-template-columns: minmax(0, 1fr) 280px; }
+.announcements { gap: 0; border-top: 1px solid #A9A9A9; }
+.announcement {
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    padding: 18px 10px;
+    border: 0;
+    border-bottom: 1px solid #A9A9A9;
+    border-radius: 0;
+    background: transparent;
+}
+.announcement:hover { transform: none; box-shadow: none; }
+.announcement-date { display: none; }
+.announcement-tag {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #0f3a6b;
+    letter-spacing: .7px;
+}
+.notice-card {
+    border-radius: 0;
+    background: #000052;
+    box-shadow: none;
+}
+.notice-button { border-radius: 0; }
+
+.cta {
+    padding: 36px;
+    border-radius: 0;
+    background: #0f3a6b;
+    box-shadow: none;
+}
+.cta::after { display: none; }
+
+.floating-portal { display: none; }
+
+.reveal, .reveal.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+.quick-container, .mission-content, .vision-card, .value, .program-tab,
+.program-display, .service, .announcement, .notice-card, .cta,
+.header-login, .header-portal, .menu-button {
+    border-radius: 0;
+}
+
+@media (max-width: 1050px) {
+    .quick-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .quick-card:nth-child(2) { border-right: 0; }
+    .quick-card:nth-child(-n+2) { border-bottom: 1px solid #A9A9A9; }
+    .announcement-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+    .hero { min-height: 560px; padding: 84px 20px 70px; }
+    .hero h1 { font-size: 43px; }
+    .hero-buttons { align-items: flex-start; }
+    .quick-section { padding: 0 20px; }
+    .quick-container { grid-template-columns: 1fr 1fr; }
+    .quick-card { padding: 13px 10px; }
+    .mission-grid, .vision-layout { grid-template-columns: 1fr; }
+    .mission-content { padding: 25px; }
+    .cta { width: calc(100% - 40px); padding: 28px 22px; }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header" id="header">
+
+    <div class="header-container">
+
+        <a href="index.html" class="brand">
+
+            <div class="logo">
+
+                <img
+                    src="assets/images/branding/logo.png"
+                    alt="RISE College School Logo"
+                    onerror="this.style.display='none'"
+                >
+
+            </div>
+
+            <div class="brand-info">
+
+                <div class="brand-title">
+                    RISE COLLEGE SCHOOL
+                </div>
+
+                <div class="brand-subtitle">
+                    Student Information System
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <nav class="nav" id="navigation">
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+            <a href="#programs">
+                Programs
+            </a>
+
+            
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <a
+                href="login.html"
+                class="header-portal"
+            >
+                Student Portal
+            </a>
+
+        </div>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+
+<main>
+
+
+<section class="hero">
+
+    <div class="hero-image"></div>
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-container">
+
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+
+                TECHNOLOGY PROGRAMS · CALOOCAN
+
+            </div>
+
+
+            <h1>
+
+                Welcome to
+                <br>
+                <span>RISE College School.</span>
+
+            </h1>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#programs"
+                    class="btn btn-primary"
+                >
+
+                    View Programs
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="btn btn-outline"
+                >
+
+                    Contact the School
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="quick-section">
+
+    <div class="quick-container">
+
+
+        <a
+            href="login.html"
+            class="quick-card"
+        >
+
+            <div class="quick-icon">
+                →
+            </div>
+
+            <div class="quick-content">
+
+                <strong>
+                    Student Portal
+                </strong>
+
+                <span>
+                    Access your dashboard
+                </span>
+
+            </div>
+
+            <div class="quick-arrow">
+                ›
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="#programs"
+            class="quick-card"
+        >
+
+            <div class="quick-icon">
+                ◈
+            </div>
+
+            <div class="quick-content">
+
+                <strong>
+                    Programs
+                </strong>
+
+                <span>
+                    Explore learning tracks
+                </span>
+
+            </div>
+
+            <div class="quick-arrow">
+                ›
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="contact.html"
+            class="quick-card"
+        >
+
+            <div class="quick-icon">
+                +
+            </div>
+
+            <div class="quick-content">
+
+                <strong>
+                    Student Services
+                </strong>
+
+                <span>
+                    Support and resources
+                </span>
+
+            </div>
+
+            <div class="quick-arrow">
+                ›
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="contact.html"
+            class="quick-card"
+        >
+
+            <div class="quick-icon">
+                ?
+            </div>
+
+            <div class="quick-content">
+
+                <strong>
+                    Need Help?
+                </strong>
+
+                <span>
+                    Contact the school
+                </span>
+
+            </div>
+
+            <div class="quick-arrow">
+                ›
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<section class="section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-eyebrow">
+            LEARNING AT RISE
+        </span>
+
+        <h2>
+            A practical approach to technology education.
+        </h2>
+
+        <p>
+            Students build knowledge through technology-focused lessons,
+            project work, guidance, and preparation for future study and work.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                Project work
+            </div>
+
+            <div class="stat-label">
+                Apply classroom learning
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                Technology
+            </div>
+
+            <div class="stat-label">
+                Develop practical skills
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                Guidance
+            </div>
+
+            <div class="stat-label">
+                Support for students
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                Career preparation
+            </div>
+
+            <div class="stat-label">
+                Plan for what comes next
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+
+<section class="section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-eyebrow">
+            MISSION
+        </span>
+
+        <h2>
+            Education that moves students forward.
+        </h2>
+
+    </div>
+
+
+    <div class="mission-grid">
+
+
+        <div class="mission-image">
+
+            <img
+                src="assets/images/about/mission.jpg"
+                alt="Students working together"
+            >
+
+            <div class="image-label">
+                Learning • Collaboration • Growth
+            </div>
+
+        </div>
+
+
+        <div class="mission-content">
+
+            <h3>
+                Empowering students through quality education.
+            </h3>
+
+            <p>
+                To empower students through quality education,
+                practical technology-driven experiences, and a
+                supportive learning environment, equipping them
+                with knowledge, skills, and confidence to succeed.
+            </p>
+
+
+            <div class="mission-list">
+
+
+                <div class="mission-list-item">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Project-based learning
+
+                </div>
+
+
+                <div class="mission-list-item">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Practical technology experiences
+
+                </div>
+
+
+                <div class="mission-list-item">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Student guidance and support
+
+                </div>
+
+
+                <div class="mission-list-item">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Career and industry preparation
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<section class="section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-eyebrow">
+            VISION
+        </span>
+
+        <h2>
+            Preparing students for what comes next.
+        </h2>
+
+    </div>
+
+
+    <div class="vision-layout">
+
+
+        <div class="vision-card">
+
+            <h3>
+                A leading
+                technology-focused
+                institution.
+            </h3>
+
+            <p>
+                To be a leading technology-focused institution
+                that continually evolves through modern learning
+                approaches and dedicated instruction, inspiring
+                every student to unlock their full potential and
+                thrive in the global tech industry.
+            </p>
+
+
+            
+        </div>
+
+
+
+        <div class="values">
+
+
+            <div class="value">
+
+                <div class="value-icon">
+                    ✦
+                </div>
+
+                <h4>
+                    Innovation
+                </h4>
+
+                <p>
+                    Embracing modern approaches and continuous improvement.
+                </p>
+
+            </div>
+
+
+            <div class="value">
+
+                <div class="value-icon">
+                    ↑
+                </div>
+
+                <h4>
+                    Student Success
+                </h4>
+
+                <p>
+                    Prioritizing student growth and career readiness.
+                </p>
+
+            </div>
+
+
+            <div class="value">
+
+                <div class="value-icon">
+                    ★
+                </div>
+
+                <h4>
+                    Excellence
+                </h4>
+
+                <p>
+                    Maintaining high standards in teaching and service.
+                </p>
+
+            </div>
+
+
+            <div class="value">
+
+                <div class="value-icon">
+                    ◇
+                </div>
+
+                <h4>
+                    Collaboration
+                </h4>
+
+                <p>
+                    Working together with students, faculty and industry.
+                </p>
+
+            </div>
+
+
+            <div class="value">
+
+                <div class="value-icon">
+                    ♢
+                </div>
+
+                <h4>
+                    Inclusivity & Safety
+                </h4>
+
+                <p>
+                    Creating a welcoming and secure environment.
+                </p>
+
+            </div>
+
+
+            <div class="value">
+
+                <div class="value-icon">
+                    ✓
+                </div>
+
+                <h4>
+                    Accountability
+                </h4>
+
+                <p>
+                    Measuring outcomes and acting on feedback.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section
+    class="program-section"
+    id="programs"
+>
+
+    <div class="program-wrapper">
+
+
+        <div class="section-heading">
+
+            <span class="section-eyebrow">
+                ACADEMIC PROGRAMS
+            </span>
+
+            <h2>
+                Learn skills built for the real world.
+            </h2>
+
+            <p>
+                Explore skill-focused programs designed around
+                practical technology and modern industry needs.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+
+            <div class="program-tabs">
+
+
+                <button
+                    class="program-tab active"
+                    data-program="web"
+                >
+                    Web Technologies
+                </button>
+
+
+                <button
+                    class="program-tab"
+                    data-program="data"
+                >
+                    Data Science
+                </button>
+
+
+                <button
+                    class="program-tab"
+                    data-program="network"
+                >
+                    Networking & Security
+                </button>
+
+
+                <button
+                    class="program-tab"
+                    data-program="design"
+                >
+                    UI/UX & Design
+                </button>
+
+
+                <button
+                    class="program-tab"
+                    data-program="cloud"
+                >
+                    Cloud & DevOps
+                </button>
+
+
+            </div>
+
+
+
+            <div class="program-display">
+
+                <div
+                    class="program-number"
+                    id="programNumber"
+                >
+                    01
+                </div>
+
+
+                <h3 id="programTitle">
+                    Web Technologies
+                </h3>
+
+
+                <div
+                    class="program-lead"
+                    id="programLead"
+                >
+                    Hands-on front-end and back-end development.
+                </div>
+
+
+                <p id="programDescription">
+
+                    A practical program teaching front-end and
+                    back-end fundamentals, frameworks, databases,
+                    deployment and project-based portfolio work
+                    to prepare students for web development roles.
+
+                </p>
+
+
+                <div
+                    class="program-features"
+                    id="programFeatures"
+                >
+
+                    <span class="program-feature">
+                        HTML & CSS
+                    </span>
+
+                    <span class="program-feature">
+                        JavaScript
+                    </span>
+
+                    <span class="program-feature">
+                        Databases
+                    </span>
+
+                    <span class="program-feature">
+                        Backend
+                    </span>
+
+                    <span class="program-feature">
+                        Deployment
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-eyebrow">
+            SCHOOL INFORMATION
+        </span>
+
+        <h2>
+            Find the information you need.
+        </h2>
+
+        <p>
+            For questions about programs, school products, or student
+            services, use the links below or contact the school directly.
+        </p>
+
+    </div>
+
+
+    <div class="announcement-layout">
+
+
+        <div class="announcements">
+
+
+            <a class="announcement" href="#programs">
+
+                <div>
+
+                    <h4>
+                        Academic programs
+                    </h4>
+
+                    <p>
+                        Review the technology-focused subjects and
+                        program descriptions on this site.
+                    </p>
+
+                </div>
+
+
+                <span class="announcement-tag">
+                    STUDY
+                </span>
+
+            </a>
+
+
+
+            <a class="announcement" href="products.html">
+
+                <div>
+
+                    <h4>
+                        School products
+                    </h4>
+
+                    <p>
+                        Browse uniforms, school supplies, and other
+                        items available through the school.
+                    </p>
+
+                </div>
+
+
+                <span class="announcement-tag">
+                    SHOP
+                </span>
+
+            </a>
+
+
+
+            <a class="announcement" href="contact.html">
+
+                <div>
+
+                    <h4>
+                        Student services
+                    </h4>
+
+                    <p>
+                        Contact the school for help with student
+                        services and general enquiries.
+                    </p>
+
+                </div>
+
+
+                <span class="announcement-tag">
+                    HELP
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+
+        <div class="notice-card">
+
+            <h3>
+                Already a student?
+            </h3>
+
+            <p>
+                Sign in to open the student information system.
+            </p>
+
+
+            <a
+                href="login.html"
+                class="notice-button"
+            >
+                Open Student Portal →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+
+<section class="cta reveal">
+
+    <div class="cta-content">
+
+        <h2>
+            Have a question about RISE?
+        </h2>
+
+        <p>
+            Contact the school for information about programs,
+            services, or the admissions process.
+        </p>
+
+    </div>
+
+
+    <a
+        href="contact.html"
+        class="btn btn-primary"
+    >
+        Contact the School
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+
+                <img
+                    class="footer-logo-image"
+                    src="assets/images/branding/logo.png"
+                    alt="RISE College School Logo"
+                >
+
+                <strong>
+                    RISE COLLEGE SCHOOL
+                </strong>
+
+            </div>
+
+
+            <p>
+                A technology-focused school dedicated to providing
+                students with a suitable learning environment,
+                practical education, proper guidance, and opportunities
+                for growth.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                Navigation
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#programs">
+                Programs
+            </a>
+
+            <a href="contact.html">
+                Student Services
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                Student
+            </h4>
+
+            <a href="login.html">
+                Student Portal
+            </a>
+
+            <a href="login.html">
+                Sign In
+            </a>
+
+            <a href="contact.html">
+                Student Services
+            </a>
+
+            <a href="#programs">
+                Academic Programs
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                Contact
+            </h4>
+
+            <a href="contact.html">
+                Contact School
+            </a>
+
+            <a href="mailto:RiseCollege@gmail.com">
+                RiseCollege@gmail.com
+            </a>
+
+            <a href="tel:+639167398876">
+                +63 916 739 8876
+            </a>
+
+            <a href="#">
+                Caloocan, Philippines
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <div>
+            © <span id="year"></span> RISE COLLEGE SCHOOL.
+            All rights reserved.
+        </div>
+
+        <div>
+            Student Information System
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+
+<script>
+
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", function(){
+
+    if(window.scrollY > 20){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+});
+
+
+
+
+const menuButton = document.getElementById("menuButton");
+
+const navigation = document.getElementById("navigation");
+
+menuButton.addEventListener("click", function(){
+
+    navigation.classList.toggle("open");
+
+    const expanded = navigation.classList.contains("open");
+
+    menuButton.setAttribute("aria-expanded", expanded);
+
+});
+
+
+document.querySelectorAll(".nav a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        navigation.classList.remove("open");
+
+        menuButton.setAttribute("aria-expanded", "false");
+
+    });
+
+});
+
+
+
+const programs = {
+
+    web:{
+        number:"01",
+        title:"Web Technologies",
+        lead:"Hands-on front-end and back-end development.",
+        description:
+            "A practical program teaching front-end and back-end fundamentals, frameworks, databases, deployment and project-based portfolio work to prepare students for web development roles.",
+        features:[
+            "HTML & CSS",
+            "JavaScript",
+            "Databases",
+            "Backend",
+            "Deployment"
+        ]
+    },
+
+    data:{
+        number:"02",
+        title:"Data Science",
+        lead:"Statistics, analysis and data-driven projects.",
+        description:
+            "Develop foundational skills in working with data, understanding patterns, performing analysis, and exploring introductory machine learning concepts through practical projects.",
+        features:[
+            "Python",
+            "Data Analysis",
+            "Statistics",
+            "Pandas",
+            "Machine Learning"
+        ]
+    },
+
+    network:{
+        number:"03",
+        title:"Networking & Security",
+        lead:"Network fundamentals and security awareness.",
+        description:
+            "Learn networking concepts through practical labs covering connectivity, routing, switching, infrastructure and foundational security practices.",
+        features:[
+            "Networking",
+            "Routing",
+            "Switching",
+            "Security",
+            "Network Labs"
+        ]
+    },
+
+    design:{
+        number:"04",
+        title:"UI/UX & Design",
+        lead:"Design thinking, interfaces and prototyping.",
+        description:
+            "Develop creative and practical design skills through wireframing, prototyping, interface design, usability testing and user-centered thinking.",
+        features:[
+            "Wireframing",
+            "Prototyping",
+            "UI Design",
+            "UX Research",
+            "Testing"
+        ]
+    },
+
+    cloud:{
+        number:"05",
+        title:"Cloud & DevOps",
+        lead:"Modern cloud infrastructure and development workflows.",
+        description:
+            "Explore cloud fundamentals, development workflows, deployment practices, containers, automation and introductory DevOps concepts.",
+        features:[
+            "Cloud",
+            "Containers",
+            "CI/CD",
+            "Automation",
+            "DevOps"
+        ]
+    }
+
+};
+
+
+
+const tabs =
+    document.querySelectorAll(".program-tab");
+
+const programNumber =
+    document.getElementById("programNumber");
+
+const programTitle =
+    document.getElementById("programTitle");
+
+const programLead =
+    document.getElementById("programLead");
+
+const programDescription =
+    document.getElementById("programDescription");
+
+const programFeatures =
+    document.getElementById("programFeatures");
+
+
+function showProgram(key){
+
+    const program = programs[key];
+
+    if(!program){
+        return;
+    }
+
+
+    tabs.forEach(function(tab){
+
+        tab.classList.remove("active");
+
+    });
+
+
+    const activeTab =
+        document.querySelector(
+            '[data-program="' + key + '"]'
+        );
+
+
+    if(activeTab){
+        activeTab.classList.add("active");
+    }
+
+
+    programNumber.textContent =
+        program.number;
+
+    programTitle.textContent =
+        program.title;
+
+    programLead.textContent =
+        program.lead;
+
+    programDescription.textContent =
+        program.description;
+
+
+    programFeatures.innerHTML = "";
+
+
+    program.features.forEach(function(feature){
+
+        const span =
+            document.createElement("span");
+
+        span.className =
+            "program-feature";
+
+        span.textContent =
+            feature;
+
+        programFeatures.appendChild(span);
+
+    });
+
+}
+
+
+tabs.forEach(function(tab){
+
+    tab.addEventListener("click", function(){
+
+        showProgram(
+            tab.dataset.program
+        );
+
+    });
+
+});
+
+
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+
+const navLinks =
+    document.querySelectorAll(".nav a");
+
+window.addEventListener("scroll", function(){
+
+    let current = "";
+
+    document
+        .querySelectorAll("section[id]")
+        .forEach(function(section){
+
+            const sectionTop =
+                section.offsetTop - 140;
+
+            if(window.scrollY >= sectionTop){
+
+                current =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+    navLinks.forEach(function(link){
+
+        link.classList.remove("active");
+
+        const href =
+            link.getAttribute("href");
+
+        if(href === "#" + current){
+
+            link.classList.add("active");
+
+        }
+
+        if(
+            current === "" &&
+            href === "index.html"
+        ){
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+</script>
+
+
+</body>
+</html>

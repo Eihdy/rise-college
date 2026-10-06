@@ -1,0 +1,2288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RISE School College | Student Portal</title>
+<style>
+:root {
+  --bg:#061521;
+  --bg-2:#081b2a;
+  --sidebar:#103d5d;
+  --sidebar-2:#12496d;
+  --surface:#0b2232;
+  --surface-2:#0d293c;
+  --surface-3:#112f45;
+  --border:rgba(255,255,255,.09);
+  --border-blue:rgba(59,130,246,.35);
+  --text:#f5f8fc;
+  --text-soft:#8fa9bc;
+  --text-muted:#668398;
+  --blue:#2583ff;
+  --blue-2:#3d94ff;
+  --blue-dark:#155cae;
+  --green:#23d98b;
+  --red:#ff5b6e;
+  --yellow:#f4c95d;
+  --shadow:0 25px 70px rgba(0,0,0,.28);
+  --shadow-soft:0 12px 35px rgba(0,0,0,.20);
+  --sidebar-width:323px
+}
+body.light {
+  --bg:#edf3f8;
+  --bg-2:#f7fafc;
+  --sidebar:#0d4164;
+  --sidebar-2:#14577e;
+  --surface:#fff;
+  --surface-2:#f5f8fb;
+  --surface-3:#edf4f9;
+  --border:rgba(8,43,70,.10);
+  --text:#0b263a;
+  --text-soft:#647d91;
+  --text-muted:#8094a5;
+  --shadow:0 25px 70px rgba(20,55,80,.12);
+  --shadow-soft:0 12px 35px rgba(20,55,80,.09)
+}
+* {
+  box-sizing:border-box
+}
+html {
+  scroll-behavior:smooth
+}
+body {
+  margin:0;
+  min-height:100vh;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at 15% 0%,rgba(37,131,255,.09),transparent 28%),linear-gradient(135deg,var(--bg),var(--bg-2));
+  transition:.3s ease
+}
+button,input,select,textarea {
+  font:inherit
+}
+button {
+  border:0
+}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
+  outline:2px solid var(--blue);
+  outline-offset:2px
+}
+a {
+  color:inherit;
+  text-decoration:none
+}
+.app {
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:var(--sidebar-width) minmax(0,1fr);
+  gap:20px;
+  padding:14px
+}
+.sidebar {
+  position:sticky;
+  top:14px;
+  height:calc(100vh - 28px);
+  min-height:700px;
+  padding:27px 20px 20px;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:27px;
+  color:#fff;
+  background:radial-gradient(circle at 0 0,rgba(65,155,255,.18),transparent 30%),linear-gradient(180deg,#0d3c5d,#104768 55%,#0f4263);
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+  overflow:hidden
+}
+.sidebar:before {
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  right:-160px;
+  bottom:-130px;
+  border-radius:50%;
+  background:rgba(55,145,255,.08);
+  pointer-events:none
+}
+.sidebar-brand {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:5px 6px 23px;
+  border-bottom:1px solid rgba(255,255,255,.11)
+}
+.sidebar-brand img {
+  width:54px;
+  height:54px;
+  object-fit:contain;
+  padding:5px;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 10px 25px rgba(0,0,0,.2)
+}
+.sidebar-brand strong {
+  display:block;
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:.03em
+}
+.sidebar-brand span {
+  display:block;
+  margin-top:4px;
+  color:rgba(255,255,255,.66);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.1em;
+  text-transform:uppercase
+}
+.sidebar-section-title {
+  margin:24px 7px 12px;
+  color:rgba(255,255,255,.6);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.14em;
+  text-transform:uppercase
+}
+.sidebar-nav {
+  display:grid;
+  gap:5px;
+  overflow:auto;
+  padding-right:2px
+}
+.nav-item {
+  position:relative;
+  width:100%;
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:10px 13px;
+  border-radius:14px;
+  color:rgba(255,255,255,.67);
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+  transition:.22s ease
+}
+.nav-item:before {
+  content:"";
+  width:7px;
+  height:7px;
+  flex:0 0 7px;
+  border-radius:50%;
+  background:currentColor;
+  opacity:.65
+}
+.nav-item:hover {
+  color:#fff;
+  background:rgba(255,255,255,.075);
+  transform:translateX(2px)
+}
+.nav-item.active {
+  color:#fff;
+  background:linear-gradient(90deg,rgba(43,137,255,.34),rgba(43,137,255,.14));
+  box-shadow:inset 3px 0 var(--blue)
+}
+.nav-item.active:before {
+  background:#52a5ff;
+  opacity:1;
+  transform:scale(1.35);
+  box-shadow:0 0 0 4px rgba(59,130,246,.12)
+}
+.nav-icon {
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  flex:0 0 32px;
+  border-radius:10px;
+  color:rgba(255,255,255,.76);
+  background:rgba(255,255,255,.08);
+  font-size:11px;
+  font-weight:950
+}
+.nav-item.active .nav-icon {
+  color:#fff;
+  background:rgba(59,130,246,.3)
+}
+.nav-text {
+  min-width:0;
+  flex:1
+}
+.nav-label {
+  display:block;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:-.01em
+}
+.nav-meta {
+  display:block;
+  margin-top:4px;
+  color:rgba(255,255,255,.48);
+  font-size:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+.nav-item.active .nav-meta {
+  color:rgba(255,255,255,.58)
+}
+.sidebar-bottom {
+  margin-top:auto;
+  padding-top:17px
+}
+.appearance-box {
+  padding:14px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:17px;
+  background:rgba(255,255,255,.07)
+}
+.appearance-label {
+  margin:0 0 10px;
+  color:rgba(255,255,255,.57);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.15em;
+  text-transform:uppercase
+}
+.sidebar-theme-btn {
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:11px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:11px;
+  color:#fff;
+  background:rgba(255,255,255,.08);
+  font-size:11px;
+  font-weight:850;
+  cursor:pointer
+}
+.main {
+  min-width:0;
+  padding:0 0 30px
+}
+.topbar {
+  position:relative;
+  z-index:100;
+  min-height:112px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  padding:18px 22px 18px 28px;
+  border:1px solid var(--border);
+  border-radius:25px;
+  background:rgba(9,30,45,.8);
+  box-shadow:var(--shadow-soft);
+  backdrop-filter:blur(18px)
+}
+body.light .topbar {
+  background:rgba(255,255,255,.87)
+}
+.topbar-title {
+  min-width:240px
+}
+.eyebrow {
+  margin:0;
+  color:var(--blue-2);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.15em;
+  text-transform:uppercase
+}
+.topbar-title h1 {
+  margin:7px 0 4px;
+  color:var(--text);
+  font-size:27px;
+  line-height:1.05;
+  letter-spacing:-.035em
+}
+.topbar-subtitle {
+  margin:0;
+  color:var(--text-soft);
+  font-size:10px
+}
+.topbar-actions {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:9px;
+  flex:1;
+  min-width:0
+}
+.search-box {
+  position:relative;
+  width:min(340px,32vw)
+}
+.search-box input {
+  width:100%;
+  padding:12px 42px 12px 40px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  outline:none;
+  color:var(--text);
+  background:rgba(255,255,255,.035);
+  font-size:11px
+}
+.portal-search-results{
+  position:absolute;
+  z-index:1200;
+  top:calc(100% + 8px);
+  left:0;
+  right:0;
+  display:none;
+  max-height:min(360px,60vh);
+  overflow:auto;
+  padding:6px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.portal-search-results.show{display:grid;gap:3px}
+.portal-search-results button{
+  display:grid;
+  gap:3px;
+  width:100%;
+  padding:10px 11px;
+  border:0;
+  border-radius:6px;
+  color:var(--text);
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+}
+.portal-search-results button:hover,.portal-search-results button:focus-visible{
+  outline:none;
+  background:var(--surface-2);
+}
+.portal-search-results strong{font-size:12px}
+.portal-search-results span,.portal-search-empty{color:var(--text-soft);font-size:11px}
+.portal-search-empty{padding:11px}
+.search-icon {
+  position:absolute;
+  left:15px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--text-soft);
+  font-size:14px;
+  pointer-events:none
+}
+.search-shortcut {
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  padding:3px 6px;
+  border-radius:5px;
+  color:var(--text-muted);
+  background:rgba(255,255,255,.05);
+  font-size:8px
+}
+.icon-btn {
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  border-radius:13px;
+  color:var(--text);
+  background:rgba(255,255,255,.035);
+  cursor:pointer;
+  transition:.2s
+}
+.icon-btn:hover {
+  border-color:var(--border-blue);
+  background:rgba(59,130,246,.08);
+  transform:translateY(-1px)
+}
+.profile {
+  position:relative;
+  z-index:500
+}
+.profile-button {
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:4px 2px;
+  border:0;
+  border-radius:6px;
+  color:var(--text);
+  background:transparent;
+  cursor:pointer
+}
+.profile-button:focus-visible{outline:2px solid var(--blue-2);outline-offset:4px}
+.profile-info {
+  text-align:left;
+  min-width:88px
+}
+.profile-info strong {
+  display:block;
+  font-size:10px
+}
+.profile-info span {
+  display:block;
+  margin-top:2px;
+  color:var(--text-soft);
+  font-size:8px
+}
+.profile-arrow {
+  color:var(--text-soft);
+  font-size:11px
+}
+.profile-menu {
+  position:absolute;
+  z-index:1000;
+  top:calc(100% + 12px);
+  right:0;
+  width:290px;
+  padding:11px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  color:var(--text);
+  background:var(--surface);
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  animation:dropdownIn .18s ease
+}
+.profile-menu[hidden] {
+  display:none
+}
+@keyframes dropdownIn {
+  from {
+    opacity:0;
+    transform:translateY(-6px) scale(.98)
+  }
+  to {
+    opacity:1;
+    transform:none
+  }
+}
+.profile-header {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px;
+  border-radius:13px;
+  background:var(--surface-2)
+}
+.profile-header strong {
+  display:block;
+  font-size:11px
+}
+.profile-header span {
+  display:block;
+  margin-top:3px;
+  color:var(--text-soft);
+  font-size:9px
+}
+.profile-option {
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px;
+  margin-top:5px;
+  border-radius:11px;
+  color:var(--text);
+  background:transparent;
+  text-align:left;
+  font-size:10px;
+  font-weight:800;
+  cursor:pointer
+}
+.profile-option:hover {
+  background:var(--surface-2)
+}
+.profile-option.logout {
+  color:#ff6878
+}
+.profile-option-icon {
+  width:23px;
+  height:23px;
+  display:grid;
+  place-items:center;
+  border-radius:7px;
+  color:var(--blue-2);
+  background:rgba(59,130,246,.1)
+}
+.profile-option.logout .profile-option-icon {
+  color:#ff6878;
+  background:rgba(255,91,110,.1)
+}
+.hero {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 320px;
+  gap:0;
+  margin-top:18px;
+  min-height:300px;
+  border:1px solid rgba(42,136,255,.35);
+  border-radius:28px;
+  overflow:hidden;
+  background:radial-gradient(circle at 85% 50%,rgba(44,136,255,.08),transparent 28%),linear-gradient(135deg,#0a2334,#0c283b);
+  box-shadow:0 25px 70px rgba(0,0,0,.23)
+}
+body.light .hero {
+  background:linear-gradient(135deg,#fff,#eef6fc)
+}
+.hero-main {
+  padding:38px 34px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center
+}
+.hero-kicker {
+  color:var(--blue-2);
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.15em;
+  text-transform:uppercase
+}
+.hero-main h2 {
+  max-width:820px;
+  margin:9px 0 12px;
+  color:var(--text);
+  font-size:clamp(30px,3.2vw,43px);
+  line-height:1.03;
+  letter-spacing:-.045em
+}
+.hero-main p {
+  max-width:800px;
+  margin:0;
+  color:#9cb6c9;
+  font-size:13px;
+  line-height:1.65
+}
+body.light .hero-main p {
+  color:var(--text-soft)
+}
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:22px
+}
+.primary-btn,.secondary-btn {
+  padding:12px 17px;
+  border-radius:11px;
+  font-size:10px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s
+}
+.primary-btn {
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  box-shadow:0 10px 25px rgba(37,131,255,.2)
+}
+.secondary-btn {
+  color:var(--text);
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.025)
+}
+.primary-btn:hover,.secondary-btn:hover {
+  transform:translateY(-2px)
+}
+.hero-side {
+  min-height:300px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  border-left:1px solid rgba(255,255,255,.06);
+  background:rgba(30,91,139,.18)
+}
+.hero-side-label {
+  margin-bottom:15px;
+  color:var(--text-soft);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+.kpi-ring {
+  width:175px;
+  height:175px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:conic-gradient(var(--blue-2) var(--ring-progress,75%),rgba(45,119,187,.2) 0);
+  position:relative
+}
+.kpi-ring:before {
+  content:"";
+  position:absolute;
+  inset:14px;
+  border-radius:50%;
+  background:#0b2232
+}
+body.light .kpi-ring:before {
+  background:#edf5fa
+}
+.kpi-content {
+  position:relative;
+  z-index:2;
+  text-align:center
+}
+.hero-number {
+  color:var(--text);
+  font-size:34px;
+  font-weight:950
+}
+.hero-number-label {
+  margin-top:4px;
+  color:var(--text-soft);
+  font-size:8px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+.hero-side-footer {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:17px;
+  color:var(--text-soft);
+  font-size:9px
+}
+.live-dot {
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 0 4px rgba(35,217,139,.08)
+}
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px
+}
+.stat-card {
+  position:relative;
+  min-height:142px;
+  padding:19px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+  transition:.22s
+}
+.stat-card:hover {
+  transform:translateY(-3px);
+  border-color:rgba(59,130,246,.2)
+}
+.stat-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.stat-label {
+  color:var(--text-soft);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+.stat-value {
+  margin-top:15px;
+  color:var(--text);
+  font-size:27px;
+  font-weight:950;
+  letter-spacing:-.035em
+}
+.stat-note {
+  margin:4px 0 0;
+  color:var(--text-soft);
+  font-size:8px
+}
+.trend-up {
+  color:var(--green);
+  font-size:8px;
+  font-weight:950
+}
+.content-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(290px,.75fr);
+  gap:18px;
+  margin-top:18px
+}
+.panel {
+  padding:20px 22px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft)
+}
+.panel-header {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:17px
+}
+.panel-header h3 {
+  margin:4px 0 0;
+  color:var(--text);
+  font-size:15px
+}
+.panel-header p:not(.eyebrow) {
+  margin:4px 0 0;
+  color:var(--text-soft);
+  font-size:9px
+}
+.performance-list {
+  display:grid;
+  gap:17px
+}
+.performance-item {
+  display:grid;
+  gap:7px
+}
+.performance-heading {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  color:var(--text);
+  font-size:9px;
+  font-weight:800
+}
+.performance-heading span:last-child {
+  color:var(--green);
+  font-weight:950
+}
+.progress {
+  height:7px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(255,255,255,.06)
+}
+body.light .progress {
+  background:rgba(11,43,75,.08)
+}
+.progress span {
+  display:block;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--blue),#54a5ff)
+}
+.quick-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px
+}
+.quick-card {
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--surface-2);
+  cursor:pointer;
+  transition:.2s
+}
+.quick-card:hover {
+  transform:translateY(-2px);
+  border-color:var(--border-blue)
+}
+.quick-card strong {
+  display:block;
+  font-size:12px
+}
+.quick-card span {
+  display:block;
+  margin-top:5px;
+  color:var(--text-soft);
+  font-size:9px;
+  line-height:1.4
+}
+.module-hero {
+  position:relative;
+  overflow:hidden;
+  margin-bottom:16px;
+  padding:28px;
+  border:1px solid rgba(59,130,246,.22);
+  border-radius:24px;
+  background:radial-gradient(circle at 90% 0,rgba(37,131,255,.16),transparent 34%),linear-gradient(135deg,var(--surface),var(--surface-2));
+  box-shadow:var(--shadow-soft)
+}
+.module-hero:after {
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-70px;
+  bottom:-100px;
+  border-radius:50%;
+  background:rgba(37,131,255,.08);
+  pointer-events:none
+}
+.module-kicker {
+  color:var(--blue-2);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.16em;
+  text-transform:uppercase
+}
+.module-hero h2 {
+  margin:7px 0 6px;
+  font-size:28px;
+  letter-spacing:-.04em
+}
+.module-hero p {
+  max-width:720px;
+  margin:0;
+  color:var(--text-soft);
+  font-size:11px;
+  line-height:1.6
+}
+.module-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin-top:16px
+}
+.module-card {
+  position:relative;
+  overflow:hidden;
+  padding:19px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+  transition:.25s
+}
+.module-card:hover {
+  transform:translateY(-4px);
+  border-color:rgba(59,130,246,.3);
+  box-shadow:0 18px 45px rgba(0,0,0,.18)
+}
+.module-card-icon {
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  margin-bottom:14px;
+  border-radius:13px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  font-size:11px;
+  font-weight:950;
+  box-shadow:0 10px 24px rgba(37,131,255,.2)
+}
+.module-card h4 {
+  margin:0;
+  font-size:13px
+}
+.module-card p {
+  margin:6px 0 0;
+  color:var(--text-soft);
+  font-size:9px;
+  line-height:1.5
+}
+.module-card .module-value {
+  margin-top:13px;
+  font-size:22px;
+  font-weight:950
+}
+.module-banner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-top:16px;
+  padding:16px 18px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:var(--surface-2)
+}
+.module-banner strong {
+  font-size:11px
+}
+.module-banner span {
+  display:block;
+  margin-top:3px;
+  color:var(--text-soft);
+  font-size:9px
+}
+.module-table-card {
+  padding:0;
+  overflow:hidden
+}
+.module-table-card .panel-header {
+  padding:20px 22px;
+  margin:0;
+  border-bottom:1px solid var(--border)
+}
+.table tbody tr {
+  transition:.18s
+}
+.table tbody tr:hover {
+  background:rgba(37,131,255,.045)
+}
+.table td:first-child {
+  font-weight:800
+}
+.empty-module {
+  padding:45px 20px;
+  text-align:center;
+  color:var(--text-soft)
+}
+.empty-module .empty-icon {
+  width:52px;
+  height:52px;
+  margin:0 auto 12px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:rgba(37,131,255,.1);
+  color:var(--blue-2);
+  font-weight:950
+}
+.sis-shell {
+  box-shadow:0 25px 70px rgba(0,0,0,.16)
+}
+.section {
+  margin-top:18px
+}
+.table-wrap {
+  overflow:auto;
+  border:1px solid var(--border);
+  border-radius:15px
+}
+.table {
+  width:100%;
+  border-collapse:collapse;
+  min-width:620px
+}
+.table th,.table td {
+  padding:12px 13px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:9px
+}
+.table th {
+  color:var(--text-soft);
+  font-size:8px;
+  letter-spacing:.1em;
+  text-transform:uppercase
+}
+.table tr:last-child td {
+  border-bottom:0
+}
+.badge {
+  display:inline-flex;
+  padding:4px 7px;
+  border-radius:999px;
+  font-size:8px;
+  font-weight:900
+}
+.badge.good {
+  color:#1bd78a;
+  background:rgba(35,217,139,.1)
+}
+.badge.blue {
+  color:var(--blue-2);
+  background:rgba(37,131,255,.1)
+}
+.activity {
+  margin-top:18px;
+  padding:21px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft)
+}
+.activity-list {
+  display:grid
+}
+.activity-item {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 6px;
+  border-bottom:1px solid var(--border)
+}
+.activity-item:last-child {
+  border-bottom:0
+}
+.activity-text {
+  flex:1
+}
+.activity-text strong {
+  display:block;
+  font-size:10px
+}
+.activity-text span {
+  display:block;
+  margin-top:2px;
+  color:var(--text-soft);
+  font-size:8px
+}
+.activity-time {
+  color:var(--text-soft);
+  font-size:8px;
+  white-space:nowrap
+}
+#sisView {
+  display:none
+}
+.sis-shell {
+  margin-top:18px;
+  padding:24px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft)
+}
+.sis-progress {
+  height:8px;
+  border-radius:99px;
+  background:rgba(255,255,255,.07);
+  overflow:hidden;
+  margin:16px 0 24px
+}
+.sis-progress span {
+  display:block;
+  height:100%;
+  width:25%;
+  background:linear-gradient(90deg,var(--blue),#54a5ff);
+  transition:.3s
+}
+.form-section {
+  padding:18px 0;
+  border-top:1px solid var(--border)
+}
+.form-section:first-of-type {
+  border-top:0
+}
+.form-section h3 {
+  margin:0 0 5px;
+  font-size:14px
+}
+.form-section p {
+  margin:0 0 15px;
+  color:var(--text-soft);
+  font-size:9px
+}
+.form-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px
+}
+.field {
+  display:grid;
+  gap:6px
+}
+.field.wide {
+  grid-column:span 2
+}
+.field.full {
+  grid-column:1/-1
+}
+.field label {
+  color:var(--text-soft);
+  font-size:9px;
+  font-weight:900
+}
+.field input,.field select,.field textarea {
+  width:100%;
+  padding:11px 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:var(--text);
+  background:var(--surface-2);
+  font-size:10px;
+  outline:none
+}
+.field textarea {
+  min-height:80px;
+  resize:vertical
+}
+.form-actions {
+  display:flex;
+  justify-content:flex-end;
+  gap:9px;
+  margin-top:18px
+}
+.toast {
+  position:fixed;
+  z-index:2000;
+  right:24px;
+  bottom:24px;
+  max-width:360px;
+  padding:12px 15px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
+  color:#fff;
+  background:#0b2b42;
+  box-shadow:var(--shadow);
+  font-size:10px;
+  font-weight:800;
+  opacity:0;
+  transform:translateY(12px);
+  pointer-events:none;
+  transition:.25s
+}
+.toast.show {
+  opacity:1;
+  transform:none
+}
+.modal {
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  place-items:center;
+  padding:20px;
+  background:rgba(1,9,16,.65);
+  backdrop-filter:blur(8px)
+}
+.modal.show {
+  display:grid
+}
+.modal-card {
+  width:min(540px,100%);
+  padding:22px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--surface);
+  box-shadow:0 30px 90px rgba(0,0,0,.4)
+}
+.modal-card h3 {
+  margin:0 0 7px
+}
+.modal-card p {
+  margin:0;
+  color:var(--text-soft);
+  font-size:9px
+}
+.modal-form {
+  margin-top:17px;
+  display:grid;
+  gap:10px
+}
+.modal-actions {
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:17px
+}
+@media(max-width:1250px) {
+  :root {
+    --sidebar-width:275px
+  }
+  .stats-grid {
+    grid-template-columns:repeat(2,1fr)
+  }
+  .hero {
+    grid-template-columns:minmax(0,1fr) 270px
+  }
+  .form-grid {
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+@media(max-width:1050px) {
+  .app {
+    grid-template-columns:1fr
+  }
+  .sidebar {
+    position:relative;
+    top:auto;
+    width:100%;
+    height:auto;
+    min-height:0
+  }
+  .sidebar-nav {
+    grid-template-columns:repeat(2,1fr)
+  }
+  .sidebar-bottom {
+    margin-top:18px
+  }
+  .content-grid {
+    grid-template-columns:1fr
+  }
+  .search-results {
+    right:20px
+  }
+}
+@media(max-width:760px) {
+  .module-grid {
+    grid-template-columns:1fr
+  }
+  .module-hero {
+    padding:22px
+  }
+  .module-hero h2 {
+    font-size:24px
+  }
+  .topbar {
+    align-items:flex-start;
+    flex-direction:column
+  }
+  .topbar-actions {
+    width:100%;
+    justify-content:stretch
+  }
+  .search-box {
+    width:100%;
+    max-width:none
+  }
+  .hero {
+    grid-template-columns:1fr
+  }
+  .hero-side {
+    border-left:0;
+    border-top:1px solid var(--border)
+  }
+  .stats-grid {
+    grid-template-columns:1fr
+  }
+  .profile-info {
+    display:none
+  }
+  .form-grid {
+    grid-template-columns:1fr
+  }
+  .field.wide {
+    grid-column:auto
+  }
+  .quick-grid {
+    grid-template-columns:1fr
+  }
+}
+@media(max-width:560px) {
+  .app {
+    padding:8px
+  }
+  .sidebar {
+    border-radius:20px
+  }
+  .sidebar-nav {
+    grid-template-columns:1fr
+  }
+  .topbar {
+    border-radius:19px;
+    padding:16px
+  }
+  .topbar-title h1 {
+    font-size:23px
+  }
+  .hero-main {
+    padding:28px 22px
+  }
+  .hero-main h2 {
+    font-size:30px
+  }
+  .hero-side {
+    min-height:250px
+  }
+  .profile-menu {
+    position:fixed;
+    top:78px;
+    right:12px;
+    width:min(290px,calc(100vw - 24px))
+  }
+  .sis-shell {
+    padding:16px
+  }
+}
+</style>
+<style id="sis-onboarding-layout">
+.app.sis-onboarding {
+  display:block;
+  max-width:1240px;
+  margin:0 auto
+}
+.app.sis-onboarding .sidebar {
+  display:none
+}
+.app.search-active {
+  grid-template-columns:minmax(0,1fr)
+}
+.app.search-active .sidebar {
+  display:none
+}
+</style>
+<style id="principal-topbar-controls">
+.search-shortcut {
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  padding:3px 6px;
+  border-radius:5px;
+  color:var(--text-muted);
+  background:rgba(255,255,255,.05);
+  font-size:8px
+}
+.icon-btn {
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  border-radius:13px;
+  color:var(--text);
+  background:rgba(255,255,255,.035);
+  cursor:pointer;
+  transition:.2s ease
+}
+.icon-btn:hover {
+  border-color:var(--border-blue);
+  background:rgba(59,130,246,.08);
+  transform:translateY(-1px)
+}
+</style>
+<style id="student-dashboard-enhancements">
+.sidebar {
+  align-self:start;
+  position:sticky;
+  top:14px;
+  height:auto;
+  max-height:calc(100vh - 28px);
+  overflow:visible
+}
+.sidebar-nav {
+  overflow:visible;
+  padding-right:0
+}
+.nav-item {
+  min-height:52px;
+  padding:8px 11px;
+  gap:10px
+}
+.nav-icon {
+  width:30px;
+  height:30px;
+  flex-basis:30px
+}
+.nav-label {
+  font-size:11px
+}
+.nav-meta {
+  font-size:8px
+}
+.sidebar-section-title {
+  margin-top:18px;
+  margin-bottom:9px
+}
+.sidebar-bottom {
+  display:none
+}
+.hero {
+  position:relative;
+  background:radial-gradient(circle at 78% 15%,rgba(62,159,255,.2),transparent 24%),radial-gradient(circle at 5% 100%,rgba(35,217,139,.08),transparent 26%),linear-gradient(135deg,#081d2d,#0d3046)
+}
+.hero:after {
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  right:215px;
+  bottom:-155px;
+  border:1px solid rgba(101,181,255,.16);
+  border-radius:50%;
+  pointer-events:none
+}
+.hero-main,.hero-side {
+  position:relative;
+  z-index:1
+}
+.hero-main h2 {
+  max-width:720px
+}
+.hero-actions .primary-btn {
+  box-shadow:0 12px 30px rgba(37,131,255,.28)
+}
+.stat-card {
+  border-top:2px solid rgba(61,148,255,.42);
+  background:linear-gradient(145deg,var(--surface),var(--surface-2))
+}
+.stat-card:nth-child(2) {
+  border-top-color:rgba(35,217,139,.48)
+}
+.stat-card:nth-child(3) {
+  border-top-color:rgba(244,201,93,.55)
+}
+.stat-card:nth-child(4) {
+  border-top-color:rgba(255,91,110,.5)
+}
+.stat-card:after {
+  content:"";
+  position:absolute;
+  width:90px;
+  height:90px;
+  right:-35px;
+  bottom:-45px;
+  border-radius:50%;
+  background:rgba(59,148,255,.06);
+  pointer-events:none
+}
+.activity {
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,var(--surface),var(--surface-2))
+}
+.activity:before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  background:linear-gradient(var(--blue-2),var(--green))
+}
+.activity .panel-header,.activity .activity-list {
+  position:relative
+}
+#sisView .sis-shell {
+  position:relative;
+  max-width:1120px;
+  padding:30px;
+  border:1px solid rgba(59,130,246,.28);
+  background:radial-gradient(circle at 95% 0,rgba(37,131,255,.14),transparent 30%),linear-gradient(145deg,var(--surface),var(--surface-2));
+  box-shadow:0 24px 60px rgba(0,0,0,.2)
+}
+#sisView .sis-shell:before {
+  content:"SIS";
+  position:absolute;
+  right:28px;
+  top:17px;
+  color:rgba(96,165,250,.08);
+  font-size:62px;
+  font-weight:950;
+  letter-spacing:.08em;
+  pointer-events:none
+}
+#sisView .sis-shell>* {
+  position:relative;
+  z-index:1
+}
+#sisView .sis-shell>h2 {
+  font-size:30px;
+  letter-spacing:-.03em
+}
+#sisView .sis-shell>p:not(.eyebrow) {
+  max-width:720px;
+  margin-top:8px;
+  line-height:1.7
+}
+#sisView .sis-progress {
+  height:10px;
+  margin:24px 0 27px;
+  background:rgba(255,255,255,.08);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.16)
+}
+#sisView .sis-progress span {
+  background:linear-gradient(90deg,var(--blue),var(--blue-2),var(--green));
+  box-shadow:0 0 18px rgba(61,148,255,.28)
+}
+#sisView .form-section {
+  position:relative;
+  margin:14px 0;
+  padding:24px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:rgba(255,255,255,.025)
+}
+body.light #sisView .form-section {
+  background:rgba(237,244,249,.58)
+}
+#sisView .form-section:first-of-type {
+  border-top:1px solid var(--border)
+}
+#sisView .form-section h3 {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0 0 7px;
+  font-size:16px
+}
+#sisView .form-section h3:before {
+  content:counter(sis-section);
+  counter-increment:sis-section;
+  display:grid;
+  place-items:center;
+  width:27px;
+  height:27px;
+  border-radius:9px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  font-size:10px
+}
+#sisView .sis-shell {
+  counter-reset:sis-section
+}
+#sisView .form-section>p {
+  margin:0 0 19px;
+  padding-left:37px;
+  color:var(--text-soft);
+  font-size:10px;
+  line-height:1.5
+}
+#sisView .form-grid {
+  gap:16px
+}
+#sisView .field {
+  gap:8px
+}
+#sisView .field label {
+  color:var(--text-soft);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
+#sisView .field input,#sisView .field select,#sisView .field textarea {
+  min-height:43px;
+  padding:12px 13px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--surface-2);
+  box-shadow:0 4px 14px rgba(0,0,0,.04);
+  transition:.2s ease
+}
+#sisView .field textarea {
+  min-height:100px
+}
+#sisView .field input:hover,#sisView .field select:hover,#sisView .field textarea:hover {
+  border-color:rgba(59,130,246,.3)
+}
+#sisView .field input:focus,#sisView .field select:focus,#sisView .field textarea:focus {
+  border-color:var(--blue-2);
+  background:var(--surface);
+  box-shadow:0 0 0 4px rgba(59,130,246,.1),0 8px 20px rgba(0,0,0,.08)
+}
+#sisView .form-actions {
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid var(--border)
+}
+#sisView .form-actions .primary-btn {
+  min-width:180px
+}
+@media(max-width:600px) {
+  #sisView .sis-shell {
+    padding:20px 16px
+  }
+  #sisView .sis-shell>h2 {
+    font-size:25px
+  }
+  #sisView .form-section {
+    padding:19px 15px
+  }
+  #sisView .form-section>p {
+    padding-left:0
+  }
+  #sisView .form-actions {
+    flex-direction:column
+  }
+  #sisView .form-actions button {
+    width:100%
+  }
+}
+@media(max-width:1050px) {
+  .sidebar {
+    position:relative;
+    top:auto;
+    max-height:none;
+    overflow:visible
+  }
+}
+</style>
+<style id="student-read-only-record">
+#sisView,#editProfile,#editSis,#profileModal {
+  display:none!important;
+}
+</style>
+<style id="formal-spacing">
+.main-content {
+  padding:30px 34px 42px!important;
+}
+.content-section {
+  margin-bottom:30px!important;
+}
+.content-section>*+* {
+  margin-top:24px!important;
+}
+.dashboard-grid,.cards-grid,.stats-grid,.info-grid,.subject-grid,.document-grid,.announcement-grid {
+  gap:24px!important;
+}
+.section-header {
+  margin-bottom:24px!important;
+}
+.table-container,.table-wrapper {
+  margin-top:20px!important;
+}
+.quick-actions {
+  gap:18px!important;
+}
+.card,.panel,.info-card,.stat-card,.subject-card,.document-card,.announcement-card,.schedule-card,.grade-card,.attendance-card {
+  margin-bottom:0!important;
+}
+@media(max-width:900px) {
+  .main-content {
+    padding:24px 22px 34px!important
+  }
+  .dashboard-grid,.cards-grid,.stats-grid,.info-grid,.subject-grid,.document-grid,.announcement-grid {
+    gap:20px!important
+  }
+}
+@media(max-width:600px) {
+  .main-content {
+    padding:20px 16px 28px!important
+  }
+  .content-section {
+    margin-bottom:24px!important
+  }
+}
+</style>
+<style id="student-readable-information">
+.topbar-subtitle {
+  font-size:14px
+}
+.sidebar-nav .nav-label {
+  font-size:13px
+}
+.sidebar-nav .nav-meta {
+  font-size:10px
+}
+.hero-main p {
+  font-size:15px;
+  line-height:1.7
+}
+.hero-side-label {
+  font-size:11px
+}
+.hero-number-label {
+  font-size:10px
+}
+.hero-side-footer {
+  font-size:12px;
+  line-height:1.5
+}
+.stat-label {
+  font-size:12px
+}
+.stat-value {
+  font-size:clamp(20px,2vw,27px);
+  line-height:1.25;
+  overflow-wrap:anywhere
+}
+.stat-note,.trend-up {
+  font-size:12px;
+  line-height:1.5
+}
+.panel-header p:not(.eyebrow) {
+  font-size:13px;
+  line-height:1.55
+}
+.performance-heading {
+  font-size:13px;
+  line-height:1.45
+}
+.quick-card strong {
+  font-size:14px
+}
+.quick-card span {
+  font-size:13px;
+  line-height:1.5
+}
+.activity-text strong {
+  font-size:13px;
+  line-height:1.45
+}
+.activity-text span,.activity-time {
+  font-size:12px;
+  line-height:1.5
+}
+.module-kicker {
+  font-size:12px
+}
+.module-hero p,.module-card p {
+  font-size:14px;
+  line-height:1.6
+}
+.module-card h4 {
+  font-size:16px
+}
+.module-banner strong {
+  font-size:14px
+}
+.module-banner span {
+  font-size:13px;
+  line-height:1.5
+}
+.table th,.table td {
+  font-size:13px;
+  line-height:1.5
+}
+.table th {
+  font-size:12px
+}
+.badge {
+  font-size:11px
+}
+.empty-module {
+  font-size:14px;
+  line-height:1.6
+}
+.form-grid .field label {
+  font-size:12px
+}
+.form-grid .field>div {
+  font-size:14px!important;
+  line-height:1.5;
+  overflow-wrap:anywhere
+}
+.stat-card,.panel,.quick-card,.activity,.module-hero,.module-card,.module-banner,.table-wrap,.sis-shell,#sisView .form-section,.form-grid .field>div {
+  border-radius:4px!important
+}
+@media(max-width:760px) {
+  .hero-main p {
+    font-size:14px
+  }
+  .topbar-subtitle {
+    font-size:13px;
+    line-height:1.5
+  }
+  .stat-value {
+    font-size:23px
+  }
+}
+</style>
+<style id="student-grounded-interface">
+:root{
+  --bg:#0b1724;
+  --bg-2:#101d2a;
+  --sidebar:#000052;
+  --sidebar-2:#0f3a6b;
+  --surface:#111f2d;
+  --surface-2:#162636;
+  --surface-3:#1c3043;
+  --border:rgba(211,211,211,.16);
+  --border-blue:rgba(120,184,231,.42);
+  --text:#f3f5f7;
+  --text-soft:#bdc7d1;
+  --text-muted:#8f9dab;
+  --blue:#0f3a6b;
+  --blue-2:#78b8e7;
+  --blue-dark:#000052;
+  --green:#75c6a0;
+  --red:#e58d95;
+  --yellow:#d8bb70;
+  --shadow:0 16px 40px rgba(0,0,0,.20);
+  --shadow-soft:0 5px 16px rgba(0,0,0,.14);
+}
+body.light{
+  --bg:#e8ebef;
+  --bg-2:#f2f3f5;
+  --sidebar:#000052;
+  --sidebar-2:#0f3a6b;
+  --surface:#fff;
+  --surface-2:#f5f6f7;
+  --surface-3:#e9edf1;
+  --border:rgba(15,58,107,.18);
+  --border-blue:rgba(15,58,107,.38);
+  --text:#18283a;
+  --text-soft:#536477;
+  --text-muted:#778594;
+  --blue:#0f3a6b;
+  --blue-2:#0f3a6b;
+  --blue-dark:#000052;
+  --green:#287a57;
+  --red:#a6444c;
+  --yellow:#8b6d28;
+  --shadow:0 16px 40px rgba(20,35,50,.10);
+  --shadow-soft:0 4px 14px rgba(20,35,50,.07);
+}
+body.light .sidebar{
+  border-color:rgba(15,58,107,.16);
+  background:#d9dee4;
+  box-shadow:0 5px 16px rgba(20,35,50,.09);
+}
+body.light .nav-item:hover{background:rgba(15,58,107,.07)}
+body.light .nav-item.active{
+  background:rgba(15,58,107,.11);
+  box-shadow:inset 3px 0 #0f3a6b;
+}
+body.light .nav-item.active:before{background:#0f3a6b}
+body.light .nav-icon,body.light .nav-item.active .nav-icon{
+  color:#0f3a6b;
+  background:rgba(15,58,107,.09);
+}
+body{
+  background:var(--bg);
+  transition:background .2s ease,color .2s ease;
+}
+.sidebar{
+  border-radius:12px;
+  border-color:var(--border);
+  color:var(--text);
+  background:var(--surface-2);
+  box-shadow:var(--shadow-soft);
+}
+.sidebar:before{display:none}
+.sidebar-brand{border-bottom-color:var(--border)}
+.sidebar-brand span,.sidebar-section-title{color:var(--text-muted)}
+.sidebar-brand img{
+  border-radius:9px;
+  box-shadow:none;
+}
+.nav-item{
+  min-height:54px;
+  border-radius:8px;
+  color:var(--text-soft);
+}
+.nav-item:hover{transform:none;background:rgba(120,184,231,.08);color:var(--text)}
+.nav-item.active{
+  color:var(--text);
+  background:rgba(120,184,231,.13);
+  box-shadow:inset 3px 0 #78b8e7;
+}
+.nav-item .nav-meta,.nav-item.active .nav-meta{color:var(--text-muted)}
+.nav-item{gap:0}
+.nav-item:before{display:none}
+.nav-icon,.nav-meta{display:none}
+.nav-label{font-size:13px}
+.nav-item.active:before{
+  background:#78b8e7;
+  box-shadow:none;
+}
+.nav-icon,.nav-item.active .nav-icon{
+  border-radius:6px;
+  color:var(--text-soft);
+  background:rgba(120,184,231,.10);
+}
+.nav-item.active .nav-icon{color:var(--text)}
+.topbar{
+  min-height:104px;
+  border-radius:11px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+  backdrop-filter:none;
+}
+body.light .topbar{background:var(--surface)}
+.eyebrow{
+  color:var(--blue-2);
+  letter-spacing:.11em;
+}
+.topbar-title h1{letter-spacing:-.025em}
+.topbar-subtitle{font-size:13px}
+.search-box input,.icon-btn,.profile-button{
+  border-radius:8px;
+  background:var(--surface-2);
+}
+.search-box input{font-size:13px}
+.profile-menu{border-radius:10px;box-shadow:var(--shadow)}
+.profile-header,.profile-option,.profile-option-icon{border-radius:7px}
+.profile-menu{
+  width:260px;
+  padding:8px;
+  border-color:var(--border);
+  background:var(--surface);
+}
+.profile-menu .profile-header{
+  gap:10px;
+  padding:10px 9px 12px;
+  border-radius:0;
+  border-bottom:1px solid var(--border);
+  background:transparent;
+}
+.profile-menu .profile-header strong{font-size:13px}
+.profile-menu .profile-header span{font-size:11px}
+.profile-menu > .profile-option:not(.logout){display:none}
+.profile-menu .profile-option.logout{
+  min-height:40px;
+  margin-top:6px;
+  border-radius:6px;
+  color:var(--text);
+  background:var(--surface-2);
+  font-size:12px;
+}
+.profile-menu .profile-option.logout:hover{background:var(--surface-3)}
+.profile-menu .profile-option.logout .profile-option-icon{
+  color:var(--text-soft);
+  background:transparent;
+}
+.hero{
+  border-color:var(--border);
+  border-radius:12px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+}
+body.light .hero{background:var(--surface)}
+.hero-main p{color:var(--text-soft)}
+.hero-kicker,.module-kicker{color:var(--blue-2);letter-spacing:.11em}
+.hero-side{
+  border-left-color:var(--border);
+  background:var(--surface-2);
+}
+.hero-side-label,.hero-number-label{font-size:10px}
+.primary-btn,.secondary-btn{
+  min-height:42px;
+  border-radius:7px;
+  font-size:12px;
+}
+.primary-btn,.hero-actions .primary-btn{
+  background:#0f3a6b;
+  box-shadow:none;
+}
+.secondary-btn{border-color:var(--border)}
+.primary-btn:hover,.secondary-btn:hover{transform:none}
+.kpi-ring{background:conic-gradient(#78b8e7 var(--ring-progress,75%),rgba(120,184,231,.16) 0)}
+.kpi-ring:before{background:var(--surface)}
+body.light .kpi-ring:before{background:var(--surface-2)}
+.stats-grid .stat-card{
+  min-height:132px;
+  border:1px solid var(--border);
+  border-top:2px solid #78b8e7;
+  border-radius:10px!important;
+  background:var(--surface)!important;
+  box-shadow:var(--shadow-soft);
+}
+.stats-grid .stat-card:nth-child(2){border-top-color:#75c6a0}
+.stats-grid .stat-card:nth-child(3){border-top-color:#d8bb70}
+.stats-grid .stat-card:nth-child(4){border-top-color:#e58d95}
+.stats-grid .stat-card:after{display:none}
+.stat-card:hover{transform:none;border-color:var(--border-blue)}
+.stat-label{font-size:10px;letter-spacing:.08em}
+.stat-value{font-size:clamp(21px,2vw,28px)}
+.stat-note,.trend-up{font-size:11px}
+.content-grid,.module-grid{gap:16px}
+.panel,.activity,.module-hero,.module-card,.module-banner,.table-wrap,
+.sis-shell,#sisView .form-section,.quick-card,.stat-card,
+.schedule-card,.grade-card,.attendance-card,.subject-card,.document-card,
+.announcement-card,.info-card,.card{
+  border-radius:10px!important;
+  box-shadow:var(--shadow-soft);
+}
+.panel,.activity{padding:21px}
+.panel-header h3{font-size:17px}
+.panel-header p:not(.eyebrow){font-size:13px;line-height:1.55}
+.performance-heading{font-size:12px}
+.progress{height:6px;border-radius:3px}
+.progress span{background:#78b8e7}
+.quick-grid{gap:10px}
+.quick-card{background:var(--surface-2)}
+.quick-card:hover,.module-card:hover{transform:none}
+.quick-card strong{font-size:14px}
+.quick-card span{font-size:12px;line-height:1.55}
+.module-hero{
+  border-color:var(--border);
+  background:var(--surface);
+}
+.module-hero:after{display:none}
+.module-hero h2{letter-spacing:-.025em}
+.module-hero p,.module-card p,.module-banner span{
+  font-size:14px;
+  line-height:1.6;
+}
+.module-card{background:var(--surface)}
+.module-card-icon{
+  border-radius:8px;
+  background:#0f3a6b;
+  box-shadow:none;
+}
+.module-card h4{font-size:16px}
+.module-banner{background:var(--surface-2)}
+.module-banner strong{font-size:14px}
+.table-wrap{border-color:var(--border)}
+.table th,.table td{
+  font-size:13px;
+  line-height:1.5;
+}
+.table th{font-size:11px;letter-spacing:.06em}
+.table tbody tr:hover{background:rgba(120,184,231,.06)}
+.badge{border-radius:4px;font-size:10px}
+.activity{
+  background:var(--surface);
+}
+.activity:before{
+  width:3px;
+  background:#78b8e7;
+}
+.activity-text strong{font-size:13px}
+.activity-text span,.activity-time{font-size:12px}
+.form-grid .field>div{border-radius:8px!important}
+#sisView .sis-shell{
+  border-color:var(--border);
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+}
+#sisView .form-section{
+  border-color:var(--border);
+  background:var(--surface);
+}
+#sisView .field input,#sisView .field select,#sisView .field textarea{
+  border-radius:7px;
+  box-shadow:none;
+}
+#sisView .field input:focus,#sisView .field select:focus,#sisView .field textarea:focus{
+  box-shadow:0 0 0 3px rgba(120,184,231,.14);
+}
+.toast{border-radius:8px;font-size:12px}
+@media(max-width:1050px){
+  .sidebar{border-radius:11px}
+}
+@media(max-width:600px){
+  .sidebar,.topbar{border-radius:9px}
+  .panel,.activity{padding:17px}
+}
+</style>
+<script src="route-security.js"></script></head>
+<body>
+<div class="app" id="app">
+<aside class="sidebar">
+<div class="sidebar-brand"><img src="assets/images/branding/logo.png" alt="RISE School College logo"><div><strong>RISE SIMS</strong><span>Student Portal</span></div></div>
+<div class="sidebar-section-title">Student Portal</div>
+<nav class="sidebar-nav" id="sidebarNav">
+<button class="nav-item active" data-view="dashboard"><span class="nav-text"><span class="nav-label">Dashboard</span></span></button>
+<button class="nav-item" data-view="profile"><span class="nav-text"><span class="nav-label">Profile</span></span></button>
+<button class="nav-item" data-view="subjects"><span class="nav-text"><span class="nav-label">Subjects</span></span></button>
+<button class="nav-item" data-view="schedule"><span class="nav-text"><span class="nav-label">Schedule</span></span></button>
+<button class="nav-item" data-view="grades"><span class="nav-text"><span class="nav-label">Grades</span></span></button>
+<button class="nav-item" data-view="attendance"><span class="nav-text"><span class="nav-label">Attendance</span></span></button>
+<button class="nav-item" data-view="announcements"><span class="nav-text"><span class="nav-label">Announcements</span></span></button>
+<button class="nav-item" data-view="documents"><span class="nav-text"><span class="nav-label">Documents</span></span></button>
+</nav>
+</aside>
+<main class="main">
+<header class="topbar">
+<div class="topbar-title"><p class="eyebrow">RISE Student Information System</p><h1 id="pageTitle">Student Dashboard</h1><p class="topbar-subtitle" id="pageSubtitle">Your academic workspace and student account overview.</p></div>
+<div class="topbar-actions"><div class="search-box"><span class="search-icon">⌕</span><input id="searchInput" placeholder="Search student modules..." autocomplete="off" aria-label="Search student modules" aria-controls="portalSearchResults"><span class="search-shortcut">Ctrl K</span><div class="portal-search-results" id="portalSearchResults" role="listbox" aria-label="Student portal modules"></div></div><button class="icon-btn" id="themeTopBtn" type="button" title="Toggle appearance">◇</button><div class="profile"><button class="profile-button" id="profileBtn"><span class="profile-info"><strong id="profileName">Student</strong><span id="profileRole">Student</span></span><span class="profile-arrow">⌄</span></button><div class="profile-menu" id="profileMenu" hidden><div class="profile-header"><div><strong id="menuName">Student</strong><span id="menuEmail">student@rise.edu</span></div></div><button class="profile-option" id="editProfile"><span class="profile-option-icon">✎</span>Edit profile</button><button class="profile-option" data-view="profile">My profile</button><button class="profile-option logout" id="logoutBtn"><span class="profile-option-icon">↪</span>Log out</button></div></div></div>
+</header>
+<section id="dashboardView">
+<section class="hero"><div class="hero-main"><span class="hero-kicker">Student Workspace</span><h2>Welcome back, <span id="heroName">Student</span>.</h2><p>Manage your student information, subjects, schedule, grades, attendance, announcements, and school documents from one organized academic workspace.</p><div class="hero-actions"><button class="primary-btn" data-view="profile">View my profile</button><button class="secondary-btn" data-view="subjects">View subjects</button></div></div><div class="hero-side"><div class="hero-side-label">Academic Completion</div><div class="kpi-ring" id="completionRing"><div class="kpi-content"><div class="hero-number" id="completionValue">0%</div><div class="hero-number-label">PROFILE COMPLETE</div></div></div><div class="hero-side-footer"><span class="live-dot"></span><span id="completionNote">Complete your SIS information</span></div></div></section>
+<div class="stats-grid"><article class="stat-card"><div class="stat-top"><span class="stat-label">Student ID</span></div><div class="stat-value" id="statId">—</div><p class="stat-note">Your official student identifier.</p></article><article class="stat-card"><div class="stat-top"><span class="stat-label">Course</span></div><div class="stat-value" id="statCourse">—</div><p class="stat-note">Current academic program.</p></article><article class="stat-card"><div class="stat-top"><span class="stat-label">Year Level</span></div><div class="stat-value" id="statYear">—</div><p class="stat-note">Current year and section.</p></article><article class="stat-card"><div class="stat-top"><span class="stat-label">Status</span></div><div class="stat-value" id="statStatus">Active</div><p class="stat-note"><span class="trend-up">● Account in good standing</span></p></article></div>
+<div class="content-grid"><article class="panel"><div class="panel-header"><div><p class="eyebrow">Academic Snapshot</p><h3>Current academic progress</h3><p>Your latest student indicators.</p></div></div><div class="performance-list"><div class="performance-item"><div class="performance-heading"><span>Profile completion</span><span id="pProfile">0%</span></div><div class="progress"><span id="barProfile" style="width:0%"></span></div></div><div class="performance-item"><div class="performance-heading"><span>Academic records</span><span>0%</span></div><div class="progress"><span style="width:0%"></span></div></div><div class="performance-item"><div class="performance-heading"><span>Attendance standing</span><span>0%</span></div><div class="progress"><span style="width:0%"></span></div></div></div></article><article class="panel"><div class="panel-header"><div><p class="eyebrow">Quick Access</p><h3>Student services</h3><p>Jump directly to a portal area.</p></div></div><div class="quick-grid"><div class="quick-card" data-view="schedule"><strong>Schedule</strong><span>Check classes and times.</span></div><div class="quick-card" data-view="grades"><strong>Grades</strong><span>Review academic results.</span></div><div class="quick-card" data-view="attendance"><strong>Attendance</strong><span>View attendance history.</span></div><div class="quick-card" data-view="documents"><strong>Documents</strong><span>Access available files.</span></div></div></article></div>
+<section class="activity"><div class="panel-header"><div><p class="eyebrow">Student Activity</p><h3>Recent account activity</h3><p>Latest actions and school information related to your account.</p></div></div><div class="activity-list"><div class="activity-item"><div class="activity-text"><strong>Student information saved</strong><span>Your latest student profile information is available.</span></div><span class="activity-time" id="activityTime">Now</span></div><div class="activity-item"><div class="activity-text"><strong>School announcements available</strong><span>Check the announcements section for current notices.</span></div><span class="activity-time">Today</span></div><div class="activity-item"><div class="activity-text"><strong>Attendance record pending</strong><span>No attendance has been recorded for your account yet.</span></div><span class="activity-time">Today</span></div></div></section>
+</section>
+<section id="moduleView" class="section"></section>
+<section id="sisView"><div class="sis-shell"><p class="eyebrow">Student Information System</p><h2 style="margin:7px 0 0">Complete your student information</h2><p style="color:var(--text-soft);font-size:10px;line-height:1.6;max-width:760px">Complete the required information below. Your information is saved to this device and connected to your student account. You can return later to update your profile.</p><div class="sis-progress"><span id="sisProgress"></span></div><form id="sisForm"><div class="form-section"><h3>Personal Information</h3><p>Basic identity and contact information.</p><div class="form-grid"><div class="field"><label>Full Name *</label><input id="fullName" required></div><div class="field"><label>Email *</label><input id="email" type="email" required></div><div class="field"><label>Phone *</label><input id="phone" required></div><div class="field"><label>Birthdate</label><input id="birthdate" type="date"></div><div class="field"><label>Gender</label><select id="gender"><option value="">Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div><div class="field wide"><label>Address</label><input id="address"></div></div></div><div class="form-section"><h3>Academic Information</h3><p>Your official enrollment information.</p><div class="form-grid"><div class="field"><label>Student ID *</label><input id="studentId" required></div><div class="field"><label>Course *</label><input id="course" required></div><div class="field"><label>Year Level *</label><select id="year" required><option value="">Select</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>5th Year</option></select></div><div class="field"><label>Section</label><input id="section"></div><div class="field"><label>Academic Year *</label><input id="academicYear" value="2026-2027" required></div><div class="field"><label>School</label><input id="schoolName" value="RISE School College"></div></div></div><div class="form-section"><h3>Guardian / Emergency Contact</h3><p>Information that can be used for student support and emergency communication.</p><div class="form-grid"><div class="field"><label>Guardian Name</label><input id="guardianName"></div><div class="field"><label>Guardian Contact</label><input id="guardianContact"></div><div class="field"><label>Relationship</label><input id="guardianRelationship"></div><div class="field full"><label>Notes</label><textarea id="notes" placeholder="Additional information..."></textarea></div></div></div><div class="form-actions"><button type="reset" class="secondary-btn">Clear</button><button type="submit" class="primary-btn">Confirm & Continue to Dashboard</button></div></form></div></section>
+</main></div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="profileModal"><div class="modal-card"><p class="eyebrow">Account Settings</p><h3>Edit Profile</h3><p>Update the display name used across your Student Portal.</p><div class="modal-form"><div class="field"><label>Display name</label><input id="displayNameEdit" maxlength="60"></div></div><div class="modal-actions"><button class="secondary-btn" id="profileCancel">Cancel</button><button class="primary-btn" id="profileSave">Save changes</button></div></div></div>
+<script>
+(() => {
+const SESSION_KEY='student-portal-session', STUDENT_DATA_BASE='rise-student-sis-data', STUDENT_REGISTRY_KEY='rise-student-sis-registry', THEME_KEY='rise-principal-theme'; const toggleStudentTheme=()=>{const light=!document.body.classList.contains('light');localStorage.setItem(THEME_KEY,light?'light':'dark');applyTheme()};
+const $=id=>document.getElementById(id); const read=(k,f=null)=>{try{const v=JSON.parse(localStorage.getItem(k));return v??f}catch(e){return f}}; const write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+let session=read(SESSION_KEY,null);
+const accounts=read('student-portal-users',[]); const account=Array.isArray(accounts)?accounts.find(user=>(session?.accountId&&String(user.id)===String(session.accountId))||String(user.email||'').toLowerCase()===String(session?.email||'').toLowerCase()):null;
+if(!session||session.role!=='student'||!account||account.role!=='student'||account.status==='inactive'){localStorage.removeItem(SESSION_KEY);location.replace('login.html');return}
+const studentIdentity=String(session.accountId||session.username||session.email||session.studentId||'student').trim().toLowerCase();
+const STUDENT_DATA_KEY=STUDENT_DATA_BASE+':'+encodeURIComponent(studentIdentity);
+let data=read(STUDENT_DATA_KEY,null); let currentView='dashboard';
+function registry(){return Array.isArray(read(STUDENT_REGISTRY_KEY,[]))?read(STUDENT_REGISTRY_KEY,[]):[]}
+function upsertRegistry(record){const list=registry();const id=String(record.accountId||record.username||record.email||record.studentId||studentIdentity).toLowerCase();const i=list.findIndex(x=>String(x.accountId||x.username||x.email||x.studentId||'').toLowerCase()===id);const item={...record,accountId:session.accountId||record.accountId||studentIdentity,username:session.username||record.username||'',role:'student',updatedAt:new Date().toISOString()};if(i>=0)list[i]={...list[i],...item};else list.push(item);write(STUDENT_REGISTRY_KEY,list)}
+
+const fields=['fullName','email','phone','birthdate','gender','address','studentId','course','year','section','academicYear','schoolName','guardianName','guardianContact','guardianRelationship','notes'];
+
+if(!data){const legacy=read(STUDENT_DATA_BASE,null);const sameIdentity=legacy && [session.email,session.username,session.studentId].filter(Boolean).some(v=>String(v).toLowerCase()===String(legacy.email||legacy.studentId||'').toLowerCase());if(sameIdentity){data=legacy;write(STUDENT_DATA_KEY,data);upsertRegistry(data)}}
+
+function completeness(r){if(!r)return 0; const required=['fullName','email','phone','studentId','course','year','academicYear']; const optional=['birthdate','gender','address','section','guardianName','guardianContact','guardianRelationship','notes']; let a=required.filter(k=>r[k]&&String(r[k]).trim()).length; let b=optional.filter(k=>r[k]&&String(r[k]).trim()).length; return Math.round((a/required.length)*75+(b/optional.length)*25)}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>$('toast').classList.remove('show'),3200)}
+function applyTheme(){const t=localStorage.getItem(THEME_KEY)||'dark';document.body.classList.toggle('light',t==='light')}
+function updateHeader(){const name=data?.fullName||session.name||'Student',email=data?.email||session.email||'student@rise.edu';$('profileName').textContent=name;$('menuName').textContent=name;$('menuEmail').textContent=email;$('heroName').textContent=name.split(' ')[0];$('profileRole').textContent='Student';$('statId').textContent=data?.studentId||'—';$('statCourse').textContent=data?.course||'—';$('statYear').textContent=data?.year||'—';const p=completeness(data);$('completionValue').textContent=p+'%';$('pProfile').textContent=p+'%';$('barProfile').style.width=p+'%';$('completionRing').style.setProperty('--ring-progress',p+'%');$('completionNote').textContent=p>=100?'Student profile complete':'Complete your SIS information'}
+function fillForm(){const d=data||{};fields.forEach(k=>{const e=$(k);if(e)e.value=d[k]??(k==='email'?session.email||'':'')})}
+function saveSIS(e){e.preventDefault();const r={};fields.forEach(k=>r[k]=$(k)?.value?.trim()||'');r.submittedAt=new Date().toISOString();r.accountId=session.accountId||studentIdentity;r.username=session.username||'';const required=['fullName','email','phone','studentId','course','year','academicYear'];if(required.some(k=>!r[k])){toast('Please complete all required fields before continuing.');return}data=r;write(STUDENT_DATA_KEY,r);upsertRegistry(r);session={...session,name:r.fullName,email:r.email,role:'student',sisComplete:true,studentId:r.studentId,accountId:session.accountId||studentIdentity};write(SESSION_KEY,session);updateHeader();$('sisView').style.display='none';$('dashboardView').style.display='block';showView('dashboard');toast('Student information confirmed. Welcome to your Student Portal.');}
+function showView(view){currentView=view;document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.view===view));$('dashboardView').style.display=view==='dashboard'?'block':'none';$('moduleView').style.display=view==='dashboard'?'none':'block';$('sisView').style.display='none';const titles={dashboard:['Student Dashboard','Your academic workspace and student account overview.'],profile:['My Profile','Review your personal and academic student information.'],subjects:['My Subjects','Your current enrolled subjects and academic load.'],schedule:['My Schedule','Your current class timetable.'],grades:['My Grades','Your academic performance and grade records.'],attendance:['My Attendance','Your current attendance record and standing.'],announcements:['Announcements','School notices and important student communications.'],documents:['Documents','Available student documents and records.']};$('pageTitle').textContent=titles[view][0];$('pageSubtitle').textContent=titles[view][1];if(view!=='dashboard')renderModule(view)}
+function renderModule(view){const d=data||{};const content={profile:`<section class="module-hero"><span class="module-kicker">Student Identity</span><h2>My Profile</h2><p>Your personal, academic, and emergency information in one secure student record.</p></section><section class="panel"><div class="panel-header"><div><p class="eyebrow">Student Record</p><h3>My Profile</h3><p>Your confirmed SIS information.</p></div><button class="primary-btn" id="editSis">Edit information</button></div><div class="form-grid">${[['Full Name',d.fullName],['Email',d.email],['Phone',d.phone],['Student ID',d.studentId],['Course',d.course],['Year Level',d.year],['Section',d.section||'Not specified'],['Academic Year',d.academicYear],['Birthdate',d.birthdate||'Not specified'],['Gender',d.gender||'Not specified'],['Address',d.address||'Not specified'],['Guardian',d.guardianName||'Not specified']].map(x=>`<div class="field"><label>${x[0]}</label><div style="padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);font-size:10px">${x[1]||'—'}</div></div>`).join('')}</div></section>`,subjects:`<section class="module-hero"><span class="module-kicker">Academic Life</span><h2>My Subjects</h2><p>Stay on top of your enrolled subjects, units, schedules, and current academic load.</p></section><section class="panel module-table-card"><div class="panel-header"><div><p class="eyebrow">Academic Load</p><h3>My Subjects</h3><p>Current sample subject list ready for connection to your school records.</p></div><span class="badge good">Enrolled</span></div><div class="table-wrap"><table class="table"><thead><tr><th>Code</th><th>Subject</th><th>Units</th><th>Schedule</th><th>Status</th></tr></thead><tbody><tr><td>IT 201</td><td>Data Structures and Algorithms</td><td>3</td><td>Mon / Wed</td><td><span class="badge good">Active</span></td></tr><tr><td>IT 202</td><td>Database Management Systems</td><td>3</td><td>Tue / Thu</td><td><span class="badge good">Active</span></td></tr><tr><td>IT 203</td><td>Web Systems and Technologies</td><td>3</td><td>Wed / Fri</td><td><span class="badge good">Active</span></td></tr><tr><td>GE 104</td><td>Purposive Communication</td><td>3</td><td>Fri</td><td><span class="badge good">Active</span></td></tr></tbody></table></div></section>`,schedule:`<section class="module-hero"><span class="module-kicker">Weekly Planner</span><h2>My Schedule</h2><p>Your classes at a glance, organized so you always know where you need to be.</p></section><section class="panel module-table-card"><div class="panel-header"><div><p class="eyebrow">Weekly Timetable</p><h3>My Schedule</h3><p>Current class schedule.</p></div></div><div class="table-wrap"><table class="table"><thead><tr><th>Day</th><th>Time</th><th>Subject</th><th>Room</th><th>Instructor</th></tr></thead><tbody><tr><td>Monday</td><td>8:00–9:30 AM</td><td>Data Structures</td><td>Lab 1</td><td>Faculty</td></tr><tr><td>Tuesday</td><td>10:00–11:30 AM</td><td>Database Systems</td><td>Room 204</td><td>Faculty</td></tr><tr><td>Wednesday</td><td>8:00–9:30 AM</td><td>Data Structures</td><td>Lab 1</td><td>Faculty</td></tr><tr><td>Thursday</td><td>10:00–11:30 AM</td><td>Database Systems</td><td>Room 204</td><td>Faculty</td></tr></tbody></table></div></section>`,grades:`<section class="module-hero"><span class="module-kicker">Academic Performance</span><h2>My Grades</h2><p>Track your academic standing and keep your performance within reach.</p></section><div class="module-grid"><article class="module-card"><div class="module-card-icon">GPA</div><h4>Current GPA</h4><div class="module-value">0.00</div><p>No grade records have been added.</p></article><article class="module-card"><div class="module-card-icon">SUB</div><h4>Subjects</h4><div class="module-value">0</div><p>No graded subjects yet.</p></article><article class="module-card"><div class="module-card-icon">REC</div><h4>Records</h4><div class="module-value">0%</div><p>Grade records available.</p></article></div><section class="panel"><div class="panel-header"><div><p class="eyebrow">Academic Performance</p><h3>My Grades</h3><p>No grade records have been added.</p></div><span class="badge blue">No records</span></div><div class="stats-grid"><article class="stat-card"><span class="stat-label">Current GPA</span><div class="stat-value">0.00</div><p class="stat-note">No grade records have been added.</p></article><article class="stat-card"><span class="stat-label">Subjects</span><div class="stat-value">0</div><p class="stat-note">No graded subjects yet.</p></article><article class="stat-card"><span class="stat-label">Submitted</span><div class="stat-value">0%</div><p class="stat-note">Grade records available.</p></article><article class="stat-card"><span class="stat-label">Standing</span><div class="stat-value">—</div><p class="stat-note">No academic alert.</p></article></div></section>`,attendance:`<section class="module-hero"><span class="module-kicker">Student Wellness</span><h2>My Attendance</h2><p>Monitor your attendance standing and stay ahead of attendance concerns.</p></section><div class="module-grid"><article class="module-card"><div class="module-card-icon">0</div><h4>Overall Attendance</h4><div class="module-value">0%</div><p>No attendance has been recorded.</p></article><article class="module-card"><div class="module-card-icon">0</div><h4>Present</h4><div class="module-value">0 / 0</div><p>Recorded class attendance.</p></article><article class="module-card"><div class="module-card-icon">—</div><h4>Standing</h4><div class="module-value">—</div><p>No attendance records yet.</p></article></div><section class="panel"><div class="panel-header"><div><p class="eyebrow">Attendance Record</p><h3>My Attendance</h3><p>No attendance has been recorded for your account yet.</p></div><span class="badge blue">No records</span></div><div class="performance-list"><div class="performance-item"><div class="performance-heading"><span>Overall attendance</span><span>0%</span></div><div class="progress"><span style="width:0%"></span></div></div><div class="performance-item"><div class="performance-heading"><span>Present</span><span>0 / 0</span></div><div class="progress"><span style="width:0%"></span></div></div></div></section>`,announcements:`<section class="module-hero"><span class="module-kicker">Communication Center</span><h2>Announcements</h2><p>Important school notices, updates, and student communications collected in one place.</p></section><section class="panel"><div class="panel-header"><div><p class="eyebrow">Communication Center</p><h3>Announcements</h3><p>Important school notices for students.</p></div></div><div class="activity-list"><div class="activity-item"><div class="activity-icon">AN</div><div class="activity-text"><strong>Student registration and records</strong><span>Please keep your SIS information current.</span></div><span class="activity-time">Today</span></div><div class="activity-item"><div class="activity-icon">AC</div><div class="activity-text"><strong>Academic records update</strong><span>Current academic information is available for review.</span></div><span class="activity-time">Today</span></div><div class="activity-item"><div class="activity-icon">EV</div><div class="activity-text"><strong>School activity notice</strong><span>Check the official school communication channel for upcoming activities.</span></div><span class="activity-time">Yesterday</span></div></div></section>`,documents:`<section class="module-hero"><span class="module-kicker">Student Records</span><h2>Documents</h2><p>Access your available student records and keep important academic information organized.</p></section><div class="module-grid"><article class="module-card"><div class="module-card-icon">SIS</div><h4>Student Information</h4><p>Current SIS information.</p></article><article class="module-card"><div class="module-card-icon">AC</div><h4>Academic Record</h4><p>Current academic standing.</p></article><article class="module-card"><div class="module-card-icon">AT</div><h4>Attendance Record</h4><p>Current attendance information.</p></article></div><section class="panel"><div class="panel-header"><div><p class="eyebrow">Student Records</p><h3>Documents</h3><p>Available student documents and records.</p></div></div><div class="quick-grid"><div class="quick-card"><strong>Student Information Record</strong><span>Current SIS information.</span></div><div class="quick-card"><strong>Academic Record</strong><span>Current academic standing.</span></div><div class="quick-card"><strong>Attendance Record</strong><span>Current attendance information.</span></div><div class="quick-card"><strong>Enrollment Record</strong><span>Current enrollment details.</span></div></div></section>`};$('moduleView').innerHTML=content[view]||'';const edit=$('editSis');if(edit)edit.onclick=openSIS}
+function isSISComplete(record=data){return !!record&&['fullName','email','phone','studentId','course','year','academicYear'].every(k=>record[k]&&String(record[k]).trim())}
+function openSIS(){$('app').classList.toggle('sis-onboarding',!isSISComplete());fillForm();$('dashboardView').style.display='none';$('moduleView').style.display='none';$('sisView').style.display='block';$('pageTitle').textContent='Student Information System';$('pageSubtitle').textContent='Review or complete your student information.';window.scrollTo({top:0,behavior:'smooth'})}
+const showStudentView=showView;showView=function(view){$('app').classList.remove('sis-onboarding');showStudentView(view)};
+document.addEventListener('click',e=>{const v=e.target.closest('[data-view]')?.dataset.view;if(v)showView(v)});$('sisForm').addEventListener('submit',saveSIS);$('profileBtn').onclick=()=>{$('profileMenu').hidden=!$('profileMenu').hidden};document.addEventListener('click',e=>{if(!e.target.closest('.profile'))$('profileMenu').hidden=true});$('logoutBtn').onclick=()=>{localStorage.removeItem(SESSION_KEY);location.href='index.html'};$('editProfile').onclick=()=>{$('displayNameEdit').value=data?.fullName||session.name||'';$('profileModal').classList.add('show');$('profileMenu').hidden=true};$('profileCancel').onclick=()=>$('profileModal').classList.remove('show');$('profileSave').onclick=()=>{const n=$('displayNameEdit').value.trim();if(!n){toast('Please enter a display name.');return}session.name=n;write(SESSION_KEY,session);if(data){data.fullName=n;write(STUDENT_DATA_KEY,data)}updateHeader();$('profileModal').classList.remove('show');toast('Profile updated successfully.')};$('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter'){const q=e.target.value.trim().toLowerCase();const map={profile:'profile',subjects:'subjects',schedule:'schedule',grades:'grades',attendance:'attendance',announcements:'announcements',documents:'documents',dashboard:'dashboard'};const hit=Object.keys(map).find(k=>q.includes(k));if(hit)showView(map[hit]);else toast('Search your Student Portal using a module name.')}});document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('searchInput').focus()}if(e.key==='Escape'){$('profileModal').classList.remove('show');$('profileMenu').hidden=true}});
+const portalModules=[
+  {view:'dashboard',label:'Dashboard',aliases:['Student Dashboard','Home','Overview']},
+  {view:'profile',label:'Profile',aliases:['My Profile','Personal Information','Student Profile']},
+  {view:'subjects',label:'Subjects',aliases:['My Subjects','Current Enrollment','Enrolled Subjects','Academic Load']},
+  {view:'schedule',label:'Schedule',aliases:['My Schedule','Timetable','Class Timetable']},
+  {view:'grades',label:'Grades',aliases:['My Grades','Academic Performance','Grade Records']},
+  {view:'attendance',label:'Attendance',aliases:['My Attendance','Attendance Record']},
+  {view:'announcements',label:'Announcements',aliases:['School Notices','Notices']},
+  {view:'documents',label:'Documents',aliases:['Student Files','Files']}
+];
+const studentSearch=$('searchInput'),studentSearchResults=$('portalSearchResults');
+function findPortalModules(query){
+  const term=query.trim().toLowerCase();
+  if(!term)return [];
+  return portalModules.filter(module=>[module.label,...module.aliases].some(name=>name.toLowerCase().includes(term)||term.includes(name.toLowerCase())));
+}
+function renderPortalSearch(query){
+  const matches=findPortalModules(query);
+  if(!query.trim()){
+    studentSearchResults.classList.remove('show');
+    studentSearch.setAttribute('aria-expanded','false');
+    return matches;
+  }
+  studentSearchResults.innerHTML=matches.length
+    ? matches.map(module=>`<button type="button" role="option" data-search-view="${module.view}"><strong>${module.label}</strong><span>${module.aliases[0]}</span></button>`).join('')
+    : '<div class="portal-search-empty">No matching student module. Try another name.</div>';
+  studentSearchResults.classList.add('show');
+  studentSearch.setAttribute('aria-expanded','true');
+  return matches;
+}
+studentSearch.addEventListener('input',event=>renderPortalSearch(event.target.value));
+studentSearch.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+    $('app').classList.remove('search-active');
+    studentSearchResults.classList.remove('show');
+    studentSearch.setAttribute('aria-expanded','false');
+    studentSearch.blur();
+    return;
+  }
+  if(event.key!=='Enter')return;
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+  const match=renderPortalSearch(studentSearch.value)[0];
+  if(match){
+    showView(match.view);
+    studentSearch.value='';
+    $('app').classList.remove('search-active');
+    studentSearchResults.classList.remove('show');
+    studentSearch.setAttribute('aria-expanded','false');
+  }else if(studentSearch.value.trim()){
+    toast('No matching student module. Try another name.');
+  }
+});
+studentSearchResults.addEventListener('click',event=>{
+  const option=event.target.closest('[data-search-view]');
+  if(!option)return;
+  showView(option.dataset.searchView);
+  studentSearch.value='';
+  $('app').classList.remove('search-active');
+  studentSearchResults.classList.remove('show');
+  studentSearch.setAttribute('aria-expanded','false');
+});
+document.addEventListener('click',event=>{
+  if(!event.target.closest('.search-box')){
+    $('app').classList.remove('search-active');
+    studentSearchResults.classList.remove('show');
+    studentSearch.setAttribute('aria-expanded','false');
+  }
+});
+document.addEventListener('focusin',event=>{
+  if(!event.target.closest('.search-box'))$('app').classList.remove('search-active');
+});
+studentSearch.addEventListener('focus',()=>{
+  $('app').classList.add('search-active');
+  if(studentSearch.value.trim())renderPortalSearch(studentSearch.value);
+});
+document.getElementById('themeTopBtn').addEventListener('click',toggleStudentTheme);
+function renderAdminStudentRecord(){const dashboard=$('dashboardView');if(!dashboard)return;let panel=$('adminStudentRecord');if(!panel){panel=document.createElement('section');panel.id='adminStudentRecord';panel.className='panel';panel.innerHTML='<div class="panel-header"><div><p class="eyebrow">Official student record</p><h3>Information from your administrator</h3><p>Your academic and contact information is managed by the school administrator.</p></div></div><div class="form-grid" id="adminStudentRecordFields"></div>';dashboard.append(panel)}const escape=value=>String(value??'—').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));const rows=[['First name',data?.firstName],['Middle name',data?.middleName],['Last name',data?.lastName],['Age',data?.age],['Gender',data?.gender],['Email',data?.email||session.email],['Contact number',data?.phone],['Birthdate',data?.birthdate],['Course',data?.course],['Year level',data?.year],['Section',data?.section],['Enrollment status',data?.regularity],['Student ID',data?.studentId],['Assigned room',data?.room],["Guardian's name",data?.guardianName],["Guardian's contact number",data?.guardianContact]];$('adminStudentRecordFields').innerHTML=rows.map(([label,value])=>`<div class="field"><label>${escape(label)}</label><div style="padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);font-size:10px">${escape(value||'Not provided')}</div></div>`).join('')}
+function init(){applyTheme();updateHeader();$('sisView').style.display='none';$('dashboardView').style.display='block';$('moduleView').style.display='none';showView('dashboard');renderAdminStudentRecord()}init();
+})();
+</script>
+<script>
+(() => {
+  const gradesView = document.getElementById("moduleView");
+  if (!gradesView) return;
+  const getGrades = () => {
+    try {
+      const activeSession = JSON.parse(localStorage.getItem("student-portal-session") || "null");
+      if (!activeSession || activeSession.role !== "student") return [];
+      const identities = [activeSession.accountId, activeSession.username, activeSession.email, activeSession.studentId]
+        .map(value => String(value || "").trim().toLowerCase())
+        .filter((value, index, values) => value && values.indexOf(value) === index);
+      let emptyGrades = null;
+      for (const identity of identities) {
+        const record = JSON.parse(localStorage.getItem("rise-student-sis-data:" + encodeURIComponent(identity)) || "null");
+        if (Array.isArray(record?.grades)) {
+          if (record.grades.length) return record.grades;
+          emptyGrades = record.grades;
+        }
+      }
+      return emptyGrades || [];
+    } catch { return []; }
+  };
+  const gradeTerms = ["Prelim", "Midterm", "Pre-finals", "Finals"];
+  const normalizeTerm = value => String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+  const gradeTerm = value => {
+    const term = normalizeTerm(value);
+    if (term === "prelim" || term === "prelims") return "Prelim";
+    if (term === "midterm" || term === "midterms") return "Midterm";
+    if (term === "prefinal" || term === "prefinals") return "Pre-finals";
+    if (term === "final" || term === "finals") return "Finals";
+    return "";
+  };
+  const renderAdminGrades = () => {
+    if (!gradesView.querySelector(".module-hero h2")?.textContent.includes("Grades")) return;
+    const grades = getGrades();
+    const signature = JSON.stringify(grades);
+    const panel = gradesView.querySelector(".panel");
+    if (!panel) return;
+    let table = gradesView.querySelector("#adminGradesTable");
+    if (table?.dataset.gradesSignature === signature) return;
+    gradesView.dataset.adminGradesRendered = signature;
+    const scores = grades.map(grade => Number(grade.score ?? grade.grade)).filter(Number.isFinite);
+    const average = scores.length ? (scores.reduce((sum, score) => sum + score, 0) / scores.length).toFixed(2) : "0.00";
+    const subjects = new Set(grades.map(grade => grade.subject).filter(Boolean));
+    const summary = grades.length ? `${grades.length} grade record${grades.length === 1 ? "" : "s"} available across ${subjects.size} subject${subjects.size === 1 ? "" : "s"}.` : "No grade records have been added.";
+    const moduleCards = gradesView.querySelector(".module-grid");
+    if (moduleCards) moduleCards.innerHTML = `<article class="module-card"><div class="module-card-icon">AVG</div><h4>Average Grade</h4><div class="module-value">${average}</div><p>Across all available term grades.</p></article><article class="module-card"><div class="module-card-icon">SUB</div><h4>Subjects</h4><div class="module-value">${subjects.size}</div><p>Subjects with grade records.</p></article><article class="module-card"><div class="module-card-icon">REC</div><h4>Grade Records</h4><div class="module-value">${grades.length}</div><p>${summary}</p></article>`;
+    const stats = panel.querySelector(".stats-grid");
+    if (stats) stats.innerHTML = `<article class="stat-card"><span class="stat-label">Average grade</span><div class="stat-value">${average}</div><p class="stat-note">Across recorded subjects.</p></article><article class="stat-card"><span class="stat-label">Subjects</span><div class="stat-value">${subjects.size}</div><p class="stat-note">Current grade records.</p></article><article class="stat-card"><span class="stat-label">Submitted</span><div class="stat-value">${grades.length ? "100%" : "0%"}</div><p class="stat-note">Grade records available.</p></article><article class="stat-card"><span class="stat-label">Standing</span><div class="stat-value">${scores.length ? (Number(average) >= 75 ? "Good" : "Review") : "—"}</div><p class="stat-note">Based on current records.</p></article>`;
+    if (!table) {
+      table = document.createElement("section");
+      table.id = "adminGradesTable";
+      table.className = "panel";
+      gradesView.append(table);
+    }
+    const escapeGradeText = value => String(value ?? "—").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
+    const groupedGrades = new Map();
+    const otherTerms = new Set();
+    grades.forEach(grade => {
+      const subject = String(grade.subject || "Unspecified subject");
+      const term = gradeTerm(grade.term || grade.period) || String(grade.term || grade.period || "").trim();
+      if (!groupedGrades.has(subject)) groupedGrades.set(subject, {});
+      if (term && !gradeTerms.includes(term)) otherTerms.add(term);
+      if (term) groupedGrades.get(subject)[term] = grade.score ?? grade.grade ?? "";
+    });
+    const terms = [...gradeTerms, ...otherTerms];
+    const rows = [...groupedGrades.entries()].map(([subject, termGrades]) => `<tr><td>${escapeGradeText(subject)}</td>${terms.map(term => `<td>${escapeGradeText(termGrades[term] ?? "—")}</td>`).join("")}</tr>`).join("");
+    const panelDescription = panel.querySelector(".panel-header p:last-child");
+    const panelBadge = panel.querySelector(".panel-header .badge");
+    if (panelDescription) panelDescription.textContent = summary;
+    if (panelBadge) panelBadge.textContent = grades.length ? `${grades.length} record${grades.length === 1 ? "" : "s"}` : "No records";
+    table.dataset.gradesSignature = signature;
+    table.innerHTML = `<div class="panel-header"><div><p class="eyebrow">Academic Performance</p><h3>Grade Records</h3><p>Prelim, Midterm, Pre-finals, and Finals grades for your subjects.</p></div><span class="badge blue">${grades.length} record${grades.length === 1 ? "" : "s"}</span></div>${grades.length ? `<div class="table-wrap"><table class="table"><thead><tr><th>Subject</th>${terms.map(term => `<th>${escapeGradeText(term)}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>` : `<div class="account-empty">No grades are available yet.</div>`}`;
+  };
+  const renderManagedAcademicData = () => {
+    const heading = gradesView.querySelector(".module-hero h2")?.textContent.trim();
+    if (!["My Subjects", "My Schedule"].includes(heading)) return;
+    const activeSession = JSON.parse(localStorage.getItem("student-portal-session") || "null");
+    const identity = String(activeSession?.accountId || activeSession?.username || activeSession?.email || "student").trim().toLowerCase();
+    const profile = JSON.parse(localStorage.getItem("rise-student-sis-data:" + encodeURIComponent(identity)) || "null") || {};
+    const catalog = JSON.parse(localStorage.getItem("rise-bsit-subject-catalog") || "null");
+    const timetable = JSON.parse(localStorage.getItem("rise-bsit-schedules") || "null");
+    const subjects = Array.isArray(catalog?.[profile.year]) ? catalog[profile.year] : [];
+    const schedule = Array.isArray(timetable?.[profile.section]) ? timetable[profile.section] : [];
+    const signature = JSON.stringify([heading, profile.year, profile.section, subjects, schedule]);
+    if (gradesView.dataset.academicSignature === signature) return;
+    gradesView.dataset.academicSignature = signature;
+    const table = gradesView.querySelector(".table tbody");
+    if (!table) return;
+    const escapeText = value => String(value ?? "—").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"})[char]);
+    if (heading === "My Subjects") {
+      table.innerHTML = subjects.length ? subjects.map(([code, name]) => {
+        const entry = schedule.find(item => item.code === code);
+        return `<tr><td>${escapeText(code)}</td><td>${escapeText(name)}</td><td>—</td><td>${entry ? `${escapeText(entry.day)} ${escapeText(entry.start)}–${escapeText(entry.end)}` : "Not scheduled"}</td><td><span class="badge good">Available</span></td></tr>`;
+      }).join("") : `<tr><td colspan="5">No administrator-managed BSIT subjects are available yet.</td></tr>`;
+    } else {
+      table.innerHTML = schedule.length ? schedule.map(item => `<tr><td>${escapeText(item.day)}</td><td>${escapeText(item.start)}–${escapeText(item.end)}</td><td>${escapeText(item.name)}</td><td>${escapeText(item.room)}</td><td>BSIT Administrator</td></tr>`).join("") : `<tr><td colspan="5">Your section schedule has not been generated yet.</td></tr>`;
+    }
+  };
+  const refreshModuleView = () => {
+    renderAdminGrades();
+    renderManagedAcademicData();
+  };
+  new MutationObserver(refreshModuleView).observe(gradesView, {childList:true, subtree:true});
+  window.addEventListener("storage", refreshModuleView);
+})();
+</script>
+</body></html>

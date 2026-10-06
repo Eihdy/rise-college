@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RISE School College SIS — Sign in</title>
+<style>
+  :root{
+    --p1:#0b2b4b; --p2:#1f4e7a; --blue:#1f4e7a; --navy:#0b2b4b; --bg:#f2f5f7;
+    --muted:#6b7784; --line:rgba(11,43,75,.07); --radius:14px;
+    --shadow-1: 0 8px 26px rgba(11,43,75,.08); --ease: cubic-bezier(.2,.9,.2,1);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+    position:relative; isolation:isolate; overflow:hidden;
+    display:flex;align-items:center;justify-content:center;min-height:100vh;color:var(--navy);
+    background-color:#071827;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:'';
+    position:fixed; inset:-10px;
+    background-image:url('assets/images/backgrounds/background.jpg');
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    transform:scale(1.02);
+    animation: backgroundDrift 18s ease-in-out infinite alternate;
+    z-index:-2;
+    filter:saturate(1.1) contrast(1.08) brightness(1.03);
+    will-change:transform;
+  }
+  body::after{
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(520px 280px at 12% 12%, rgba(255,255,255,.03), transparent 40%),
+      linear-gradient(135deg, rgba(5,16,29,.08), rgba(5,16,29,.02));
+    z-index:-1;
+    pointer-events:none;
+  }
+  @keyframes backgroundDrift{
+    0% { transform:scale(1.02) translate3d(-1%, -1%, 0); }
+    100% { transform:scale(1.06) translate3d(1.5%, 1.5%, 0); }
+  }
+
+ 
+  .container{
+    width:min(980px,94%); max-width:980px; height:520px;
+    border-radius:var(--radius); overflow:hidden; position:relative;
+    background:linear-gradient(180deg, rgba(255,255,255,0.99), #fbfdff);
+    box-shadow:var(--shadow-1); border:1px solid var(--line);
+  }
+
+  
+  .panel {
+    position:absolute;
+    top:0;
+    height:100%;
+    width:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px;
+    box-sizing:border-box;
+    will-change:transform, opacity;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    transition:
+      transform .78s cubic-bezier(.77,0,.18,1),
+      opacity .42s ease;
+  }
+
+  #panel-login {
+    left:0;
+    transform:translate3d(0,0,0);
+    z-index:1;
+    opacity:1;
+  }
+
+  #panel-overlay {
+    left:50%;
+    transform:translate3d(0,0,0);
+    z-index:2;
+    overflow:hidden;
+  }
+
+  #panel-register {
+    left:50%;
+    transform:translate3d(100%,0,0);
+    z-index:3;
+    opacity:0;
+  }
+
+  .container.swap-active #panel-login {
+    transform:translate3d(-100%,0,0);
+    opacity:0;
+  }
+
+  .container.swap-active #panel-overlay {
+    transform:translate3d(-100%,0,0);
+  }
+
+  .container.swap-active #panel-register {
+    transform:translate3d(0,0,0);
+    opacity:1;
+  }
+
+  #panel-login .card,
+  #panel-register .card {
+    transition:
+      transform .65s cubic-bezier(.2,.9,.2,1),
+      opacity .38s ease;
+    will-change:transform, opacity;
+  }
+
+  #panel-login .card {
+    transform:translate3d(0,0,0);
+    opacity:1;
+  }
+
+  #panel-register .card {
+    transform:translate3d(42px,0,0);
+    opacity:0;
+  }
+
+  .container.swap-active #panel-login .card {
+    transform:translate3d(-32px,0,0);
+    opacity:0;
+  }
+
+  .container.swap-active #panel-register .card {
+    transform:translate3d(0,0,0);
+    opacity:1;
+    transition-delay:.18s;
+  }
+
+  #panel-overlay > div:first-child {
+    position:relative;
+    z-index:2;
+    transition:
+      transform .55s cubic-bezier(.2,.9,.2,1),
+      opacity .35s ease;
+  }
+
+  .container.swap-active #panel-overlay > div:first-child {
+    transform:translate3d(28px,0,0);
+  }
+
+  .blob{
+    position:absolute;
+    right:-80px;
+    bottom:-30px;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.06), transparent 30%);
+    filter:blur(6px);
+    opacity:.7;
+    transform:translate3d(0,0,0) scale(1);
+    transition:transform .9s cubic-bezier(.2,.9,.2,1);
+    pointer-events:none;
+    will-change:transform;
+  }
+
+  .container.swap-active .blob {
+    transform:translate3d(-40px,0,0) scale(.98) rotate(6deg);
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    .panel,
+    #panel-login .card,
+    #panel-register .card,
+    #panel-overlay > div:first-child,
+    .blob {
+      transition:none !important;
+    }
+  }
+
+.card{ width:100%; max-width:440px; }
+  .title{font-size:22px;font-weight:800;margin:0}
+  .subtitle{color:var(--muted);margin:8px 0 14px;line-height:1.45}
+
+  .field{
+    display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;
+    background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid var(--line);
+    box-shadow: 0 6px 18px rgba(11,43,75,.03);
+  }
+  .field input,.field select{border:0;background:transparent;outline:0;font-size:14px;color:var(--navy);width:100%}
+
+  .actions{display:flex;gap:12px;align-items:center;margin-top:12px}
+  .btn{padding:10px 16px;border-radius:10px;font-weight:800;cursor:pointer;border:none}
+  .btn.primary{background:linear-gradient(90deg,var(--p1),var(--p2));color:white;box-shadow:0 12px 28px rgba(123,30,42,.12)}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.18);padding:9px 14px;color:inherit}
+
+  .muted{color:var(--muted)} .notice{min-height:20px;font-weight:800;color:var(--p2)}
+  .small{font-size:13px;color:var(--muted);margin-top:6px}
+
+  #panel-overlay{ color:#fff; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding:48px 46px; background:
+    linear-gradient(
+    135deg,
+    #0B0B45,
+    #0F3A6B,
+    #A9A9A9
+    ); }
+  #panel-overlay .logo { width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,var(--p1),var(--p2)); display:grid;place-items:center;font-weight:800;color:white;font-size:18px;box-shadow:0 10px 30px rgba(123,30,42,.12); margin-bottom:14px }
+  #panel-overlay h2{margin:0 0 8px;font-size:26px;font-weight:800}
+  #panel-overlay p{margin:0;color:rgba(255,255,255,.92);max-width:420px;line-height:1.5}
+
+  @media (max-width:880px){
+    .container{height:auto}
+    .panel{position:relative;width:100%;left:0;transform:none;padding:22px}
+    #panel-register, #panel-overlay, #panel-login{transform:none}
+    .blob{display:none}
+  }
+</style>
+</head>
+<body>
+  <div class="container" id="container">
+
+    <section class="panel" id="panel-login" aria-hidden="false">
+      <div class="card" role="region" aria-label="Sign in">
+        <h3 class="title">Sign in</h3>
+        <p class="subtitle">Access the RISE School College portal with an account provided by your administrator.</p>
+
+        <form id="loginForm" novalidate>
+          <label class="muted">Email</label>
+          <div class="field"><input id="loginEmail" type="email" placeholder="admin@school.edu" required autocomplete="email"></div>
+
+          <label class="muted">Password</label>
+          <div class="field"><input id="loginPassword" type="password" placeholder="Enter your password" required autocomplete="current-password"></div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Sign in</button>
+            <span class="small">Students: ask your administrator to create your account.</span>
+          </div>
+
+          <div id="loginNotice" class="notice" role="status" aria-live="polite"></div>
+          <div class="small">Need help? Contact your administrator.</div>
+        </form>
+      </div>
+    </section>
+
+
+    <aside class="panel" id="panel-overlay" aria-hidden="false">
+      <div>
+        <div class="logo"><img src="assets/images/branding/logo.png" alt="RISE logo" style="width:100%;height:100%;object-fit:cover;border-radius:12px" /></div>
+        <h2 id="overlayTitle">RISE School College</h2>
+        <div style="font-weight:700;opacity:.95;margin-bottom:12px">Student Information System</div>
+        <p id="overlayText">Welcome. Sign in with the account provided by your administrator.</p>
+
+        <div style="margin-top:18px; display:flex; gap:12px;">
+          <button id="overlaySignIn" class="btn ghost" aria-controls="panel-login">Sign in</button>
+        </div>
+      </div>
+      <div class="blob" aria-hidden="true"></div>
+    </aside>
+
+  
+  </div>
+
+<script>
+
+  const USER_KEY = "student-portal-users";
+  const SESSION_KEY = "student-portal-session";
+  const DEFAULT_ADMIN = { email: 'admin@rise.edu', password: 'admin123', role: 'it-system-admin', name: 'RISE System Administrator', username: 'admin' };
+  const RETIRED_DEMO_EMAILS = [
+    'president@rise.edu',
+    'principal@rise.edu',
+    'vp@rise.edu',
+    'academic@rise.edu',
+    'it@rise.edu',
+    'accounting@rise.edu',
+    'guidance@rise.edu',
+    'adminstaff@rise.edu',
+    'faculty@rise.edu',
+    'faculty2@rise.edu'
+  ];
+  const ALLOWED_ROLES = ['admin', 'it-system-admin', 'student'];
+
+  const container = document.getElementById('container');
+  const overlaySignIn = document.getElementById('overlaySignIn');
+
+  const loginForm = document.getElementById('loginForm');
+  const loginNotice = document.getElementById('loginNotice');
+
+  const panelLogin = document.getElementById('panel-login');
+
+  function loadUsers(){ try{ return JSON.parse(localStorage.getItem(USER_KEY)) || []; }catch(e){ return []; } }
+  function saveUsers(list){ localStorage.setItem(USER_KEY, JSON.stringify(list)); }
+  function seedAdmin(){
+    const retiredEmails = new Set(RETIRED_DEMO_EMAILS);
+    const list = loadUsers().filter(user => !retiredEmails.has(String(user.email || '').trim().toLowerCase()));
+    if(!list.some(user => String(user.email || '').trim().toLowerCase() === DEFAULT_ADMIN.email)){
+      list.push({ id: Date.now().toString() + Math.random(), ...DEFAULT_ADMIN, status: 'active' });
+    }
+    saveUsers(list);
+  }
+  function setSession(email, role, user={}){
+    const fallbackName = email.split('@')[0].replace(/[._-]+/g, ' ');
+    localStorage.setItem(SESSION_KEY, JSON.stringify({
+      email,
+      role,
+      accountId: user.id || `${role}-${email}`,
+      username: user.username || email.split('@')[0],
+      name: user.name || fallbackName
+    }));
+  }
+  function redirectIfLoggedIn(){
+    const s = localStorage.getItem(SESSION_KEY);
+    if(!s) return;
+    try{
+      const parsed = JSON.parse(s);
+      const account = loadUsers().find(user =>
+        (parsed.accountId && String(user.id) === String(parsed.accountId))
+        || String(user.email || '').trim().toLowerCase() === String(parsed.email || '').trim().toLowerCase()
+      );
+      if(!account || account.status === 'inactive' || account.role !== parsed.role || !ALLOWED_ROLES.includes(account.role)){
+        localStorage.removeItem(SESSION_KEY);
+        return;
+      }
+      window.location.href = parsed.role === 'student' ? 'student.html' : 'it-admin.html';
+    }catch(e){
+      localStorage.removeItem(SESSION_KEY);
+    }
+  }
+
+
+  function showLoginView(){
+    container.classList.remove('swap-active');
+
+    requestAnimationFrame(()=> requestAnimationFrame(()=>{
+      panelLogin.setAttribute('aria-hidden','false');
+      setTimeout(()=>{ document.getElementById('loginEmail').focus(); }, 450);
+    }));
+  }
+
+  seedAdmin();
+  redirectIfLoggedIn();
+  showLoginView();
+
+
+  overlaySignIn?.addEventListener('click', showLoginView);
+
+  loginForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    loginNotice.textContent = '';
+    const email = (document.getElementById('loginEmail').value || '').trim().toLowerCase();
+    const password = (document.getElementById('loginPassword').value || '');
+    if(!email || !password){ loginNotice.textContent = 'Enter both email and password.'; return; }
+    const users = loadUsers();
+    const user = users.find(u=>u.email && u.email.toLowerCase()===email);
+    if(!user){ loginNotice.textContent = 'Account not found. Contact your administrator to create a student account.'; return; }
+    if(user.status === 'inactive'){ loginNotice.textContent = 'This account is inactive. Contact your administrator.'; return; }
+    if(user.password !== password){ loginNotice.textContent = 'Incorrect password.'; return; }
+    if(!ALLOWED_ROLES.includes(user.role)){ loginNotice.textContent = 'Only IT administrator and student accounts can sign in.'; return; }
+    user.lastLogin = new Date().toISOString();
+    saveUsers(users);
+    setSession(user.email, user.role, user);
+    window.location.href = user.role === 'student' ? 'student.html' : 'it-admin.html';
+  });
+
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') showLoginView(); });
+</script>
+</body>
+</html>

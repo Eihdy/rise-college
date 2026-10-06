@@ -1,0 +1,5598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>RISE School College | IT Administrator Dashboard</title>
+
+<style>
+
+
+:root{
+
+  --bg:#061521;
+  --bg-2:#081b2a;
+
+  --sidebar:#103d5d;
+  --sidebar-2:#12496d;
+
+  --surface:#0b2232;
+  --surface-2:#0d293c;
+  --surface-3:#112f45;
+
+  --border:rgba(255,255,255,.09);
+  --border-blue:rgba(59,130,246,.35);
+
+  --text:#f5f8fc;
+  --text-soft:#8fa9bc;
+  --text-muted:#668398;
+
+  --blue:#2583ff;
+  --blue-2:#3d94ff;
+  --blue-dark:#155cae;
+
+  --green:#23d98b;
+  --red:#ff5b6e;
+  --yellow:#f4c95d;
+
+  --shadow:
+    0 25px 70px rgba(0,0,0,.28);
+
+  --shadow-soft:
+    0 12px 35px rgba(0,0,0,.20);
+
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:17px;
+
+  --sidebar-width:323px;
+}
+
+
+body.light{
+
+  --bg:#edf3f8;
+  --bg-2:#f7fafc;
+
+  --sidebar:#0d4164;
+  --sidebar-2:#14577e;
+
+  --surface:#ffffff;
+  --surface-2:#f5f8fb;
+  --surface-3:#edf4f9;
+
+  --border:rgba(8,43,70,.10);
+
+  --text:#0b263a;
+  --text-soft:#647d91;
+  --text-muted:#8094a5;
+
+  --shadow:
+    0 25px 70px rgba(20,55,80,.12);
+
+  --shadow-soft:
+    0 12px 35px rgba(20,55,80,.09);
+}
+
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  margin:0;
+  min-height:100vh;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color:var(--text);
+
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(37,131,255,.09),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      var(--bg),
+      var(--bg-2)
+    );
+
+  transition:
+    background .3s ease,
+    color .3s ease;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  border:0;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+  outline:
+    2px solid var(--blue);
+
+  outline-offset:2px;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+.app{
+
+  min-height:100vh;
+
+  padding:14px;
+}
+
+
+.sidebar{
+
+  position:fixed;
+
+  top:14px;
+  left:14px;
+
+  width:var(--sidebar-width);
+
+  height:
+    calc(100vh - 28px);
+
+  min-height:0;
+
+  padding:27px 20px 20px;
+
+  display:flex;
+  flex-direction:column;
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  border-radius:
+    27px;
+
+  color:white;
+
+  background:
+
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(65,155,255,.18),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      180deg,
+      #0d3c5d 0%,
+      #104768 55%,
+      #0f4263 100%
+    );
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.28);
+
+  overflow:hidden;
+}
+
+.sidebar::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:280px;
+  height:280px;
+
+  right:-160px;
+  bottom:-130px;
+
+  border-radius:50%;
+
+  background:
+    rgba(55,145,255,.08);
+
+  pointer-events:none;
+}
+
+
+.sidebar-brand{
+
+  display:flex;
+  align-items:center;
+
+  gap:14px;
+
+  padding:
+    5px 6px 23px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.11);
+}
+
+.sidebar-brand img{
+
+  width:54px;
+  height:54px;
+
+  object-fit:contain;
+
+  padding:5px;
+
+  border-radius:16px;
+
+  background:white;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.20);
+}
+
+.sidebar-brand strong{
+
+  display:block;
+
+  font-size:16px;
+
+  font-weight:900;
+
+  letter-spacing:.03em;
+}
+
+.sidebar-brand span{
+
+  display:block;
+
+  margin-top:4px;
+
+  color:
+    rgba(255,255,255,.66);
+
+  font-size:10px;
+
+  font-weight:900;
+
+  letter-spacing:.10em;
+
+  text-transform:uppercase;
+}
+
+
+
+.sidebar-section-title{
+
+  margin:
+    24px 7px 12px;
+
+  color:
+    rgba(255,255,255,.60);
+
+  font-size:10px;
+
+  font-weight:950;
+
+  letter-spacing:.14em;
+
+  text-transform:uppercase;
+}
+
+
+.sidebar-nav{
+
+  display:grid;
+
+  align-content:start;
+
+  gap:5px;
+
+  flex:1 1 auto;
+
+  min-height:0;
+
+  overflow:auto;
+
+  padding-right:2px;
+}
+
+.sidebar-nav::-webkit-scrollbar{
+  width:3px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb{
+
+  background:
+    rgba(255,255,255,.12);
+
+  border-radius:20px;
+}
+
+.nav-item{
+
+  position:relative;
+
+  width:100%;
+
+  min-height:56px;
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  padding:9px 12px;
+
+  border-radius:14px;
+
+  color:
+    rgba(255,255,255,.67);
+
+  background:transparent;
+
+  text-align:left;
+
+  cursor:pointer;
+
+  transition:
+    .22s ease;
+}
+
+.nav-item::before{
+
+  content:"";
+
+  width:7px;
+  height:7px;
+
+  flex:0 0 7px;
+
+  border-radius:50%;
+
+  background:currentColor;
+
+  opacity:.65;
+
+  transition:.22s ease;
+}
+
+.nav-item:hover{
+
+  color:white;
+
+  background:
+    rgba(255,255,255,.075);
+
+  transform:
+    translateX(2px);
+}
+
+.nav-item.active{
+
+  color:white;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(43,137,255,.34),
+      rgba(43,137,255,.14)
+    );
+
+  box-shadow:
+    inset 3px 0 var(--blue);
+}
+
+.nav-item.active::before{
+
+  background:
+    #52a5ff;
+
+  opacity:1;
+
+  transform:
+    scale(1.35);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(59,130,246,.12);
+}
+
+.nav-icon{
+
+  width:32px;
+  height:32px;
+
+  display:grid;
+  place-items:center;
+
+  flex:0 0 32px;
+
+  border-radius:10px;
+
+  color:
+    rgba(255,255,255,.76);
+
+  background:
+    rgba(255,255,255,.08);
+
+  font-size:11px;
+
+  font-weight:950;
+}
+
+.nav-item.active .nav-icon{
+
+  color:white;
+
+  background:
+    rgba(59,130,246,.30);
+}
+
+.nav-text{
+
+  min-width:0;
+
+  flex:1;
+}
+
+.nav-label{
+
+  display:block;
+
+  font-size:12px;
+
+  font-weight:850;
+}
+
+.nav-meta{
+
+  display:block;
+
+  margin-top:3px;
+
+  color:
+    rgba(255,255,255,.42);
+
+  font-size:9px;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+}
+
+.nav-item.active .nav-meta{
+
+  color:
+    rgba(255,255,255,.58);
+}
+
+.main{
+
+  min-width:0;
+
+  margin-left:
+    calc(var(--sidebar-width) + 20px);
+
+  padding:
+    0 0 30px;
+}
+
+
+.topbar{
+
+  position:relative;
+
+  z-index:100;
+
+  min-height:112px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+
+  padding:
+    18px 22px 18px 28px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    25px;
+
+  background:
+    rgba(9,30,45,.80);
+
+  box-shadow:
+    var(--shadow-soft);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+body.light .topbar{
+
+  background:
+    rgba(255,255,255,.87);
+}
+
+
+.topbar-title{
+
+  min-width:240px;
+}
+
+.eyebrow{
+
+  margin:0;
+
+  color:
+    var(--blue-2);
+
+  font-size:10px;
+
+  font-weight:950;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+}
+
+.topbar-title h1{
+
+  margin:
+    7px 0 4px;
+
+  color:var(--text);
+
+  font-size:27px;
+
+  line-height:1.05;
+
+  letter-spacing:-.035em;
+}
+
+.topbar-subtitle{
+
+  margin:0;
+
+  color:
+    var(--text-soft);
+
+  font-size:10px;
+}
+
+
+.topbar-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:flex-end;
+
+  gap:9px;
+
+  flex:1;
+
+  min-width:0;
+}
+
+
+.search-box{
+
+  position:relative;
+
+  width:
+    min(340px,32vw);
+}
+
+.search-box input{
+
+  width:100%;
+
+  padding:
+    12px 42px 12px 40px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:13px;
+
+  outline:none;
+
+  color:var(--text);
+
+  background:
+    rgba(255,255,255,.035);
+
+  font-size:11px;
+
+  transition:.2s ease;
+}
+
+.search-box input::placeholder{
+
+  color:
+    var(--text-muted);
+}
+
+.search-box input:focus{
+
+  border-color:
+    var(--border-blue);
+
+  background:
+    rgba(255,255,255,.055);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(59,130,246,.07);
+}
+
+.search-icon{
+
+  position:absolute;
+
+  left:15px;
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  color:
+    var(--text-soft);
+
+  font-size:14px;
+
+  pointer-events:none;
+}
+
+.search-shortcut{
+
+  position:absolute;
+
+  right:10px;
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  padding:
+    3px 6px;
+
+  border-radius:5px;
+
+  color:
+    var(--text-muted);
+
+  background:
+    rgba(255,255,255,.05);
+
+  font-size:8px;
+}
+
+
+.icon-btn{
+
+  width:46px;
+  height:46px;
+
+  display:grid;
+  place-items:center;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:13px;
+
+  color:var(--text);
+
+  background:
+    rgba(255,255,255,.035);
+
+  cursor:pointer;
+
+  transition:.2s ease;
+}
+
+.icon-btn:hover{
+
+  border-color:
+    var(--border-blue);
+
+  background:
+    rgba(59,130,246,.08);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.profile{
+
+  position:relative;
+
+  z-index:500;
+}
+
+.profile-button{
+
+  min-height:46px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+
+  padding:
+    4px 10px 4px 5px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:14px;
+
+  color:var(--text);
+
+  background:
+    rgba(255,255,255,.035);
+
+  cursor:pointer;
+
+  transition:.2s ease;
+}
+
+.profile-button:hover{
+
+  border-color:
+    var(--border-blue);
+
+  background:
+    rgba(255,255,255,.065);
+}
+
+.avatar{
+
+  width:38px;
+  height:38px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:11px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2788ff,
+      #1260c7
+    );
+
+  font-size:11px;
+
+  font-weight:950;
+
+  box-shadow:
+    0 7px 18px
+    rgba(37,131,255,.22);
+}
+
+.profile-info{
+
+  min-width:88px;
+
+  text-align:left;
+}
+
+.profile-info strong{
+
+  display:block;
+
+  color:var(--text);
+
+  font-size:10px;
+
+  font-weight:900;
+}
+
+.profile-info span{
+
+  display:block;
+
+  margin-top:2px;
+
+  color:
+    var(--text-soft);
+
+  font-size:8px;
+}
+
+.profile-arrow{
+
+  color:
+    var(--text-soft);
+
+  font-size:11px;
+}
+
+
+.profile-menu{
+
+  position:absolute;
+
+  z-index:1000;
+
+  top:
+    calc(100% + 12px);
+
+  right:0;
+
+  width:290px;
+
+  padding:11px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:18px;
+
+  color:var(--text);
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.35);
+
+  animation:
+    dropdownIn .18s ease;
+}
+
+.profile-menu[hidden]{
+  display:none;
+}
+
+@keyframes dropdownIn{
+
+  from{
+    opacity:0;
+    transform:
+      translateY(-6px)
+      scale(.98);
+  }
+
+  to{
+    opacity:1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+.profile-header{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:11px;
+
+  padding:11px;
+
+  border-radius:13px;
+
+  background:
+    var(--surface-2);
+}
+
+.profile-header-avatar{
+
+  width:40px;
+  height:40px;
+
+  display:grid;
+  place-items:center;
+
+  flex:0 0 40px;
+
+  border-radius:12px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2788ff,
+      #1260c7
+    );
+
+  font-size:11px;
+
+  font-weight:950;
+}
+
+.profile-header strong{
+
+  display:block;
+
+  font-size:11px;
+}
+
+.profile-header span{
+
+  display:block;
+
+  margin-top:3px;
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+}
+
+
+.profile-option{
+
+  width:100%;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:
+    11px;
+
+  margin-top:5px;
+
+  border-radius:11px;
+
+  color:var(--text);
+
+  background:transparent;
+
+  text-align:left;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:.18s ease;
+}
+
+.profile-option:hover{
+
+  background:
+    var(--surface-2);
+}
+
+.profile-option-icon{
+
+  width:23px;
+  height:23px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:7px;
+
+  color:
+    var(--blue-2);
+
+  background:
+    rgba(59,130,246,.10);
+
+  font-size:11px;
+}
+
+.profile-option.logout{
+
+  color:
+    #ff6878;
+}
+
+.profile-option.logout .profile-option-icon{
+
+  color:
+    #ff6878;
+
+  background:
+    rgba(255,91,110,.10);
+}
+
+
+.profile-divider{
+
+  height:1px;
+
+  margin:
+    8px 3px;
+
+  background:
+    var(--border);
+}
+
+.profile-edit{
+
+  margin-top:7px;
+
+  padding:
+    12px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:13px;
+
+  background:
+    var(--surface-2);
+
+  animation:
+    editOpen .18s ease;
+}
+
+.profile-edit[hidden]{
+  display:none;
+}
+
+@keyframes editOpen{
+
+  from{
+    opacity:0;
+    transform:
+      translateY(-4px);
+  }
+
+  to{
+    opacity:1;
+    transform:
+      translateY(0);
+  }
+}
+
+.profile-edit-label{
+
+  display:block;
+
+  margin-bottom:7px;
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:.09em;
+
+  text-transform:uppercase;
+}
+
+.profile-edit input{
+
+  width:100%;
+
+  padding:
+    10px 11px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:10px;
+
+  outline:none;
+
+  color:var(--text);
+
+  background:
+    var(--surface);
+
+  font-size:10px;
+}
+
+.profile-edit input:focus{
+
+  border-color:
+    var(--border-blue);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(59,130,246,.08);
+}
+
+.profile-edit-actions{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:7px;
+
+  margin-top:9px;
+}
+
+.profile-edit-actions button{
+
+  padding:9px;
+
+  border-radius:9px;
+
+  font-size:9px;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.profile-cancel{
+
+  color:var(--text);
+
+  background:
+    var(--surface-3);
+}
+
+.profile-save{
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--blue-dark)
+    );
+}
+
+
+.search-results{
+
+  position:fixed;
+
+  z-index:800;
+
+  top:105px;
+
+  right:340px;
+
+  width:
+    min(430px,calc(100vw - 40px));
+
+  display:none;
+
+  padding:9px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:16px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    var(--shadow);
+}
+
+.search-results.show{
+  display:block;
+}
+
+.search-result{
+
+  padding:
+    10px 12px;
+
+  border-radius:9px;
+
+  cursor:pointer;
+}
+
+.search-result:hover{
+
+  background:
+    var(--surface-2);
+}
+
+.search-result strong{
+
+  display:block;
+
+  font-size:10px;
+}
+
+.search-result span{
+
+  display:block;
+
+  margin-top:3px;
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+}
+
+
+.hero{
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    320px;
+
+  gap:0;
+
+  margin-top:18px;
+
+  min-height:320px;
+
+  border:
+    1px solid rgba(42,136,255,.35);
+
+  border-radius:
+    28px;
+
+  overflow:hidden;
+
+  background:
+
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(44,136,255,.08),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      135deg,
+      #0a2334,
+      #0c283b
+    );
+
+  box-shadow:
+    0 25px 70px
+    rgba(0,0,0,.23);
+}
+
+body.light .hero{
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #eef6fc
+    );
+}
+
+
+.hero-main{
+
+  position:relative;
+
+  padding:
+    40px 34px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+}
+
+.hero-main::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:350px;
+  height:350px;
+
+  right:-170px;
+  bottom:-230px;
+
+  border-radius:50%;
+
+  background:
+    rgba(37,131,255,.06);
+
+  pointer-events:none;
+}
+
+.hero-kicker{
+
+  color:
+    var(--blue-2);
+
+  font-size:11px;
+
+  font-weight:950;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+}
+
+.hero-main h2{
+
+  max-width:820px;
+
+  margin:
+    9px 0 12px;
+
+  color:
+    var(--text);
+
+  font-size:
+    clamp(32px,3.2vw,43px);
+
+  line-height:1.03;
+
+  letter-spacing:-.045em;
+}
+
+.hero-main p{
+
+  max-width:800px;
+
+  margin:0;
+
+  color:
+    #9cb6c9;
+
+  font-size:13px;
+
+  line-height:1.65;
+}
+
+body.light .hero-main p{
+
+  color:
+    var(--text-soft);
+}
+
+.hero-actions{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:9px;
+
+  margin-top:25px;
+}
+
+.primary-btn,
+.secondary-btn{
+
+  padding:
+    12px 17px;
+
+  border-radius:11px;
+
+  font-size:10px;
+
+  font-weight:900;
+
+  cursor:pointer;
+
+  transition:.2s ease;
+}
+
+.primary-btn{
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--blue-dark)
+    );
+
+  box-shadow:
+    0 10px 25px
+    rgba(37,131,255,.20);
+}
+
+.secondary-btn{
+
+  color:var(--text);
+
+  border:
+    1px solid var(--border);
+
+  background:
+    rgba(255,255,255,.025);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+
+  transform:
+    translateY(-2px);
+}
+
+
+.hero-side{
+
+  min-height:320px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:25px;
+
+  border-left:
+    1px solid rgba(255,255,255,.06);
+
+  background:
+    rgba(30,91,139,.18);
+}
+
+.hero-side-label{
+
+  margin-bottom:15px;
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.kpi-ring{
+
+  width:185px;
+  height:185px;
+
+  display:grid;
+
+  place-items:center;
+
+  border-radius:50%;
+
+  background:
+    conic-gradient(
+      var(--blue-2)
+      var(--ring-progress,75%),
+      rgba(45,119,187,.20)
+      0
+    );
+
+  position:relative;
+
+  box-shadow:
+    0 0 40px
+    rgba(37,131,255,.08);
+}
+
+.kpi-ring::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:14px;
+
+  border-radius:50%;
+
+  background:
+    #0b2232;
+
+  box-shadow:
+    inset 0 0 30px
+    rgba(0,0,0,.22);
+}
+
+body.light .kpi-ring::before{
+
+  background:
+    #edf5fa;
+}
+
+.kpi-content{
+
+  position:relative;
+
+  z-index:2;
+
+  text-align:center;
+}
+
+.hero-number{
+
+  color:
+    var(--text);
+
+  font-size:35px;
+
+  font-weight:950;
+
+  letter-spacing:-.04em;
+}
+
+.hero-number-label{
+
+  margin-top:4px;
+
+  color:
+    var(--text-soft);
+
+  font-size:8px;
+
+  font-weight:950;
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.hero-side-footer{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin-top:17px;
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+}
+
+.live-badge{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:5px;
+}
+
+.live-dot{
+
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:
+    var(--green);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(35,217,139,.08);
+}
+
+
+.stats-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:14px;
+
+  margin-top:18px;
+}
+
+.stat-card{
+
+  position:relative;
+
+  min-height:142px;
+
+  padding:19px;
+
+  overflow:hidden;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:18px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    var(--shadow-soft);
+
+  transition:.22s ease;
+}
+
+.stat-card::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:95px;
+  height:95px;
+
+  right:-45px;
+  bottom:-45px;
+
+  border-radius:50%;
+
+  background:
+    rgba(37,131,255,.08);
+}
+
+.stat-card:hover{
+
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(59,130,246,.20);
+}
+
+.stat-top{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+}
+
+.stat-label{
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+
+  font-weight:950;
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.stat-icon{
+
+  width:30px;
+  height:30px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:8px;
+
+  color:
+    var(--blue-2);
+
+  background:
+    rgba(37,131,255,.12);
+
+  font-size:9px;
+
+  font-weight:950;
+}
+
+.stat-value{
+
+  margin-top:15px;
+
+  color:
+    var(--text);
+
+  font-size:27px;
+
+  font-weight:950;
+
+  letter-spacing:-.035em;
+}
+
+.stat-footer{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin-top:4px;
+}
+
+.stat-note{
+
+  color:
+    var(--text-soft);
+
+  font-size:8px;
+}
+
+.trend-up{
+
+  color:
+    var(--green);
+
+  font-size:8px;
+
+  font-weight:950;
+}
+
+
+.content-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1.65fr)
+    minmax(290px,.75fr);
+
+  gap:18px;
+
+  margin-top:18px;
+}
+
+.panel{
+
+  padding:
+    20px 22px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:20px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    var(--shadow-soft);
+}
+
+.panel-header{
+
+  display:flex;
+
+  align-items:flex-start;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  margin-bottom:17px;
+}
+
+.panel-header h3{
+
+  margin:
+    4px 0 0;
+
+  color:
+    var(--text);
+
+  font-size:15px;
+}
+
+.panel-header p:not(.eyebrow){
+
+  margin:
+    4px 0 0;
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+}
+
+
+.panel-select{
+
+  padding:
+    8px 10px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:9px;
+
+  color:
+    var(--text);
+
+  background:
+    var(--surface-2);
+
+  font-size:9px;
+
+  outline:none;
+}
+
+
+.chart{
+
+  height:245px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  gap:13px;
+
+  padding:
+    25px 4px 0;
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.bar-column{
+
+  flex:1;
+
+  height:100%;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:flex-end;
+
+  gap:7px;
+}
+
+.bar-value{
+
+  color:
+    var(--text-soft);
+
+  font-size:8px;
+
+  font-weight:850;
+}
+
+.bar-track{
+
+  width:100%;
+
+  max-width:40px;
+
+  height:175px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  overflow:hidden;
+
+  border-radius:
+    9px 9px 4px 4px;
+
+  background:
+    rgba(37,131,255,.07);
+}
+
+.bar{
+
+  width:100%;
+
+  border-radius:
+    8px 8px 3px 3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #3e98ff,
+      #1763bc
+    );
+
+  transition:
+    height .65s
+    cubic-bezier(.2,.8,.2,1);
+}
+
+.bar-label{
+
+  color:
+    var(--text-soft);
+
+  font-size:8px;
+
+  font-weight:800;
+}
+
+
+.performance-list{
+
+  display:grid;
+
+  gap:17px;
+}
+
+.performance-item{
+
+  display:grid;
+
+  gap:7px;
+}
+
+.performance-heading{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  color:
+    var(--text);
+
+  font-size:9px;
+
+  font-weight:800;
+}
+
+.performance-heading span:last-child{
+
+  color:
+    var(--green);
+
+  font-weight:950;
+}
+
+.progress{
+
+  height:7px;
+
+  overflow:hidden;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.06);
+}
+
+body.light .progress{
+
+  background:
+    rgba(11,43,75,.08);
+}
+
+.progress span{
+
+  display:block;
+
+  height:100%;
+
+  border-radius:inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--blue),
+      #54a5ff
+    );
+}
+
+
+.workspace{
+
+  margin-top:18px;
+}
+
+.workspace-head{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  margin-bottom:12px;
+}
+
+.workspace-head h3{
+
+  margin:
+    5px 0 0;
+
+  font-size:17px;
+}
+
+.workspace-head p:not(.eyebrow){
+
+  margin:
+    4px 0 0;
+
+  color:
+    var(--text-soft);
+
+  font-size:10px;
+}
+
+.workspace-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:13px;
+}
+
+.workspace-card{
+
+  position:relative;
+
+  min-height:125px;
+
+  padding:17px;
+
+  overflow:hidden;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:17px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    var(--shadow-soft);
+
+  transition:.2s ease;
+}
+
+.workspace-card::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:90px;
+  height:90px;
+
+  right:-40px;
+  bottom:-40px;
+
+  border-radius:50%;
+
+  background:
+    rgba(37,131,255,.06);
+}
+
+.workspace-card:hover{
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(59,130,246,.20);
+}
+
+.workspace-card-label{
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:.07em;
+
+  text-transform:uppercase;
+}
+
+.workspace-card strong{
+
+  display:block;
+
+  margin:
+    10px 0 4px;
+
+  color:
+    var(--text);
+
+  font-size:22px;
+
+  font-weight:950;
+}
+
+.workspace-card p{
+
+  margin:0;
+
+  color:
+    var(--text-soft);
+
+  font-size:9px;
+
+  line-height:1.5;
+}
+
+.account-overview{grid-column:1/-1;display:grid;gap:18px}
+.account-panel{overflow:hidden;border:1px solid var(--border);border-radius:17px;background:var(--surface);box-shadow:var(--shadow-soft)}
+.account-table-section+.account-table-section{border-top:1px solid var(--border)}
+.account-panel-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 19px;border-bottom:1px solid var(--border)}
+.account-panel-head h4{margin:0;font-size:14px}
+.account-panel-head span{color:var(--text-soft);font-size:10px}
+.account-table-wrap{overflow:auto}
+.account-table{width:100%;border-collapse:collapse;min-width:540px}
+.account-table th,.account-table td{padding:11px 16px;border-bottom:1px solid var(--border);text-align:left;font-size:10px}
+.account-table th{color:var(--text-soft);font-size:9px;text-transform:uppercase}
+.account-table tr:last-child td{border-bottom:0}
+.account-role{font-weight:850}
+.account-identities{color:var(--text-soft);line-height:1.6}
+.account-empty{padding:22px;color:var(--text-soft);font-size:11px}
+.account-toolbar,.account-filters,.account-actions,.admin-form-grid,.admin-kpis{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.account-toolbar{justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
+.account-filters{flex:1}
+.account-filters input,.account-filters select,.admin-form-grid input,.admin-form-grid select,.grade-row input,.grade-row select{min-height:36px;padding:8px 10px;border:1px solid var(--border);border-radius:9px;color:var(--text);background:var(--surface-2);font-size:11px}
+.account-filters input{width:min(300px,100%)}
+.admin-button{padding:8px 11px;border:1px solid var(--border);border-radius:9px;color:var(--text);background:var(--surface-2);font-size:10px;font-weight:800;cursor:pointer;white-space:nowrap}
+.admin-button:hover{border-color:var(--border-blue);background:var(--surface-3)}
+.admin-button:disabled{opacity:.55;cursor:not-allowed}
+.admin-button.primary{color:#fff;border-color:transparent;background:var(--blue)}
+.admin-button.danger{color:var(--red)}
+.admin-kpis{padding:14px 16px;border-bottom:1px solid var(--border)}
+.admin-kpi{min-width:120px;flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:11px;background:var(--surface-2)}
+.admin-kpi span{display:block;color:var(--text-soft);font-size:9px;text-transform:uppercase}
+.admin-kpi strong{display:block;margin-top:5px;font-size:18px}
+.account-table.admin-table{min-width:900px}
+.account-table.admin-table td{vertical-align:middle}
+.admin-badge{display:inline-flex;padding:4px 7px;border-radius:20px;background:var(--surface-3);font-size:9px;font-weight:800;white-space:nowrap}
+.admin-badge.active{color:var(--green)}
+.admin-badge.inactive{color:var(--red)}
+.account-actions{gap:5px;flex-wrap:nowrap}
+.account-actions .admin-button{padding:6px 8px;font-size:9px}
+.admin-modal{width:min(680px,calc(100vw - 28px));max-height:min(88vh,850px);padding:0;border:1px solid var(--border);border-radius:16px;color:var(--text);background:var(--surface);box-shadow:var(--shadow)}
+.admin-modal::backdrop{background:rgba(1,12,22,.72);backdrop-filter:blur(3px)}
+.admin-modal-head,.admin-modal-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 19px;border-bottom:1px solid var(--border)}
+.admin-modal-head h3{margin:0;font-size:16px}
+.admin-modal-body{max-height:calc(88vh - 130px);overflow:auto;padding:17px 19px}
+.admin-modal-foot{justify-content:flex-end;border-top:1px solid var(--border);border-bottom:0}
+.admin-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.admin-form-grid label{display:grid;gap:6px;color:var(--text-soft);font-size:10px;font-weight:800}
+.admin-form-grid input,.admin-form-grid select{width:100%}
+.grade-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(100px,.65fr) 100px auto;gap:8px;margin:8px 0}
+.grade-list-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(100px,.65fr) 100px auto;gap:8px;color:var(--text-soft);font-size:9px;font-weight:800;text-transform:uppercase}
+.audit-table{width:100%;border-collapse:collapse;min-width:600px}
+.audit-table td,.audit-table th{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:10px}
+.audit-table th{color:var(--text-soft);font-size:9px;text-transform:uppercase}
+@media(max-width:620px){.admin-form-grid{grid-template-columns:1fr}.grade-row,.grade-list-head{grid-template-columns:minmax(0,1fr) minmax(75px,.55fr) 74px auto}.grade-row input{min-width:0;padding:7px 6px}.account-toolbar{align-items:stretch}.account-filters input{width:100%}}
+
+
+.activity{
+
+  margin-top:18px;
+
+  padding:21px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:20px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    var(--shadow-soft);
+}
+
+.activity-list{
+
+  display:grid;
+
+  gap:2px;
+}
+
+.activity-item{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  padding:
+    11px 6px;
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.activity-item:last-child{
+  border-bottom:0;
+}
+
+.activity-icon{
+
+  width:34px;
+  height:34px;
+
+  flex:0 0 34px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:9px;
+
+  color:
+    var(--blue-2);
+
+  background:
+    rgba(37,131,255,.10);
+
+  font-size:9px;
+
+  font-weight:950;
+}
+
+.activity-text{
+
+  flex:1;
+}
+
+.activity-text strong{
+
+  display:block;
+
+  font-size:10px;
+}
+
+.activity-text span{
+
+  display:block;
+
+  margin-top:2px;
+
+  color:
+    var(--text-soft);
+
+  font-size:8px;
+}
+
+.activity-time{
+
+  color:
+    var(--text-soft);
+
+  font-size:8px;
+
+  white-space:nowrap;
+}
+
+
+.toast{
+
+  position:fixed;
+
+  z-index:2000;
+
+  right:24px;
+  bottom:24px;
+
+  max-width:330px;
+
+  padding:
+    12px 15px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius:12px;
+
+  color:white;
+
+  background:
+    #0b2b42;
+
+  box-shadow:
+    var(--shadow);
+
+  font-size:10px;
+
+  font-weight:800;
+
+  opacity:0;
+
+  transform:
+    translateY(12px);
+
+  pointer-events:none;
+
+  transition:.25s ease;
+}
+
+.toast.show{
+
+  opacity:1;
+
+  transform:
+    translateY(0);
+}
+
+
+@media(max-width:1250px){
+
+  :root{
+    --sidebar-width:275px;
+  }
+
+  .stats-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .hero{
+    grid-template-columns:
+      minmax(0,1fr)
+      270px;
+  }
+
+  .workspace-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:1050px){
+
+  .main{
+
+    margin-top:20px;
+    margin-left:0;
+  }
+
+  .sidebar{
+
+    position:relative;
+
+    top:auto;
+    left:auto;
+
+    width:100%;
+
+    height:auto;
+
+    min-height:0;
+  }
+
+  .sidebar-nav{
+
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+    max-height:none;
+  }
+
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+
+  .search-results{
+    right:20px;
+  }
+}
+
+@media(max-width:760px){
+
+  .topbar{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+  }
+
+  .topbar-actions{
+
+    width:100%;
+
+    justify-content:stretch;
+  }
+
+  .search-box{
+
+    width:100%;
+
+    max-width:none;
+  }
+
+  .hero{
+
+    grid-template-columns:1fr;
+  }
+
+  .hero-side{
+
+    border-left:0;
+
+    border-top:
+      1px solid var(--border);
+  }
+
+  .stats-grid{
+
+    grid-template-columns:1fr;
+  }
+
+  .workspace-grid{
+
+    grid-template-columns:1fr;
+  }
+
+  .profile-info{
+    display:none;
+  }
+}
+
+@media(max-width:560px){
+
+  .app{
+    padding:8px;
+  }
+
+  .sidebar{
+    border-radius:20px;
+  }
+
+  .sidebar-nav{
+    grid-template-columns:1fr;
+  }
+
+  .topbar{
+    border-radius:19px;
+    padding:16px;
+  }
+
+  .topbar-title h1{
+    font-size:23px;
+  }
+
+  .hero-main{
+    padding:28px 22px;
+  }
+
+  .hero-main h2{
+    font-size:30px;
+  }
+
+  .hero-side{
+    min-height:260px;
+  }
+
+  .chart{
+    gap:6px;
+  }
+
+  .bar-track{
+    max-width:28px;
+  }
+
+  .profile-menu{
+
+    position:fixed;
+
+    top:78px;
+
+    right:12px;
+
+    width:
+      min(290px,calc(100vw - 24px));
+  }
+}
+
+
+:root{
+  --bg:#0b1724;
+  --bg-2:#101d2a;
+  --sidebar:#000052;
+  --sidebar-2:#0f3a6b;
+  --surface:#111f2d;
+  --surface-2:#162636;
+  --surface-3:#1c3043;
+  --border:rgba(211,211,211,.16);
+  --border-blue:rgba(120,184,231,.42);
+  --text:#f3f5f7;
+  --text-soft:#bdc7d1;
+  --text-muted:#8f9dab;
+  --blue:#0f3a6b;
+  --blue-2:#78b8e7;
+  --blue-dark:#000052;
+  --green:#75c6a0;
+  --red:#e58d95;
+  --yellow:#d8bb70;
+  --shadow:0 16px 40px rgba(0,0,0,.20);
+  --shadow-soft:0 5px 16px rgba(0,0,0,.14);
+  --radius-xl:14px;
+  --radius-lg:12px;
+  --radius-md:9px;
+}
+body.light{
+  --bg:#e8ebef;
+  --bg-2:#f2f3f5;
+  --sidebar:#000052;
+  --sidebar-2:#0f3a6b;
+  --surface:#fff;
+  --surface-2:#f5f6f7;
+  --surface-3:#e9edf1;
+  --border:rgba(15,58,107,.18);
+  --border-blue:rgba(15,58,107,.38);
+  --text:#18283a;
+  --text-soft:#536477;
+  --text-muted:#778594;
+  --blue:#0f3a6b;
+  --blue-2:#0f3a6b;
+  --blue-dark:#000052;
+  --green:#287a57;
+  --red:#a6444c;
+  --yellow:#8b6d28;
+  --shadow:0 16px 40px rgba(20,35,50,.10);
+  --shadow-soft:0 4px 14px rgba(20,35,50,.07);
+}
+body.light .sidebar{
+  border-color:rgba(15,58,107,.16);
+  background:#d9dee4;
+  box-shadow:0 5px 16px rgba(20,35,50,.09);
+}
+body.light .nav-item:hover{background:rgba(15,58,107,.07)}
+body.light .nav-item.active{
+  background:rgba(15,58,107,.11);
+  box-shadow:inset 3px 0 #0f3a6b;
+}
+body.light .nav-item.active:before{background:#0f3a6b}
+body.light .nav-icon,body.light .nav-item.active .nav-icon{
+  color:#0f3a6b;
+  background:rgba(15,58,107,.09);
+}
+body.light .appearance-box{background:rgba(255,255,255,.38)}
+body.light .sidebar-theme-btn{background:rgba(255,255,255,.42)}
+body{
+  background:var(--bg);
+  transition:background .2s ease,color .2s ease;
+}
+.sidebar{
+  border-radius:12px;
+  border-color:var(--border);
+  color:var(--text);
+  background:var(--surface-2);
+  box-shadow:var(--shadow-soft);
+}
+.sidebar:before{display:none}
+.sidebar-brand{border-bottom-color:var(--border)}
+.sidebar-brand span,.sidebar-section-title{color:var(--text-muted)}
+.sidebar-brand img{
+  border-radius:9px;
+  box-shadow:none;
+}
+.nav-item{
+  min-height:58px;
+  border-radius:8px;
+  color:var(--text-soft);
+}
+.nav-item:hover{transform:none;background:rgba(120,184,231,.08);color:var(--text)}
+.nav-item.active{
+  color:var(--text);
+  background:rgba(120,184,231,.13);
+  box-shadow:inset 3px 0 #78b8e7;
+}
+.nav-item .nav-meta,.nav-item.active .nav-meta{color:var(--text-muted)}
+.nav-item{gap:0}
+.nav-item::before{display:none}
+.nav-icon,.nav-meta{display:none}
+.nav-label{font-size:13px}
+.nav-item.active:before{
+  background:#78b8e7;
+  box-shadow:none;
+}
+.nav-icon,.nav-item.active .nav-icon{
+  border-radius:6px;
+  color:var(--text-soft);
+  background:rgba(120,184,231,.10);
+}
+.nav-item.active .nav-icon{color:var(--text)}
+.appearance-box{
+  border-color:var(--border);
+  background:var(--surface);
+}
+.appearance-label{color:var(--text-muted)}
+.sidebar-theme-btn{
+  border-color:var(--border);
+  color:var(--text);
+  background:var(--surface-2);
+}
+.appearance-box{
+  border-radius:9px;
+  background:rgba(255,255,255,.06);
+}
+.sidebar-theme-btn{border-radius:7px}
+.topbar{
+  min-height:104px;
+  border-radius:11px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+  backdrop-filter:none;
+}
+body.light .topbar{background:var(--surface)}
+.eyebrow{
+  color:var(--blue-2);
+  letter-spacing:.11em;
+}
+.topbar-title h1{letter-spacing:-.025em}
+.topbar-subtitle{font-size:12px}
+.search-box input,.icon-btn,.profile-button{
+  border-radius:8px;
+  background:var(--surface-2);
+}
+.search-box input{font-size:13px}
+.icon-btn{width:42px;height:42px}
+.avatar,.profile-header-avatar{
+  border-radius:8px;
+  background:#0f3a6b;
+  box-shadow:none;
+}
+.profile-menu{
+  border-radius:10px;
+  box-shadow:var(--shadow);
+}
+.profile-header,.profile-option,.profile-option-icon{border-radius:7px}
+.profile-menu{
+  width:260px;
+  padding:8px;
+  border-color:var(--border);
+  background:var(--surface);
+}
+.profile-menu .profile-header{
+  gap:10px;
+  padding:10px 9px 12px;
+  border-radius:0;
+  border-bottom:1px solid var(--border);
+  background:transparent;
+}
+.profile-menu .profile-header-avatar{
+  display:none;
+}
+.profile-menu .profile-header strong{font-size:13px}
+.profile-menu .profile-header span{font-size:11px}
+.profile-menu .profile-divider{display:none}
+.profile-menu .profile-option{
+  min-height:40px;
+  margin-top:6px;
+  border-radius:6px;
+  font-size:12px;
+}
+.profile-menu .profile-option.logout{
+  justify-content:flex-start;
+  color:var(--text);
+  background:var(--surface-2);
+}
+.profile-menu .profile-option.logout:hover{background:var(--surface-3)}
+.profile-menu .profile-option.logout .profile-option-icon{
+  color:var(--text-soft);
+  background:transparent;
+}
+.hero{
+  border-color:var(--border);
+  border-radius:12px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+}
+body.light .hero{background:var(--surface)}
+.hero-main p{color:var(--text-soft);font-size:14px;line-height:1.7}
+.hero-side{
+  border-left-color:var(--border);
+  background:var(--surface-2);
+}
+.hero-side-label,.stat-label,.admin-kpi span{font-size:10px}
+.primary-btn,.secondary-btn{
+  min-height:42px;
+  border-radius:7px;
+  font-size:12px;
+}
+.primary-btn{
+  background:#0f3a6b;
+  box-shadow:none;
+}
+.primary-btn:hover,.secondary-btn:hover{transform:none}
+.secondary-btn{border-color:var(--border)}
+.kpi-ring{background:conic-gradient(#78b8e7 var(--ring-progress,75%),rgba(120,184,231,.16) 0)}
+.kpi-ring:before{background:var(--surface)}
+body.light .kpi-ring:before{background:var(--surface-2)}
+.hero-number-label{font-size:9px}
+.stat-card,.panel,.activity,.account-panel,.admin-kpi,.admin-modal{
+  border-radius:10px;
+  box-shadow:var(--shadow-soft);
+}
+.stat-card{min-height:132px}
+.stat-card:hover{transform:none;border-color:var(--border-blue)}
+.stat-icon,.activity-icon{
+  border-radius:6px;
+  color:var(--blue-2);
+  background:rgba(120,184,231,.12);
+}
+.stat-label{letter-spacing:.08em}
+.stat-value{font-size:clamp(21px,2vw,28px)}
+.stat-note,.trend-up,.activity-text span,.activity-time{font-size:11px}
+.content-grid,.workspace-grid{gap:16px}
+.panel,.activity{padding:21px}
+.panel-header h3{font-size:17px}
+.panel-header p:not(.eyebrow){font-size:12px;line-height:1.55}
+.performance-heading{font-size:12px}
+.progress{height:6px;border-radius:3px}
+.progress span{background:#78b8e7}
+.quick-card,.module-card,.module-banner,.module-hero,.module-table-card,
+.table-wrap,.account-panel,.admin-button,.account-filters input,
+.account-filters select,.admin-form-grid input,.admin-form-grid select,
+.grade-row input,.grade-row select,.admin-badge{
+  border-radius:8px;
+}
+.quick-card:hover,.module-card:hover{transform:none}
+.module-hero{
+  border-color:var(--border);
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+}
+.module-hero:after{display:none}
+.module-kicker{letter-spacing:.11em}
+.module-hero h2{letter-spacing:-.025em}
+.module-hero p,.module-card p,.module-banner span{font-size:13px;line-height:1.6}
+.module-card{
+  box-shadow:var(--shadow-soft);
+}
+.module-card-icon{
+  border-radius:8px;
+  background:#0f3a6b;
+  box-shadow:none;
+}
+.module-banner{border-radius:8px}
+.module-banner strong{font-size:13px}
+.table th,.table td,.account-table th,.account-table td,
+.audit-table th,.audit-table td{
+  font-size:12px;
+  line-height:1.5;
+}
+.table th,.account-table th,.audit-table th{
+  color:var(--text-soft);
+  font-size:10px;
+  letter-spacing:.06em;
+}
+.table tbody tr:hover{background:rgba(120,184,231,.06)}
+.badge,.admin-badge{border-radius:4px;font-size:10px}
+.activity-text strong{font-size:12px}
+.admin-button{
+  min-height:34px;
+  padding:8px 11px;
+  font-size:11px;
+}
+.admin-button.primary{background:#0f3a6b}
+.admin-kpi strong{font-size:20px}
+.admin-form-grid label{font-size:12px}
+.admin-form-grid input,.admin-form-grid select,
+.account-filters input,.account-filters select,.grade-row input,.grade-row select{
+  min-height:40px;
+  font-size:13px;
+}
+.admin-modal{border-radius:11px}
+.admin-modal-head h3{font-size:18px}
+.toast{border-radius:8px;font-size:12px}
+@media(max-width:1050px){
+  .sidebar{border-radius:11px}
+}
+@media(max-width:560px){
+  .sidebar,.topbar{border-radius:9px}
+  .topbar{padding:16px}
+}
+
+</style>
+<script src="route-security.js"></script>
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+
+<aside class="sidebar">
+
+
+
+  <div class="sidebar-brand">
+
+    <img
+      src="assets/images/branding/logo.png"
+      alt="RISE School College logo"
+    >
+
+    <div>
+
+      <strong>
+        RISE SIMS
+      </strong>
+
+      <span>
+        IT Administrator
+      </span>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="sidebar-section-title">Student Administration</div>
+
+  <nav
+    class="sidebar-nav"
+    id="sidebarNav"
+  >
+
+
+    <button class="nav-item active" data-module="students" type="button">
+      <span class="nav-text"><span class="nav-label">Students</span></span>
+    </button>
+    <button class="nav-item" data-module="subjects" type="button">
+      <span class="nav-text"><span class="nav-label">Subjects</span></span>
+    </button>
+    <button class="nav-item" data-module="grades" type="button">
+      <span class="nav-text"><span class="nav-label">Grades</span></span>
+    </button>
+    <button class="nav-item" data-module="schedules" type="button">
+      <span class="nav-text"><span class="nav-label">Schedules</span></span>
+    </button>
+
+
+  </nav>
+
+
+</aside>
+
+<main class="main">
+
+
+<header class="topbar">
+
+
+  <div class="topbar-title">
+
+    <p class="eyebrow">
+      Student Administration
+    </p>
+
+    <h1>
+      Student Management
+    </h1>
+
+    <p class="topbar-subtitle">
+      BSIT student information system
+    </p>
+
+  </div>
+
+
+  <div class="topbar-actions">
+
+
+    <div class="search-box">
+
+      <span class="search-icon">
+        ⌕
+      </span>
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search system modules..."
+        autocomplete="off"
+      >
+
+      <span class="search-shortcut">
+        Ctrl K
+      </span>
+
+    </div>
+
+
+    <button
+      class="icon-btn"
+      id="themeBtn"
+      type="button"
+      title="Switch to light mode"
+      aria-label="Switch to light mode"
+    >
+      ☀
+    </button>
+
+    <div
+      class="profile"
+      id="profileWrapper"
+    >
+
+      <button
+        class="profile-button"
+        id="profileButton"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+
+        <span
+          class="avatar"
+          id="avatar"
+        >
+          PR
+        </span>
+
+        <span class="profile-info">
+
+          <strong id="profileName">
+            IT Administrator
+          </strong>
+
+          <span id="profilePosition">
+            Authorized access
+          </span>
+
+        </span>
+
+        <span class="profile-arrow">
+          ▾
+        </span>
+
+      </button>
+
+
+      <div
+        class="profile-menu"
+        id="profileMenu"
+        hidden
+      >
+
+
+        <div class="profile-header">
+
+          <div
+            class="profile-header-avatar"
+            id="profileHeaderAvatar"
+          >
+            PR
+          </div>
+
+          <div>
+
+            <strong id="profileHeaderName">
+              IT Administrator
+            </strong>
+
+            <span>
+              RISE School College
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="profile-option logout"
+          id="logoutBtn"
+          type="button"
+        >
+
+          <span class="profile-option-icon">
+            ↪
+          </span>
+
+          Log out
+
+        </button>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</header>
+<div
+  class="search-results"
+  id="searchResults"
+></div>
+
+
+<section class="hero">
+
+
+  <div class="hero-main">
+
+
+    <div class="hero-kicker">
+      Executive School Management
+    </div>
+
+
+    <h2 id="heroTitle">
+      User Accounts overview
+    </h2>
+
+
+    <p id="heroDescription">
+      Review current student information,
+      learner participation, and school-wide
+      student development.
+    </p>
+
+
+    <div class="hero-actions">
+
+      <button
+        class="primary-btn"
+        id="viewReportBtn"
+        type="button"
+      >
+        Open workspace →
+      </button>
+
+      <button
+        class="secondary-btn"
+        id="focusBtn"
+        type="button"
+      >
+        View activity
+      </button>
+
+    </div>
+
+
+  </div>
+  <div class="hero-side">
+
+
+    <div class="hero-side-label">
+      Current School Indicator
+    </div>
+
+
+    <div
+      class="kpi-ring"
+      id="kpiRing"
+      style="--ring-progress:78%"
+    >
+
+      <div class="kpi-content">
+
+        <div
+          class="hero-number"
+          id="heroNumber"
+        >
+          1,240
+        </div>
+
+        <div
+          class="hero-number-label"
+          id="heroNumberLabel"
+        >
+          ACTIVE ACCOUNTS
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-side-footer">
+
+      <span class="live-badge">
+
+        <span class="live-dot"></span>
+
+        Live overview
+
+      </span>
+
+      <span id="heroUpdated">
+        Updated today
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+<section class="stats-grid">
+
+
+  <article class="stat-card">
+
+    <div class="stat-top">
+
+      <span class="stat-label">
+        User Accounts
+      </span>
+
+      <span class="stat-icon">
+        ST
+      </span>
+
+    </div>
+
+    <div class="stat-value">
+      1,240
+    </div>
+
+    <div class="stat-footer">
+
+      <span class="stat-note">
+        Active learners
+      </span>
+
+      <span class="trend-up">
+        +8.4%
+      </span>
+
+    </div>
+
+  </article>
+
+
+
+  <article class="stat-card">
+
+    <div class="stat-top">
+
+      <span class="stat-label">
+        Roles &amp; Permissions
+      </span>
+
+      <span class="stat-icon">
+        FC
+      </span>
+
+    </div>
+
+    <div class="stat-value">
+      96
+    </div>
+
+    <div class="stat-footer">
+
+      <span class="stat-note">
+        Teaching professionals
+      </span>
+
+      <span class="trend-up">
+        +5.1%
+      </span>
+
+    </div>
+
+  </article>
+
+
+
+  <article class="stat-card">
+
+    <div class="stat-top">
+
+      <span class="stat-label">
+        Security
+      </span>
+
+      <span class="stat-icon">
+        AT
+      </span>
+
+    </div>
+
+    <div class="stat-value">
+      96.4%
+    </div>
+
+    <div class="stat-footer">
+
+      <span class="stat-note">
+          Critical alerts
+      </span>
+
+      <span class="trend-up">
+        +1.1%
+      </span>
+
+    </div>
+
+  </article>
+
+
+
+  <article class="stat-card">
+
+    <div class="stat-top">
+
+      <span class="stat-label">
+        Achievement
+      </span>
+
+      <span class="stat-icon">
+        AC
+      </span>
+
+    </div>
+
+    <div class="stat-value">
+      88%
+    </div>
+
+    <div class="stat-footer">
+
+      <span class="stat-note">
+        Academic achievement
+      </span>
+
+      <span class="trend-up">
+        +3.2%
+      </span>
+
+    </div>
+
+  </article>
+
+
+</section>
+
+<section class="content-grid">
+
+  <article class="panel">
+
+
+    <div class="panel-header">
+
+      <div>
+
+        <p class="eyebrow">
+          Institutional Analytics
+        </p>
+
+        <h3>
+          School performance overview
+        </h3>
+
+        <p>
+          Recorded indicators across key
+          system administration areas.
+        </p>
+
+      </div>
+
+
+      <select
+        class="panel-select"
+        id="chartSelect"
+      >
+
+        <option value="performance">
+          Performance
+        </option>
+
+        <option value="attendance">
+          Attendance
+        </option>
+
+        <option value="enrollment">
+          Enrollment
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div
+      class="chart"
+      id="chart"
+    >
+
+      <div class="bar-column">
+
+        <span class="bar-value">
+          88%
+        </span>
+
+        <div class="bar-track">
+
+          <div
+            class="bar"
+            style="height:88%"
+          ></div>
+
+        </div>
+
+        <span class="bar-label">
+          Academic
+        </span>
+
+      </div>
+
+
+      <div class="bar-column">
+
+        <span class="bar-value">
+          96%
+        </span>
+
+        <div class="bar-track">
+
+          <div
+            class="bar"
+            style="height:96%"
+          ></div>
+
+        </div>
+
+        <span class="bar-label">
+          Attend.
+        </span>
+
+      </div>
+
+
+      <div class="bar-column">
+
+        <span class="bar-value">
+          92%
+        </span>
+
+        <div class="bar-track">
+
+          <div
+            class="bar"
+            style="height:92%"
+          ></div>
+
+        </div>
+
+        <span class="bar-label">
+          Grades
+        </span>
+
+      </div>
+
+
+      <div class="bar-column">
+
+        <span class="bar-value">
+          94%
+        </span>
+
+        <div class="bar-track">
+
+          <div
+            class="bar"
+            style="height:94%"
+          ></div>
+
+        </div>
+
+        <span class="bar-label">
+          Faculty
+        </span>
+
+      </div>
+
+
+      <div class="bar-column">
+
+        <span class="bar-value">
+          89%
+        </span>
+
+        <div class="bar-track">
+
+          <div
+            class="bar"
+            style="height:89%"
+          ></div>
+
+        </div>
+
+        <span class="bar-label">
+          Guidance
+        </span>
+
+      </div>
+
+
+      <div class="bar-column">
+
+        <span class="bar-value">
+          91%
+        </span>
+
+        <div class="bar-track">
+
+          <div
+            class="bar"
+            style="height:91%"
+          ></div>
+
+        </div>
+
+        <span class="bar-label">
+          Reports
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+  </article>
+
+
+  <article class="panel">
+
+
+    <div class="panel-header">
+
+      <div>
+
+        <p class="eyebrow">
+          Performance
+        </p>
+
+        <h3>
+          System priorities
+        </h3>
+
+        <p>
+          Current institutional indicators.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="performance-list">
+
+
+      <div class="performance-item">
+
+        <div class="performance-heading">
+
+          <span>
+            Academic Achievement
+          </span>
+
+          <span>
+            88%
+          </span>
+
+        </div>
+
+        <div class="progress">
+
+          <span style="width:88%"></span>
+
+        </div>
+
+      </div>
+
+
+      <div class="performance-item">
+
+        <div class="performance-heading">
+
+          <span>
+            Attendance
+          </span>
+
+          <span>
+            96.4%
+          </span>
+
+        </div>
+
+        <div class="progress">
+
+          <span style="width:96.4%"></span>
+
+        </div>
+
+      </div>
+
+
+      <div class="performance-item">
+
+        <div class="performance-heading">
+
+          <span>
+            System Availability
+          </span>
+
+          <span>
+            96%
+          </span>
+
+        </div>
+
+        <div class="progress">
+
+          <span style="width:96%"></span>
+
+        </div>
+
+      </div>
+
+
+      <div class="performance-item">
+
+        <div class="performance-heading">
+
+          <span>
+            Service Uptime
+          </span>
+
+          <span>
+            92%
+          </span>
+
+        </div>
+
+        <div class="progress">
+
+          <span style="width:92%"></span>
+
+        </div>
+
+      </div>
+
+
+      <div class="performance-item">
+
+        <div class="performance-heading">
+
+          <span>
+            Reporting Readiness
+          </span>
+
+          <span>
+            94%
+          </span>
+
+        </div>
+
+        <div class="progress">
+
+          <span style="width:94%"></span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </article>
+
+
+</section>
+
+
+<section class="workspace">
+
+
+  <div class="workspace-head">
+
+    <div>
+
+      <p class="eyebrow">
+        System Workspace
+      </p>
+
+      <h3 id="workspaceTitle">
+        User Accounts overview
+      </h3>
+
+      <p id="workspaceDescription">
+        Review current student information
+        and school-wide learner indicators.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="workspace-grid"
+    id="workspaceGrid"
+  ></div>
+
+
+</section>
+
+
+<section class="activity">
+
+
+  <div class="panel-header">
+
+    <div>
+
+      <p class="eyebrow">
+        School Activity
+      </p>
+
+      <h3>
+        Recent administrative activity
+      </h3>
+
+      <p>
+        Latest updates across the IT administration workspace's
+        workspace.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="activity-list">
+
+
+    <div class="activity-item">
+
+      <div class="activity-icon">
+        AC
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+          Academic records updated
+        </strong>
+
+        <span>
+          Latest achievement information is available.
+        </span>
+
+      </div>
+
+      <span class="activity-time">
+        Today
+      </span>
+
+    </div>
+
+
+    <div class="activity-item">
+
+      <div class="activity-icon">
+        AT
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+            System monitoring completed
+        </strong>
+
+        <span>
+          Technical health indicators were reviewed.
+        </span>
+
+      </div>
+
+      <span class="activity-time">
+        Today
+      </span>
+
+    </div>
+
+
+    <div class="activity-item">
+
+      <div class="activity-icon">
+        RP
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+          System report prepared
+        </strong>
+
+        <span>
+          Institutional reporting information is ready.
+        </span>
+
+      </div>
+
+      <span class="activity-time">
+        Yesterday
+      </span>
+
+    </div>
+
+
+    <div class="activity-item">
+
+      <div class="activity-icon">
+        AN
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+          School announcement updated
+        </strong>
+
+        <span>
+          Current communication information is available.
+        </span>
+
+      </div>
+
+      <span class="activity-time">
+        Yesterday
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+
+<script>
+
+
+const SESSION_KEY =
+  "student-portal-session";
+
+
+function getSession(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        SESSION_KEY
+      )
+    );
+
+  }catch(error){
+
+    return null;
+
+  }
+
+}
+
+
+const session =
+  getSession();
+
+const registeredUsers = (() => {
+  try { return JSON.parse(localStorage.getItem("student-portal-users") || "[]"); }
+  catch { return []; }
+})();
+const authenticatedAdmin = !!session
+  && ["it-system-admin", "admin"].includes(session.role)
+  && registeredUsers.some(user => {
+    const matchesSession = (session.accountId && String(user.id) === String(session.accountId))
+      || String(user.email || "").toLowerCase() === String(session.email || "").toLowerCase();
+    return matchesSession && user.status !== "inactive" && ["it-system-admin", "admin"].includes(user.role);
+  });
+
+
+
+if(
+  !authenticatedAdmin
+){
+  window.location.replace("login.html");
+}else{
+const modules = {
+
+
+  "user-accounts":{
+
+    label:"User Accounts",
+
+    value:"1,486",
+
+    valueLabel:"ACTIVE ACCOUNTS",
+
+    ring:78,
+
+    title:"User Accounts overview",
+
+    description:
+      "Manage system accounts, account status, access readiness, and user lifecycle information.",
+
+    cards:[
+
+      [
+        "Active students",
+        "1,240",
+        "Current active learners."
+      ],
+
+      [
+        "Student growth",
+        "+8.4%",
+        "Positive learner population trend."
+      ],
+
+      [
+        "Retention",
+        "92%",
+        "Current student retention outlook."
+      ]
+
+    ]
+
+  },
+
+
+  "roles-permissions":{
+
+    label:"Roles & Permissions",
+
+    value:"96",
+
+    valueLabel:"DEFINED ROLES",
+
+    ring:76,
+
+    title:"Roles & Permissions overview",
+
+    description:
+      "Review defined roles, access levels, permissions, and security boundaries.",
+
+    cards:[
+
+      [
+        "Faculty members",
+        "96",
+        "Current teaching professionals."
+      ],
+
+      [
+        "Faculty coverage",
+        "96%",
+        "Teaching load coverage."
+      ],
+
+      [
+        "Staffing trend",
+        "+5.1%",
+        "Positive staffing movement."
+      ]
+
+    ]
+
+  },
+
+
+  "system-settings":{
+
+    label:"System Settings",
+
+    value:"24",
+
+    valueLabel:"CONFIGURATIONS",
+
+    ring:84,
+
+    title:"System Settings overview",
+
+    description:
+      "Monitor important system configurations and administrative settings.",
+
+    cards:[
+
+      [
+        "Current enrollment",
+        "1,312",
+        "Current enrolled learners."
+      ],
+
+      [
+        "Retention",
+        "92%",
+        "Current retention indicator."
+      ],
+
+      [
+        "Growth",
+        "+6.7%",
+        "Positive enrollment trend."
+      ]
+
+    ]
+
+  },
+
+
+  database:{
+
+    label:"Database",
+
+    value:"99.9%",
+
+    valueLabel:"SYSTEM AVAILABILITY",
+
+    ring:88,
+
+    title:"Database overview",
+
+    description:
+      "Monitor database availability, reliability, and core system health.",
+
+    cards:[
+
+      [
+        "Achievement",
+        "88%",
+        "Average achievement level."
+      ],
+
+      [
+        "Improvement",
+        "+3.2%",
+        "Positive performance movement."
+      ],
+
+      [
+        "Grade readiness",
+        "92%",
+        "Grades currently submitted."
+      ]
+
+    ]
+
+  },
+
+
+  backups:{
+
+    label:"Backups",
+
+    value:"7",
+
+    valueLabel:"RECENT BACKUPS",
+
+    ring:96,
+
+    title:"Backups overview",
+
+    description:
+      "Review backup readiness, recent backup activity, and recovery preparedness.",
+
+    cards:[
+
+      [
+        "Daily attendance",
+        "96.4%",
+        "Current attendance level."
+      ],
+
+      [
+        "Target",
+        "97%",
+        "Institutional attendance target."
+      ],
+
+      [
+        "Trend",
+        "+1.1%",
+        "Attendance is improving."
+      ]
+
+    ]
+
+  },
+
+
+  security:{
+
+    label:"Security",
+
+    value:"0",
+
+    valueLabel:"CRITICAL ALERTS",
+
+    ring:62,
+
+    title:"Security overview",
+
+    description:
+      "Monitor security indicators, alerts, and access-risk conditions.",
+
+    cards:[
+
+      [
+        "Active cases",
+        "24",
+        "Current guidance cases."
+      ],
+
+      [
+        "Interventions",
+        "24",
+        "Open student interventions."
+      ],
+
+      [
+        "Priority",
+        "Review",
+        "Cases available for monitoring."
+      ]
+
+    ]
+
+  },
+
+
+  "audit-logs":{
+
+    label:"Audit Logs",
+
+    value:"328",
+
+    valueLabel:"RECENT ACTIVITIES",
+
+    ring:92,
+
+    title:"Audit Logs overview",
+
+    description:
+      "Review recent system activity and maintain accountability across role-based actions.",
+
+    cards:[
+
+      [
+        "Reports ready",
+        "12",
+        "Prepared reports."
+      ],
+
+      [
+        "Status",
+        "Ready",
+        "Reporting workflow is active."
+      ],
+
+      [
+        "Frequency",
+        "Weekly",
+        "Regular leadership reporting."
+      ]
+
+    ]
+
+  },
+
+
+  "system-monitoring":{
+
+    label:"System Monitoring",
+
+    value:"99.9%",
+
+    valueLabel:"SERVICE UPTIME",
+
+    ring:70,
+
+    title:"System Monitoring overview",
+
+    description:
+      "Monitor service uptime, availability, and technical health.",
+
+    cards:[
+
+      [
+        "Active notices",
+        "6",
+        "Current announcements."
+      ],
+
+      [
+        "Status",
+        "Live",
+        "Communication is active."
+      ],
+
+      [
+        "Frequency",
+        "Weekly",
+        "Regular school updates."
+      ]
+
+    ]
+
+  },
+
+  students:{
+    label:"Students",
+    value:"Student records",
+    valueLabel:"ADMIN MODULE",
+    ring:80,
+    title:"Student records",
+    description:"Manage student accounts, personal details, enrollment, and section placement.",
+    cards:[["Student directory","Open","Search student accounts."],["Enrollment","Review","Check year and section assignments."],["Account access","Manage","Update student account status."]]
+  },
+
+  subjects:{
+    label:"Subjects",
+    value:"BSIT catalog",
+    valueLabel:"ADMIN MODULE",
+    ring:80,
+    title:"Subjects",
+    description:"Review and manage the BSIT subject catalog by year level.",
+    cards:[["Year levels","1–4","Browse subjects by year."],["Catalog","Manage","Update subject codes and titles."],["Curriculum","Review","Check the current subject list."]]
+  },
+
+  grades:{
+    label:"Grades",
+    value:"Student grades",
+    valueLabel:"ADMIN MODULE",
+    ring:80,
+    title:"Grades",
+    description:"Upload, review, export, and manage student grade records.",
+    cards:[["Grade records","Open","Review uploaded grades."],["Imports","Upload","Import grades from a spreadsheet."],["Year and section","Filter","Find student records by placement."]]
+  },
+
+  schedules:{
+    label:"Schedules",
+    value:"Section timetables",
+    valueLabel:"ADMIN MODULE",
+    ring:80,
+    title:"Schedules",
+    description:"Generate and review timetables for BSIT sections.",
+    cards:[["Section schedules","Open","Review a section timetable."],["Schedule generation","Generate","Create a timetable for a section."],["All sections","Manage","Generate schedules across sections."]]
+  }
+
+};
+
+
+
+
+const navItems =
+  document.querySelectorAll(
+    ".nav-item"
+  );
+
+const workspaceTitle =
+  document.getElementById(
+    "workspaceTitle"
+  );
+
+const workspaceDescription =
+  document.getElementById(
+    "workspaceDescription"
+  );
+
+const workspaceGrid =
+  document.getElementById(
+    "workspaceGrid"
+  );
+
+const heroTitle =
+  document.getElementById(
+    "heroTitle"
+  );
+
+const heroDescription =
+  document.getElementById(
+    "heroDescription"
+  );
+
+const heroNumber =
+  document.getElementById(
+    "heroNumber"
+  );
+
+const heroNumberLabel =
+  document.getElementById(
+    "heroNumberLabel"
+  );
+
+const kpiRing =
+  document.getElementById(
+    "kpiRing"
+  );
+
+
+function loadModule(
+  moduleKey
+){
+
+  const module =
+    modules[moduleKey];
+
+  if(!module)
+    return;
+
+
+  navItems.forEach(
+    item => {
+
+      item.classList.toggle(
+        "active",
+        item.dataset.module ===
+        moduleKey
+      );
+
+    }
+  );
+
+
+  heroTitle.textContent =
+    module.title;
+
+
+  heroDescription.textContent =
+    module.description;
+
+
+  const accounts = moduleKey === "user-accounts"
+    ? loadRegisteredAccounts()
+    : null;
+  const accountCount = accounts ? accounts.length : 0;
+
+  heroNumber.textContent =
+    accounts ? String(accountCount) : module.value;
+
+
+  heroNumberLabel.textContent =
+    accounts ? "TOTAL ACCOUNTS" : module.valueLabel;
+
+
+  kpiRing.style
+    .setProperty(
+      "--ring-progress",
+      module.ring + "%"
+    );
+
+
+  workspaceTitle.textContent =
+    module.title;
+
+
+  workspaceDescription.textContent =
+    module.description;
+
+
+  if(accounts){
+    renderAccountOverview(accounts);
+    const primaryStat = document.querySelector(".stats-grid .stat-card");
+    if(primaryStat){
+      primaryStat.querySelector(".stat-value").textContent = String(accountCount);
+      primaryStat.querySelector(".stat-label").textContent = "Total Accounts";
+      primaryStat.querySelector(".stat-note").textContent = "Staff and student accounts";
+      primaryStat.querySelector(".trend-up").textContent = `${accounts.filter(user => user.role === "student").length} students`;
+    }
+    return;
+  }
+
+
+  workspaceGrid.innerHTML =
+    module.cards
+      .map(
+        card => `
+
+          <article class="workspace-card">
+
+            <span
+              class="workspace-card-label"
+            >
+              ${card[0]}
+            </span>
+
+            <strong>
+              ${card[1]}
+            </strong>
+
+            <p>
+              ${card[2]}
+            </p>
+
+          </article>
+
+        `
+      )
+      .join("");
+
+
+}
+
+
+function loadRegisteredAccounts(){
+  try{
+    const accounts = JSON.parse(localStorage.getItem("student-portal-users") || "[]");
+    return Array.isArray(accounts) ? accounts.filter(account => account && typeof account === "object") : [];
+  }catch(error){
+    return [];
+  }
+}
+
+
+function escapeAccountText(value){
+  return String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    "\"":"&quot;",
+    "'":"&#39;"
+  })[character]);
+}
+
+
+function renderAccountOverview(accounts){
+  const roles = [
+    ["president", "President"],
+    ["vice-president", "Vice President"],
+    ["principal", "Principal"],
+    ["guidance-counselor", "Guidance"],
+    ["academic-head", "Academic Head"],
+    ["accounting-staff", "Accounting"],
+    ["administrative-staff", "Administrative Staff"],
+    ["faculty", "Faculty"],
+    ["it-system-admin", "IT"]
+  ];
+  const students = accounts.filter(account => account.role === "student");
+  const staff = accounts.filter(account => account.role !== "student");
+  const staffRows = roles.map(([role, label]) => {
+    const users = staff.filter(account => account.role === role);
+    const identities = users.map(account => {
+      const name = account.name || account.username || "";
+      const email = account.email || "";
+      const label = name && email && name.toLowerCase() !== email.toLowerCase()
+        ? `${name} · ${email}`
+        : name || email || "Unnamed account";
+      return escapeAccountText(label);
+    }).join("<br>");
+    return `<tr><td class="account-role">${label}</td><td>${users.length}</td><td class="account-identities">${identities || "No accounts"}</td></tr>`;
+  }).join("");
+  const studentRows = students.map(account => {
+    const name = escapeAccountText(account.name || account.username || "Student");
+    const email = escapeAccountText(account.email || "No email");
+    return `<tr><td class="account-role">${name}</td><td>${email}</td><td>Student</td></tr>`;
+  }).join("");
+
+  workspaceGrid.innerHTML = `
+    <div class="account-overview">
+      <section class="account-panel" aria-labelledby="staffAccountsTitle">
+        <div class="account-panel-head"><h4 id="staffAccountsTitle">Staff accounts</h4><span>${staff.length} accounts</span></div>
+        <div class="account-table-wrap"><table class="account-table"><thead><tr><th>Role</th><th>Accounts</th><th>Account holders</th></tr></thead><tbody>${staffRows}</tbody></table></div>
+      </section>
+      <section class="account-panel" aria-labelledby="studentAccountsTitle">
+        <div class="account-panel-head"><h4 id="studentAccountsTitle">Student accounts</h4><span>${students.length} accounts</span></div>
+        ${studentRows ? `<div class="account-table-wrap"><table class="account-table"><thead><tr><th>Student</th><th>Email</th><th>Account type</th></tr></thead><tbody>${studentRows}</tbody></table></div>` : '<div class="account-empty">No student accounts have been created yet.</div>'}
+      </section>
+    </div>
+  `;
+}
+
+
+navItems.forEach(
+  item => {
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        loadModule(
+          item.dataset.module
+        );
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      }
+    );
+
+  }
+);
+
+
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
+
+const searchResults =
+  document.getElementById(
+    "searchResults"
+  );
+
+
+function searchModules(
+  query
+){
+
+  const clean =
+    query
+      .trim()
+      .toLowerCase();
+
+
+  if(!clean){
+
+    searchResults
+      .classList
+      .remove("show");
+
+    return;
+
+  }
+
+
+  const matches =
+    [...navItems]
+      .map(item => {
+        const key = item.dataset.module;
+        const module = modules[key];
+        return module ? [key, module] : null;
+      })
+      .filter(match => {
+        if (!match) return false;
+        const [, module] = match;
+        const keywords = [
+          module.label,
+          module.title,
+          module.description,
+          ...module.cards.flatMap(card => [card[0], card[2]])
+        ];
+        return keywords.some(keyword =>
+          keyword.toLowerCase().includes(clean)
+        );
+      });
+
+
+  if(!matches.length){
+
+    searchResults.innerHTML = `
+
+      <div class="search-result">
+
+        <strong>
+          No matching module
+        </strong>
+
+        <span>
+          Try another search term.
+        </span>
+
+      </div>
+
+    `;
+
+  }else{
+
+    searchResults.innerHTML =
+      matches
+        .map(
+          ([key,module]) => `
+
+            <div
+              class="search-result"
+              data-result="${key}"
+            >
+
+              <strong>
+                ${module.label}
+              </strong>
+
+              <span>
+                ${module.value}
+                ·
+                ${module.valueLabel}
+              </span>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+
+    searchResults
+      .querySelectorAll(
+        "[data-result]"
+      )
+      .forEach(
+        result => {
+
+          result.addEventListener(
+            "click",
+            () => {
+
+            const targetModule = result.dataset.result;
+            const navigationItem = [...navItems].find(
+              item => item.dataset.module === targetModule
+            );
+            if(navigationItem)navigationItem.click();
+
+            searchInput.value =
+              "";
+
+              searchResults
+                .classList
+                .remove("show");
+
+              window.scrollTo({
+                top:0,
+                behavior:"smooth"
+              });
+
+            }
+          );
+
+        }
+      );
+
+  }
+
+
+  searchResults
+    .classList
+    .add("show");
+
+}
+
+
+searchInput.addEventListener(
+  "input",
+  event => {
+
+    searchModules(
+      event.target.value
+    );
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      (event.ctrlKey ||
+       event.metaKey)
+      &&
+      event.key.toLowerCase() ===
+      "k"
+    ){
+
+      event.preventDefault();
+
+      searchInput.focus();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "click",
+  event => {
+
+    if(
+      !event.target.closest(
+        ".search-box"
+      )
+      &&
+      !event.target.closest(
+        ".search-results"
+      )
+    ){
+
+      searchResults
+        .classList
+        .remove("show");
+
+    }
+
+  }
+);
+
+
+const themeBtn =
+  document.getElementById(
+    "themeBtn"
+  );
+
+
+function applyTheme(
+  theme
+){
+
+  document.body.classList.toggle(
+    "light",
+    theme === "light"
+  );
+
+
+  const light =
+    theme === "light";
+
+
+  themeBtn.textContent =
+    light
+      ? "☾"
+      : "☀";
+
+  themeBtn.title =
+    light
+      ? "Switch to dark mode"
+      : "Switch to light mode";
+
+  themeBtn.setAttribute(
+    "aria-label",
+    themeBtn.title
+  );
+
+  themeBtn.setAttribute(
+    "aria-pressed",
+    light
+      ? "true"
+      : "false"
+  );
+
+
+  localStorage.setItem(
+    "it-admin-theme",
+    theme
+  );
+
+}
+
+
+const savedTheme =
+  localStorage.getItem(
+    "it-admin-theme"
+  ) ||
+  "dark";
+
+
+applyTheme(
+  savedTheme
+);
+
+
+function toggleTheme(){
+
+  const isLight =
+    document.body
+      .classList
+      .contains("light");
+
+
+  applyTheme(
+    isLight
+      ? "dark"
+      : "light"
+  );
+
+}
+
+
+themeBtn.addEventListener(
+  "click",
+  toggleTheme
+);
+
+
+const profileButton =
+  document.getElementById(
+    "profileButton"
+  );
+
+const profileMenu =
+  document.getElementById(
+    "profileMenu"
+  );
+
+const profileWrapper =
+  document.getElementById(
+    "profileWrapper"
+  );
+
+const profileName =
+  document.getElementById(
+    "profileName"
+  );
+
+const profileHeaderName =
+  document.getElementById(
+    "profileHeaderName"
+  );
+
+const avatar =
+  document.getElementById(
+    "avatar"
+  );
+
+const profileHeaderAvatar =
+  document.getElementById(
+    "profileHeaderAvatar"
+  );
+
+
+function getInitials(
+  name
+){
+
+  const words =
+    name
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+
+  if(!words.length)
+    return "PR";
+
+
+  return words
+    .slice(0,2)
+    .map(
+      word =>
+        word
+          .charAt(0)
+          .toUpperCase()
+    )
+    .join("");
+
+}
+
+
+function setProfileName(
+  name
+){
+
+  const clean =
+    name.trim() ||
+    "IT Administrator";
+
+
+  const initials =
+    getInitials(
+      clean
+    );
+
+
+  profileName.textContent =
+    clean;
+
+
+  profileHeaderName.textContent =
+    clean;
+
+
+  avatar.textContent =
+    initials;
+
+
+  profileHeaderAvatar.textContent =
+    initials;
+
+
+  localStorage.setItem(
+    "it-admin-display-name",
+    clean
+  );
+
+}
+
+
+const savedProfileName =
+  localStorage.getItem(
+    "it-admin-display-name"
+  ) ||
+  "IT Administrator";
+
+
+setProfileName(
+  savedProfileName
+);
+
+
+function openProfileMenu(){
+
+  profileMenu.hidden =
+    false;
+
+  profileButton
+    .setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+}
+
+
+function closeProfileMenu(){
+
+  profileMenu.hidden =
+    true;
+
+  profileButton
+    .setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+}
+
+
+profileButton.addEventListener(
+  "click",
+  event => {
+
+    event.stopPropagation();
+
+
+    if(
+      profileMenu.hidden
+    ){
+
+      openProfileMenu();
+
+    }else{
+
+      closeProfileMenu();
+
+    }
+
+  }
+);
+
+
+profileMenu.addEventListener(
+  "click",
+  event => {
+
+    event.stopPropagation();
+
+  }
+);
+
+
+document.addEventListener(
+  "click",
+  event => {
+
+    if(
+      !profileWrapper
+        .contains(
+          event.target
+        )
+    ){
+
+      closeProfileMenu();
+
+    }
+
+  }
+);
+
+
+
+
+
+document
+  .getElementById(
+    "logoutBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      localStorage.removeItem(
+        SESSION_KEY
+      );
+
+      location.href =
+        "index.html";
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "viewReportBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      document
+        .querySelector(
+          ".workspace"
+        )
+        .scrollIntoView({
+          behavior:"smooth"
+        });
+
+
+      showToast(
+        "IT administration workspace opened."
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "focusBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      document
+        .querySelector(
+          ".activity"
+        )
+        .scrollIntoView({
+          behavior:"smooth"
+        });
+
+
+      showToast(
+        "Recent activity opened."
+      );
+
+    }
+  );
+
+
+const chartSelect =
+  document.getElementById(
+    "chartSelect"
+  );
+
+
+const chartSets = {
+
+  performance:[
+    88,
+    96,
+    92,
+    94,
+    89,
+    91
+  ],
+
+  attendance:[
+    96,
+    94,
+    97,
+    95,
+    96,
+    98
+  ],
+
+  enrollment:[
+    78,
+    82,
+    86,
+    89,
+    94,
+    96
+  ]
+
+};
+
+
+function updateChart(
+  type
+){
+
+  const values =
+    chartSets[type];
+
+
+  const bars =
+    document.querySelectorAll(
+      ".bar"
+    );
+
+
+  const labels =
+    document.querySelectorAll(
+      ".bar-value"
+    );
+
+
+  bars.forEach(
+    (bar,index) => {
+
+      const value =
+        values[index];
+
+
+      bar.style.height =
+        value + "%";
+
+
+      labels[index]
+        .textContent =
+        value + "%";
+
+    }
+  );
+
+}
+
+
+chartSelect.addEventListener(
+  "change",
+  event => {
+
+    updateChart(
+      event.target.value
+    );
+
+  }
+);
+
+
+const toast =
+  document.getElementById(
+    "toast"
+  );
+
+let toastTimer;
+
+
+function showToast(
+  message
+){
+
+  toast.textContent =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2600
+    );
+
+}
+
+
+loadModule(
+  "user-accounts"
+);
+
+
+setProfileName(
+  localStorage.getItem(
+    "it-admin-display-name"
+  ) ||
+  "IT Administrator"
+);
+
+}
+</script>
+
+<script>
+(() => {
+  const USER_KEY = "student-portal-users";
+  const PROFILE_KEY = "rise-student-sis-registry";
+  const PROFILE_BASE = "rise-student-sis-data:";
+  const LEGACY_PROFILE_KEY = "rise-student-sis-data";
+  const GRADE_TERMS = ["Prelim", "Midterm", "Pre-finals", "Finals"];
+  const normalizeGradeTerm = value => {
+    const normalized = String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (normalized === "prelim" || normalized === "prelims") return "Prelim";
+    if (normalized === "midterm" || normalized === "midterms") return "Midterm";
+    if (normalized === "prefinal" || normalized === "prefinals") return "Pre-finals";
+    if (normalized === "final" || normalized === "finals") return "Finals";
+    return "";
+  };
+  const AUDIT_KEY = "rise-sis-audit-log";
+  const dialog = document.createElement("dialog");
+  dialog.className = "admin-modal";
+  document.body.append(dialog);
+
+  const read = (key, fallback) => {
+    try { const value = JSON.parse(localStorage.getItem(key)); return value ?? fallback; }
+    catch { return fallback; }
+  };
+  const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
+  const users = () => read(USER_KEY, []).filter(user => user && typeof user === "object");
+  const profiles = () => read(PROFILE_KEY, []).filter(profile => profile && typeof profile === "object");
+  const identity = value => String(value ?? "").trim().toLowerCase();
+  const identifiers = account => [account.id, account.accountId, account.username, account.email, account.studentId].map(identity).filter(Boolean);
+  const intersects = (left, right) => identifiers(left).some(value => identifiers(right).includes(value));
+  const roleLabels = {admin:"Administrator", "it-system-admin":"IT Administrator", student:"Student", president:"President", principal:"Principal", "vice-president":"Vice President", "academic-head":"Academic Head", "accounting-staff":"Accounting Staff", "guidance-counselor":"Guidance Counselor", "administrative-staff":"Administrative Staff", registrar:"Registrar", dean:"Dean", finance:"Finance", faculty:"Faculty"};
+  const roleLabel = role => roleLabels[role] || String(role || "User").replace(/[-_]+/g, " ").replace(/\b\w/g, char => char.toUpperCase());
+  const currentSession = () => read(SESSION_KEY, null);
+  const hasAdminAccess = () => {
+    const activeSession = currentSession();
+    if (!activeSession || !["it-system-admin", "admin"].includes(activeSession.role)) return false;
+    const account = users().find(user => (activeSession.accountId && String(user.id) === String(activeSession.accountId)) || identity(user.email) === identity(activeSession.email));
+    return !!account && account.status !== "inactive" && ["it-system-admin", "admin"].includes(account.role);
+  };
+  if (!hasAdminAccess()) {
+    location.replace("login.html");
+    return;
+  }
+
+  function profileFor(account) {
+    return profiles().find(profile => intersects(account, profile)) || read(profileDataKey(account), null);
+  }
+  function profileDataKey(account) {
+    const key = identity(account.accountId || account.id || account.username || account.email || account.studentId);
+    return PROFILE_BASE + encodeURIComponent(key);
+  }
+  function saveProfile(account, profile) {
+    const record = {...profile, accountId:account.id || account.accountId, username:account.username || "", role:"student", email:account.email || profile.email || "", fullName:account.name || profile.fullName || "", updatedAt:new Date().toISOString()};
+    write(profileDataKey(account), record);
+    const list = profiles();
+    const index = list.findIndex(item => intersects(account, item));
+    if (index >= 0) list[index] = {...list[index], ...record};
+    else list.push(record);
+    write(PROFILE_KEY, list);
+  }
+  function auditEntries() { return read(AUDIT_KEY, []).filter(entry => entry && typeof entry === "object"); }
+  function recordAction(action, affected) {
+    if (!hasAdminAccess()) { location.replace("login.html"); return; }
+    const admin = currentSession();
+    const entries = auditEntries();
+    entries.unshift({action, affected, administrator:admin.name || admin.email || "Administrator", at:new Date().toISOString()});
+    write(AUDIT_KEY, entries.slice(0, 500));
+    renderActivity();
+  }
+  function toastMessage(message) {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(window.adminToastTimer);
+    window.adminToastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+  }
+  function formatTime(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? "Unknown" : date.toLocaleString();
+  }
+  function accountList() {
+    const list = users();
+    const registeredProfiles = profiles();
+    registeredProfiles.forEach(profile => {
+      if (!list.some(account => intersects(account, profile))) {
+        list.push({id:profile.accountId || profile.username || profile.email || profile.studentId, accountId:profile.accountId, username:profile.username, email:profile.email, name:profile.fullName, role:"student", status:"active", profileOnly:true});
+      }
+    });
+    return list.map(account => ({...account, status:account.status || "active", name:account.name || account.fullName || account.username || account.email || "Unnamed account", profile:profileFor(account)}));
+  }
+  function statMarkup(accounts) {
+    const active = accounts.filter(account => account.status !== "inactive");
+    const students = accounts.filter(account => account.role === "student");
+    const admins = accounts.filter(account => ["admin", "it-system-admin"].includes(account.role));
+    const stats = [["Total accounts", accounts.length], ["Active accounts", active.length], ["Student accounts", students.length], ["Staff accounts", accounts.length - students.length - admins.length], ["Administrators", admins.length]];
+    return `<div class="admin-kpis">${stats.map(stat => `<div class="admin-kpi"><span>${stat[0]}</span><strong>${stat[1]}</strong></div>`).join("")}</div>`;
+  }
+  function accountRow(account) {
+    const key = String(account.id || account.email || account.accountId || "");
+    const accountIdentifier = account.profile?.studentId || account.studentId || account.staffId || "—";
+    const search = [account.name, account.email, account.username, account.role, account.status, accountIdentifier].join(" ").toLowerCase();
+    const studentActions = account.role === "student" ? `<button class="admin-button" data-account-action="grades" data-account-key="${esc(key)}">Grades</button>` : "";
+    const protectedAccount = isCurrentAccount(account) || isSoleActiveAdmin(account);
+    const deleteAction = protectedAccount
+      ? `<button class="admin-button danger" type="button" disabled title="The active administrator account must remain enabled.">Protected</button>`
+      : `<button class="admin-button danger" data-account-action="delete" data-account-key="${esc(key)}" type="button">Delete</button>`;
+    const lastLogin = account.lastLogin ? formatTime(account.lastLogin) : "Never";
+    return `<tr data-account-row data-search="${esc(search)}" data-role="${esc(account.role)}" data-status="${esc(account.status)}"><td><strong>${esc(account.name)}</strong><br><span class="account-identities">${esc(account.username || "No username")}</span></td><td>${esc(account.email || "No email")}</td><td>${esc(roleLabel(account.role))}</td><td><span class="admin-badge ${account.status === "inactive" ? "inactive" : "active"}">${account.status === "inactive" ? "Inactive" : "Active"}</span></td><td>${esc(accountIdentifier)}</td><td>${esc(lastLogin)}</td><td><div class="account-actions"><button class="admin-button" data-account-action="view" data-account-key="${esc(key)}">View</button><button class="admin-button" data-account-action="edit" data-account-key="${esc(key)}">Edit</button>${studentActions}<button class="admin-button" data-account-action="toggle" data-account-key="${esc(key)}">${account.status === "inactive" ? "Activate" : "Deactivate"}</button>${deleteAction}</div></td></tr>`;
+  }
+  function renderAccountOverview() {
+    if (!hasAdminAccess()) { location.replace("login.html"); return; }
+    if (typeof window.riseAdminRenderStudents === "function") {
+      window.riseAdminRenderStudents();
+      return;
+    }
+    const accounts = accountList();
+    const roles = [...new Set(accounts.map(account => account.role).filter(Boolean))].sort();
+    const staffAccounts = accounts.filter(account => account.role !== "student");
+    const studentAccounts = accounts.filter(account => account.role === "student");
+    const tableMarkup = (items, tableId, title, emptyMessage) => `<div class="account-table-section"><div class="account-panel-head"><h4>${title}</h4><span>${items.length} accounts</span></div><div class="account-table-wrap"><table class="account-table admin-table" id="${tableId}"><thead><tr><th>Name / username</th><th>Email</th><th>Role</th><th>Status</th><th>Student / staff ID</th><th>Last login</th><th>Actions</th></tr></thead><tbody>${items.length ? items.map(accountRow).join("") : `<tr><td colspan="7" class="account-empty">${emptyMessage}</td></tr>`}</tbody></table></div></div>`;
+    workspaceTitle.textContent = "Administrator Account Management";
+    workspaceDescription.textContent = "Search accounts, review access status, update student information, and manage grades.";
+    workspaceGrid.innerHTML = `<div class="account-overview"><section class="account-panel"><div class="account-panel-head"><h4>Accounts</h4><span>${accounts.length} registered identities</span></div>${statMarkup(accounts)}<div class="account-toolbar"><div class="account-filters"><input id="accountSearch" type="search" placeholder="Search name, email, ID..." aria-label="Search accounts"><select id="accountRoleFilter" aria-label="Filter by role"><option value="">All roles</option>${roles.map(role => `<option value="${esc(role)}">${esc(roleLabel(role))}</option>`).join("")}</select><select id="accountStatusFilter" aria-label="Filter by status"><option value="">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select></div><button class="admin-button primary" data-create-account type="button">+ Create account</button></div>${tableMarkup(staffAccounts, "staffAccountTable", "Staff & administrator accounts", "No staff or administrator accounts are registered.")}${tableMarkup(studentAccounts, "studentAccountTable", "Student accounts", "No student accounts are registered.")}</section></div>`;
+    const filterRows = () => {
+      const query = document.getElementById("accountSearch").value.trim().toLowerCase();
+      const role = document.getElementById("accountRoleFilter").value;
+      const status = document.getElementById("accountStatusFilter").value;
+      workspaceGrid.querySelectorAll("[data-account-row]").forEach(row => {
+        row.hidden = !(row.dataset.search.includes(query) && (!role || row.dataset.role === role) && (!status || row.dataset.status === status));
+      });
+    };
+    document.getElementById("accountSearch").addEventListener("input", filterRows);
+    document.getElementById("accountRoleFilter").addEventListener("change", filterRows);
+    document.getElementById("accountStatusFilter").addEventListener("change", filterRows);
+  }
+  function modal(title, body, buttons = "") {
+    dialog.innerHTML = `<div class="admin-modal-head"><h3>${esc(title)}</h3><button class="admin-button" type="button" data-close-modal aria-label="Close">Close</button></div><div class="admin-modal-body">${body}</div>${buttons ? `<div class="admin-modal-foot">${buttons}</div>` : ""}`;
+    dialog.showModal();
+  }
+  function field(label, name, value = "", type = "text", options = null, attributes = "") {
+    const control = options ? `<select name="${name}" ${attributes}>${options.map(option => `<option value="${esc(option[0])}" ${String(option[0]) === String(value) ? "selected" : ""}>${esc(option[1])}</option>`).join("")}</select>` : `<input name="${name}" type="${type}" value="${esc(value)}" ${type === "number" ? 'min="0" max="100" step="0.01"' : ""} ${attributes}>`;
+    return `<label>${label}${control}</label>`;
+  }
+  function openAccountForm(account = null) {
+    const profile = account?.profile || {};
+    const roles = [["student", "Student"]];
+    const isNew = !account;
+    const nameParts = String(profile.fullName || account?.name || "").trim().split(/\s+/).filter(Boolean);
+    const firstName = profile.firstName || nameParts[0] || "";
+    const middleName = profile.middleName || (nameParts.length > 2 ? nameParts[1] : "");
+    const lastName = profile.lastName || nameParts.slice(nameParts.length > 2 ? 2 : 1).join(" ");
+    const years = [["1st Year", "1st Year"], ["2nd Year", "2nd Year"], ["3rd Year", "3rd Year"], ["4th Year", "4th Year"]];
+    const sections = ["1st Year", "2nd Year", "3rd Year", "4th Year"].flatMap(year => ["A", "B", "C", "D"].map(letter => [`BSIT ${year[0]}-${letter}`, `BSIT ${year[0]}-${letter}`]));
+    const yearValue = profile.year || "";
+    const selectedSections = sections.filter(section => !yearValue || section[0].startsWith(`BSIT ${yearValue[0]}-`));
+    const sectionOptions = [["", "Select section"], ...selectedSections];
+    const studentId = profile.studentId || account?.studentId || "";
+    const room = profile.room || "";
+    const staffIdField = account?.role && account.role !== "student" ? field("Staff ID", "staffId", account.staffId || "") : "";
+    const genderOptions = [["", "Select gender"], ["Female", "Female"], ["Male", "Male"], ["Prefer not to say", "Prefer not to say"]];
+    const statusOptions = [["active", "Active"], ["inactive", "Inactive"]];
+    const body = `<form id="accountForm" data-form="account"><input type="hidden" name="id" value="${esc(account?.id || "")}"><div class="admin-form-grid">${field("Email", "email", account?.email || "", "email")}${field("Username", "username", account?.username || "")}${field("Role", "role", account?.role || "student", "text", roles)}${field("Status", "status", account?.status || "active", "text", statusOptions)}${field(isNew ? "Initial password" : "New password (optional)", "password", "", "password")}${field("First name", "firstName", firstName)}${field("Middle name", "middleName", middleName)}${field("Last name", "lastName", lastName)}${field("Age (from birthdate)", "age", profile.age || "", "number", null, 'readonly')} ${field("Birthdate", "birthdate", profile.birthdate || "", "date", null, 'data-birthdate')}${field("Gender", "gender", profile.gender || "", "text", genderOptions)}${field("Contact number", "phone", profile.phone || "", "tel")}${field("Guardian's name", "guardianName", profile.guardianName || "")}${field("Guardian's contact number", "guardianContact", profile.guardianContact || "", "tel")}${field("Course", "course", "BSIT", "text", [["BSIT", "BSIT"]])}${field("Year level", "year", yearValue, "text", [["", "Select year level"], ...years], 'data-year-level')}${field("Section", "section", profile.section || "", "text", sectionOptions, 'data-section')}${field("Enrollment status", "regularity", profile.regularity || "", "text", [["", "Select status"], ["Regular", "Regular"], ["Irregular", "Irregular"]])}${field("Student ID (automatic)", "studentId", studentId, "text", null, 'readonly')}${field("Assigned room (automatic)", "room", room, "text", null, 'readonly')}${field("Academic year", "academicYear", profile.academicYear || "2026-2027")}${field("Address", "address", profile.address || "")}${field("Guardian relationship", "guardianRelationship", profile.guardianRelationship || "")}${staffIdField}</div></form>`;
+    modal(isNew ? "Create student account" : account.role === "student" ? "Edit student record" : "Edit account", body, `<button class="admin-button" type="button" data-close-modal>Cancel</button><button class="admin-button primary" type="submit" form="accountForm">Save account</button>`);
+    const form = dialog.querySelector("#accountForm");
+    const roleSelect = form.elements.namedItem("role");
+    const yearSelect = form.elements.namedItem("year");
+    const sectionSelect = form.elements.namedItem("section");
+    const birthdateInput = form.elements.namedItem("birthdate");
+    const ageInput = form.elements.namedItem("age");
+    const studentFields = ["firstName", "middleName", "lastName", "age", "birthdate", "gender", "phone", "guardianName", "guardianContact", "course", "year", "section", "regularity", "studentId", "room", "academicYear", "address", "guardianRelationship"];
+    const updateRoleFields = () => {
+      const isStudent = roleSelect.value === "student";
+      studentFields.forEach(name => { form.elements.namedItem(name).closest("label").hidden = !isStudent; });
+      form.elements.namedItem("staffId")?.closest("label")?.toggleAttribute("hidden", isStudent);
+    };
+    const updateSections = (keepSelection = true) => {
+      const year = yearSelect.value;
+      const previous = keepSelection ? sectionSelect.value : "";
+      const available = sections.filter(section => section[0].startsWith(`BSIT ${year[0]}-`));
+      sectionSelect.innerHTML = `<option value="">Select section</option>${available.map(section => `<option value="${esc(section[0])}">${esc(section[1])}</option>`).join("")}`;
+      sectionSelect.value = available.some(section => section[0] === previous) ? previous : "";
+    };
+    const updateAge = () => {
+      if (!birthdateInput.value) { ageInput.value = ""; return; }
+      const birthdate = new Date(`${birthdateInput.value}T00:00:00`);
+      const today = new Date();
+      let age = today.getFullYear() - birthdate.getFullYear();
+      if (today.getMonth() < birthdate.getMonth() || (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())) age--;
+      ageInput.value = age >= 0 ? String(age) : "";
+    };
+    yearSelect.addEventListener("change", () => updateSections(false));
+    birthdateInput.addEventListener("change", updateAge);
+    roleSelect.addEventListener("change", updateRoleFields);
+    updateSections();
+    updateAge();
+    updateRoleFields();
+  }
+  function openView(account) {
+    const profile = account.profile || {};
+    const rows = [["Name", account.name], ["Email", account.email], ["Username", account.username], ["Role", roleLabel(account.role)], ["Status", account.status], ["Student / staff ID", profile.studentId || account.studentId || account.staffId], ["Course", profile.course], ["Year / section", [profile.year, profile.section].filter(Boolean).join(" / ")], ["Academic year", profile.academicYear], ["Phone", profile.phone], ["Last login", account.lastLogin ? formatTime(account.lastLogin) : "Never"]];
+    modal("Account details", `<div class="admin-form-grid">${rows.map(row => `<label>${esc(row[0])}<strong>${esc(row[1] || "Not provided")}</strong></label>`).join("")}</div>`);
+  }
+  function openGrades(account) {
+    const stored = account.profile?.grades || [];
+    const rows = stored.map(grade => {
+      const term = String(grade.term || grade.period || "");
+      const knownTerm = normalizeGradeTerm(term);
+      const options = [...GRADE_TERMS, ...(knownTerm || !term ? [] : [term])];
+      return `<div class="grade-row"><input name="subject" aria-label="Subject" value="${esc(grade.subject || "")}" placeholder="Subject"><select name="term" aria-label="Term">${options.map(option => `<option value="${esc(option)}" ${option === (knownTerm || term) ? "selected" : ""}>${esc(option)}</option>`).join("")}</select><input name="score" type="number" min="0" max="100" step="0.01" aria-label="Grade" value="${esc(grade.score ?? grade.grade ?? "")}" placeholder="Grade"><button class="admin-button danger" type="button" data-remove-grade aria-label="Remove grade">×</button></div>`;
+    }).join("");
+    const body = `<p class="account-identities">${esc(account.name)} · ${esc(account.profile?.studentId || account.email || "Student")}</p><p class="account-identities">Grade terms: Prelim, Midterm, Pre-finals, and Finals.</p><form id="gradeForm" data-form="grades" data-account-key="${esc(account.id || account.email)}"><div class="grade-list-head"><span>Subject</span><span>Term / period</span><span>Grade</span><span></span></div><div id="gradeRows">${rows}</div><button class="admin-button" type="button" data-add-grade>+ Add grade</button></form>`;
+    modal("Update student grades", body, `<button class="admin-button" type="button" data-close-modal>Cancel</button><button class="admin-button primary" type="submit" form="gradeForm">Save grades</button>`);
+  }
+  function renderActivity() {
+    const list = document.querySelector(".activity-list");
+    if (!list) return;
+    const entries = auditEntries();
+    if (!entries.length) return;
+    list.innerHTML = entries.slice(0, 12).map(entry => `<div class="activity-item"><div class="activity-icon">AU</div><div class="activity-text"><strong>${esc(entry.action)} · ${esc(entry.affected)}</strong><span>Administrator: ${esc(entry.administrator)}</span></div><span class="activity-time">${esc(formatTime(entry.at))}</span></div>`).join("");
+  }
+  function renderAuditModule() {
+    const entries = auditEntries();
+    workspaceTitle.textContent = "Administrator Audit Log";
+    workspaceDescription.textContent = "Recent account, student information, grade, and access changes.";
+    workspaceGrid.innerHTML = `<div class="account-panel"><div class="account-panel-head"><h4>Recorded administrator actions</h4><span>${entries.length} events</span></div><div class="account-table-wrap"><table class="audit-table"><thead><tr><th>Action</th><th>Affected account / student</th><th>Administrator</th><th>Date and time</th></tr></thead><tbody>${entries.length ? entries.map(entry => `<tr><td>${esc(entry.action)}</td><td>${esc(entry.affected)}</td><td>${esc(entry.administrator)}</td><td>${esc(formatTime(entry.at))}</td></tr>`).join("") : `<tr><td colspan="4" class="account-empty">No administrator actions have been recorded yet.</td></tr>`}</tbody></table></div></div>`;
+  }
+  function updateAdminProfile() {
+    const activeSession = currentSession();
+    const name = activeSession.name || activeSession.email || "Administrator";
+    const initials = name.trim().split(/\s+/).slice(0, 2).map(word => word[0]).join("").toUpperCase();
+    document.getElementById("profileName").textContent = name;
+    document.getElementById("profileHeaderName").textContent = name;
+    document.getElementById("profilePosition").textContent = "Administrator · Full system access";
+    document.getElementById("avatar").textContent = initials || "AD";
+    document.getElementById("profileHeaderAvatar").textContent = initials || "AD";
+    localStorage.setItem("it-admin-display-name", name);
+  }
+  function findAccount(key) { return accountList().find(account => String(account.id || account.email || account.accountId) === String(key)); }
+  function isCurrentAccount(account) {
+    const activeSession = currentSession();
+    if (!activeSession) return false;
+    const accountIdentifiers = identifiers(account);
+    const sessionIdentifiers = [activeSession.accountId, activeSession.username, activeSession.email].map(identity).filter(Boolean);
+    return accountIdentifiers.some(value => sessionIdentifiers.includes(value));
+  }
+  function isSoleActiveAdmin(account) {
+    return ["admin", "it-system-admin"].includes(account.role) && account.status !== "inactive" && accountList().filter(item => ["admin", "it-system-admin"].includes(item.role) && item.status !== "inactive").length <= 1;
+  }
+  function handleAccountAction(action, account) {
+    if (!hasAdminAccess()) { location.replace("login.html"); return; }
+    if (action === "delete") {
+      if (isCurrentAccount(account)) { toastMessage("You cannot delete your current administrator account."); return; }
+      if (isSoleActiveAdmin(account)) { toastMessage("At least one active administrator must remain."); return; }
+      const accountLabel = account.email ? `${account.name} (${account.email})` : account.name;
+      if (!confirm(`Permanently delete ${accountLabel}? This removes the account and any linked student record. This action cannot be undone.`)) return;
+      const linkedProfiles = profiles().filter(profile => intersects(account, profile));
+      const storedUsers = read(USER_KEY, []);
+      if (!Array.isArray(storedUsers)) { toastMessage("Accounts could not be loaded. No account was deleted."); return; }
+      write(USER_KEY, storedUsers.filter(user => !user || typeof user !== "object" || !intersects(account, user)));
+      write(PROFILE_KEY, profiles().filter(profile => !intersects(account, profile)));
+      localStorage.removeItem(profileDataKey(account));
+      linkedProfiles.forEach(profile => localStorage.removeItem(profileDataKey(profile)));
+      const legacyProfile = read(LEGACY_PROFILE_KEY, null);
+      if (legacyProfile && typeof legacyProfile === "object" && intersects(account, legacyProfile)) localStorage.removeItem(LEGACY_PROFILE_KEY);
+      recordAction("Deleted account", accountLabel);
+      renderAccountOverview();
+      toastMessage("Account and linked student record deleted.");
+      return;
+    }
+    if (action === "view") openView(account);
+    if (action === "edit") openAccountForm(account);
+    if (action === "grades") openGrades(account);
+    if (action === "toggle") {
+      const deactivate = account.status !== "inactive";
+      if (deactivate && (isCurrentAccount(account) || isSoleActiveAdmin(account))) { toastMessage("The active administrator account must remain enabled."); return; }
+      const next = users().map(user => String(user.id || user.email) === String(account.id || account.email) ? {...user, status:deactivate ? "inactive" : "active"} : user);
+      write(USER_KEY, next);
+      recordAction(deactivate ? "Deactivated account" : "Activated account", account.name);
+      renderAccountOverview();
+    }
+  }
+  function nextStudentId() {
+    const prefix = `RISE-${new Date().getFullYear()}-`;
+    const used = accountList().map(account => String(account.profile?.studentId || account.studentId || ""));
+    const highest = used.reduce((max, id) => {
+      const match = id.match(new RegExp(`^${prefix}(\\d+)$`));
+      return match ? Math.max(max, Number(match[1])) : max;
+    }, 0);
+    let sequence = highest + 1;
+    while (used.includes(`${prefix}${String(sequence).padStart(4, "0")}`)) sequence++;
+    return `${prefix}${String(sequence).padStart(4, "0")}`;
+  }
+  function nextRoom() {
+    const used = new Set(accountList().map(account => String(account.profile?.room || "")));
+    let sequence = 1;
+    while (used.has(`ROOM-${String(sequence).padStart(3, "0")}`)) sequence++;
+    return `ROOM-${String(sequence).padStart(3, "0")}`;
+  }
+  function ageFromBirthdate(value) {
+    const birthdate = new Date(`${value}T00:00:00`);
+    if (!value || Number.isNaN(birthdate.getTime()) || birthdate > new Date()) return null;
+    const today = new Date();
+    let age = today.getFullYear() - birthdate.getFullYear();
+    if (today.getMonth() < birthdate.getMonth() || (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())) age--;
+    return age;
+  }
+  function submitAccountForm(form) {
+    if (!hasAdminAccess()) { location.replace("login.html"); return; }
+    const values = Object.fromEntries(new FormData(form).entries());
+    const existing = values.id ? users().find(user => String(user.id) === String(values.id)) : null;
+    const email = values.email.trim().toLowerCase();
+    const isStudent = values.role === "student";
+    const firstName = String(values.firstName || "").trim();
+    const middleName = String(values.middleName || "").trim();
+    const lastName = String(values.lastName || "").trim();
+    const fullName = [firstName, middleName, lastName].filter(Boolean).join(" ");
+    if (!fullName || !email || (!existing && !values.password)) { toastMessage("Name, email, and an initial password are required."); return; }
+    if (users().some(user => identity(user.email) === identity(email) && String(user.id) !== String(values.id))) { toastMessage("Another account already uses that email."); return; }
+    if (existing && isCurrentAccount(existing) && !["admin", "it-system-admin"].includes(values.role)) { toastMessage("Your administrator role cannot be removed from this account."); return; }
+    if (existing && isCurrentAccount(existing) && values.status === "inactive") { toastMessage("You cannot deactivate your current administrator account."); return; }
+    if (existing && isSoleActiveAdmin(existing) && values.status === "inactive") { toastMessage("At least one active administrator must remain."); return; }
+    const age = isStudent ? ageFromBirthdate(values.birthdate) : null;
+    const validYears = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
+    const validGenders = ["Female", "Male", "Prefer not to say"];
+    const validRegularity = ["Regular", "Irregular"];
+    const sectionPattern = /^BSIT ([1-4])-([A-D])$/;
+    const sectionYear = String(values.year || "").charAt(0);
+    if (isStudent && (!firstName || !lastName || !email || !values.phone.trim() || !values.guardianName.trim() || !values.guardianContact.trim() || !age || values.course !== "BSIT" || !validYears.includes(values.year) || !validGenders.includes(values.gender) || !validRegularity.includes(values.regularity) || !sectionPattern.test(values.section) || !values.section.startsWith(`BSIT ${sectionYear}-`))) {
+      toastMessage("Complete the student details and choose a section that matches the year level.");
+      return;
+    }
+    const account = {...(existing || {}), id:existing?.id || `rise-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, name:fullName, email, username:values.username.trim() || email.split("@")[0], role:values.role, status:values.status, studentId:isStudent ? (existing?.studentId || existing?.profile?.studentId || nextStudentId()) : values.studentId.trim(), staffId:String(values.staffId || existing?.staffId || "").trim(), ...(values.password ? {password:values.password} : {}), ...(existing?.lastLogin ? {lastLogin:existing.lastLogin} : {})};
+    const list = users();
+    const index = list.findIndex(user => String(user.id) === String(account.id));
+    if (index >= 0) list[index] = account; else list.push(account);
+    write(USER_KEY, list);
+    if (isStudent) {
+      const oldProfile = existing ? profileFor(existing) || {} : {};
+      const assignedRoom = oldProfile.room || nextRoom();
+      account.studentId = oldProfile.studentId || account.studentId || nextStudentId();
+      const updatedAccounts = users().map(user => String(user.id) === String(account.id) ? account : user);
+      write(USER_KEY, updatedAccounts);
+      saveProfile(account, {...oldProfile, firstName, middleName, lastName, age, email, fullName:account.name, studentId:account.studentId, phone:values.phone.trim(), course:"BSIT", year:values.year, section:values.section, regularity:values.regularity, room:assignedRoom, academicYear:values.academicYear.trim(), birthdate:values.birthdate, gender:values.gender, address:values.address.trim(), guardianName:values.guardianName.trim(), guardianContact:values.guardianContact.trim(), guardianRelationship:values.guardianRelationship.trim()});
+    }
+    dialog.close();
+    recordAction(existing ? "Modified account" : "Created account", account.name);
+    if (account.role === "student") recordAction(existing ? "Edited student information" : "Created student account", account.name);
+    if (existing && existing.role !== values.role) recordAction("Changed account role", `${account.name} · ${roleLabel(values.role)}`);
+    renderAccountOverview();
+    toastMessage(existing ? "Account updated." : "Account created.");
+  }
+  function submitGrades(form) {
+    if (!hasAdminAccess()) { location.replace("login.html"); return; }
+    const account = findAccount(form.dataset.accountKey);
+    if (!account) { dialog.close(); toastMessage("Student account was not found."); return; }
+    const grades = [...form.querySelectorAll(".grade-row")].map(row => {
+      const term = row.querySelector('[name="term"]').value.trim();
+      return {subject:row.querySelector('[name="subject"]').value.trim(), term:normalizeGradeTerm(term) || term, score:row.querySelector('[name="score"]').value.trim()};
+    }).filter(grade => grade.subject || grade.term || grade.score);
+    if (grades.some(grade => !grade.subject || !grade.score || Number(grade.score) < 0 || Number(grade.score) > 100)) { toastMessage("Enter a subject and a grade from 0 to 100 for each row."); return; }
+    if (!confirm(`Save ${grades.length} grade record${grades.length === 1 ? "" : "s"} for ${account.name}?`)) return;
+    saveProfile(account, {...(account.profile || {}), grades});
+    dialog.close();
+    recordAction("Updated student grade", account.name);
+    renderAccountOverview();
+    toastMessage("Student grades saved.");
+  }
+  workspaceGrid.addEventListener("click", event => {
+    const create = event.target.closest("[data-create-account]");
+    if (create) { openAccountForm(); return; }
+    const button = event.target.closest("[data-account-action]");
+    if (button) {
+      const account = findAccount(button.dataset.accountKey);
+      if (account) handleAccountAction(button.dataset.accountAction, account);
+    }
+  });
+  dialog.addEventListener("click", event => {
+    if (event.target === dialog || event.target.closest("[data-close-modal]")) dialog.close();
+    if (event.target.closest("[data-add-grade]")) document.getElementById("gradeRows").insertAdjacentHTML("beforeend", `<div class="grade-row"><input name="subject" aria-label="Subject" placeholder="Subject"><select name="term" aria-label="Term">${GRADE_TERMS.map(term => `<option value="${term}">${term}</option>`).join("")}</select><input name="score" type="number" min="0" max="100" step="0.01" aria-label="Grade" placeholder="Grade"><button class="admin-button danger" type="button" data-remove-grade aria-label="Remove grade">×</button></div>`);
+    if (event.target.closest("[data-remove-grade]")) event.target.closest(".grade-row").remove();
+  });
+  dialog.addEventListener("submit", event => {
+    event.preventDefault();
+    const form = event.target;
+    if (form.dataset.form === "account") submitAccountForm(form);
+    if (form.dataset.form === "grades") submitGrades(form);
+  });
+  document.querySelectorAll(".nav-item").forEach(item => item.addEventListener("click", () => {
+    if (item.dataset.module === "user-accounts") renderAccountOverview();
+    if (item.dataset.module === "audit-logs") renderAuditModule();
+  }));
+  document.getElementById("searchResults").addEventListener("click", event => {
+    if (event.target.closest('[data-result="user-accounts"]')) renderAccountOverview();
+    if (event.target.closest('[data-result="audit-logs"]')) renderAuditModule();
+  });
+  window.RiseAdmin = {
+    accountList,
+    openAccountForm,
+    handleAccountAction,
+    renderAccountOverview,
+    recordAction,
+    saveProfile
+  };
+  updateAdminProfile();
+  renderActivity();
+  renderAccountOverview();
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="admin-academic-tools.js"></script>
+
+
+</body>
+</html>

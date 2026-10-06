@@ -1,0 +1,4821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Products | RISE College School
+</title>
+
+<meta
+    name="description"
+    content="RISE COLLEGE SCHOOL official products catalogue — uniforms, identification cards, accessories, school supplies, carrying gear and merchandise."
+>
+
+<meta
+    name="theme-color"
+    content="#000052"
+>
+
+<style>
+
+
+:root {
+
+    --primary:#000052;
+    --primary-dark:#000052;
+    --secondary:#0F3A6B;
+    --accent:#A9A9A9;
+    --accent-light:#D3D3D3;
+
+    --dark:#000052;
+    --text:#0F3A6B;
+    --muted:#5f6470;
+
+    --white:#ffffff;
+    --light:#D3D3D3;
+    --border:#d9d9d9;
+
+    --success:#2d9b68;
+    --warning:#A9A9A9;
+
+}
+
+
+* {
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    margin:0;
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+    background:var(--light);
+    color:var(--text);
+    line-height:1.6;
+}
+
+img {
+    max-width:100%;
+    display:block;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea {
+    font:inherit;
+}
+
+button {
+    cursor:pointer;
+}
+
+
+.header {
+    width:100%;
+    background:var(--white);
+    border-bottom:1px solid var(--border);
+    position:relative;
+    z-index:1000;
+}
+
+.header-container {
+
+    width:min(1400px, calc(100% - 64px));
+    min-height:86px;
+
+    margin:0 auto;
+
+    display:flex;
+    align-items:center;
+
+    gap:32px;
+
+}
+
+
+.brand {
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    flex-shrink:0;
+
+}
+
+.logo {
+
+    width:52px;
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+}
+
+.logo img {
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+.brand-info {
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.brand-title {
+
+    color:var(--dark);
+
+    font-size:15px;
+    font-weight:800;
+
+    letter-spacing:.04em;
+
+    line-height:1.2;
+
+    white-space:nowrap;
+
+}
+
+.brand-subtitle {
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:.14em;
+
+    line-height:1.2;
+
+    white-space:nowrap;
+
+}
+
+
+.nav {
+
+    display:flex;
+    align-items:center;
+
+    gap:4px;
+
+    margin-left:auto;
+
+}
+
+.nav a {
+
+    position:relative;
+
+    padding:10px 13px;
+
+    color:var(--muted);
+
+    font-size:12px;
+    font-weight:700;
+
+    letter-spacing:.06em;
+
+    white-space:nowrap;
+
+    transition:
+        color .2s ease,
+        background .2s ease;
+
+}
+
+.nav a:hover {
+
+    color:var(--primary);
+
+}
+
+.nav a.active {
+
+    color:var(--primary);
+
+}
+
+.nav a.active::after {
+
+    content:"";
+
+    position:absolute;
+
+    left:13px;
+    right:13px;
+
+    bottom:2px;
+
+    height:2px;
+
+    background:var(--accent);
+
+}
+
+
+.header-actions {
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    flex-shrink:0;
+
+}
+
+.header-login {
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:40px;
+
+    padding:0 16px;
+
+    border:1px solid var(--border);
+
+    color:var(--primary);
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:.05em;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease;
+
+}
+
+.header-login:hover {
+
+    border-color:var(--accent);
+    background:var(--accent-light);
+
+}
+
+.header-portal {
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:40px;
+
+    padding:0 17px;
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:.05em;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+.header-portal:hover {
+
+    background:var(--primary-dark);
+
+    transform:translateY(-1px);
+
+}
+
+
+.menu-button {
+
+    width:42px;
+    height:42px;
+
+    padding:0;
+
+    border:1px solid var(--border);
+
+    background:var(--white);
+
+    display:none;
+
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:5px;
+
+}
+
+.menu-button span {
+
+    width:19px;
+    height:2px;
+
+    background:var(--primary);
+
+}
+
+
+.products-hero {
+
+    position:relative;
+
+    min-height:600px;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--dark),
+            var(--primary-dark)
+        );
+
+}
+
+.products-hero-bg {
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(11,29,45,.98) 0%,
+            rgba(18,59,99,.92) 52%,
+            rgba(18,59,99,.55) 100%
+        );
+
+}
+
+.products-hero-overlay {
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(59,142,208,.25),
+            transparent 38%
+        );
+
+}
+
+.products-hero-content {
+
+    position:relative;
+    z-index:2;
+
+    width:min(1400px, calc(100% - 64px));
+
+    margin:0 auto;
+
+    padding:100px 0 90px;
+
+    color:var(--white);
+
+}
+
+.hero-breadcrumb {
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:26px;
+
+    color:rgba(255,255,255,.65);
+
+    font-size:12px;
+    font-weight:700;
+
+}
+
+.hero-breadcrumb a:hover {
+
+    color:var(--white);
+
+}
+
+.hero-label {
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+    color:#bcd9ef;
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:.16em;
+
+}
+
+.hero-dot {
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+}
+
+.products-hero h1 {
+
+    max-width:850px;
+
+    margin:0;
+
+    font-size:
+        clamp(42px, 6vw, 78px);
+
+    line-height:1.02;
+
+    letter-spacing:-.045em;
+
+    font-weight:800;
+
+}
+
+.products-hero h1 span {
+
+    color:#78b8e7;
+
+}
+
+.hero-description {
+
+    max-width:700px;
+
+    margin:28px 0 0;
+
+    color:rgba(255,255,255,.78);
+
+    font-size:17px;
+
+    line-height:1.8;
+
+}
+
+.hero-actions {
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:34px;
+
+}
+
+.hero-button {
+
+    min-height:48px;
+
+    padding:0 22px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:12px;
+
+    font-size:12px;
+    font-weight:800;
+
+    letter-spacing:.04em;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+
+}
+
+.hero-button:hover {
+
+    transform:translateY(-2px);
+
+}
+
+.hero-button.primary {
+
+    background:var(--white);
+    color:var(--primary);
+
+}
+
+.hero-button.primary:hover {
+
+    background:var(--accent-light);
+
+}
+
+.hero-button.secondary {
+
+    border:1px solid rgba(255,255,255,.35);
+
+    color:var(--white);
+
+}
+
+.hero-button.secondary:hover {
+
+    background:rgba(255,255,255,.08);
+
+}
+
+
+.hero-stats {
+
+    background:var(--white);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.hero-stats-inner {
+
+    width:min(1400px, calc(100% - 64px));
+
+    margin:0 auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+}
+
+.hero-stat {
+
+    padding:30px 26px;
+
+    border-right:1px solid var(--border);
+
+}
+
+.hero-stat:last-child {
+
+    border-right:none;
+
+}
+
+.hero-stat-number {
+
+    color:var(--primary);
+
+    font-size:28px;
+    font-weight:800;
+
+    line-height:1.2;
+
+}
+
+.hero-stat-label {
+
+    margin-top:6px;
+
+    color:var(--muted);
+
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:.06em;
+
+    text-transform:uppercase;
+
+}
+
+
+
+main {
+
+    width:min(1400px, calc(100% - 64px));
+
+    margin:0 auto;
+
+}
+
+
+.section-heading {
+
+    max-width:760px;
+
+    margin:90px 0 35px;
+
+}
+
+.section-eyebrow {
+
+    display:inline-block;
+
+    margin-bottom:12px;
+
+    color:var(--accent);
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:.15em;
+
+}
+
+.section-heading h2 {
+
+    margin:0;
+
+    color:var(--dark);
+
+    font-size:
+        clamp(32px, 4vw, 48px);
+
+    line-height:1.1;
+
+    letter-spacing:-.03em;
+
+}
+
+.section-heading p {
+
+    margin:18px 0 0;
+
+    color:var(--muted);
+
+    font-size:16px;
+
+}
+
+
+
+.catalog-toolbar {
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:25px;
+
+    padding:24px;
+
+    margin-bottom:20px;
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+}
+
+.category-tabs {
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:7px;
+
+}
+
+.category-tab {
+
+    min-height:38px;
+
+    padding:0 13px;
+
+    border:1px solid var(--border);
+
+    background:var(--white);
+
+    color:var(--muted);
+
+    font-size:11px;
+    font-weight:800;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+
+}
+
+.category-tab:hover {
+
+    border-color:var(--accent);
+    color:var(--primary);
+
+}
+
+.category-tab.active {
+
+    background:var(--primary);
+    border-color:var(--primary);
+
+    color:var(--white);
+
+}
+
+.search-box {
+
+    display:flex;
+
+    min-width:280px;
+
+}
+
+.search-input {
+
+    width:100%;
+
+    min-height:40px;
+
+    padding:0 13px;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    color:var(--text);
+
+    background:var(--light);
+
+}
+
+.search-input:focus {
+
+    border-color:var(--accent);
+
+}
+
+.search-button {
+
+    min-height:40px;
+
+    padding:0 18px;
+
+    border:none;
+
+    background:var(--secondary);
+
+    color:var(--white);
+
+    font-size:11px;
+    font-weight:800;
+
+}
+
+
+.info-strip {
+
+    margin:20px 0 30px;
+
+    padding:17px 20px;
+
+    background:var(--accent-light);
+
+    border-left:3px solid var(--accent);
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+.info-strip strong {
+
+    color:var(--primary);
+
+}
+
+
+.products-grid {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:22px;
+
+}
+
+.product-card {
+
+    position:relative;
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    overflow:hidden;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+
+}
+
+.product-card:hover {
+
+    transform:translateY(-4px);
+
+    border-color:#cbd9e7;
+
+    box-shadow:
+        0 16px 40px rgba(11,29,45,.08);
+
+}
+
+.product-card.featured {
+
+    grid-column:1 / -1;
+
+}
+
+.featured-label {
+
+    position:absolute;
+
+    top:18px;
+    left:18px;
+
+    z-index:4;
+
+    padding:6px 10px;
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    font-size:10px;
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+
+.product-image {
+
+    height:270px;
+
+    background:#edf3f8;
+
+    overflow:hidden;
+
+}
+
+.product-image img {
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:transform .4s ease;
+
+}
+
+.product-card:hover .product-image img {
+
+    transform:scale(1.035);
+
+}
+
+.product-content {
+
+    padding:26px;
+
+}
+
+.product-top {
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+.product-title,
+.product-top h3 {
+
+    margin:0;
+
+    color:var(--dark);
+
+    font-size:21px;
+    line-height:1.2;
+
+}
+
+.product-category {
+
+    flex-shrink:0;
+
+    padding:5px 8px;
+
+    background:var(--accent-light);
+
+    color:var(--secondary);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.07em;
+
+    text-transform:uppercase;
+
+}
+
+.product-description {
+
+    margin:15px 0 20px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+.product-tags {
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:7px;
+
+}
+
+.product-tag {
+
+    padding:5px 8px;
+
+    background:var(--light);
+
+    border:1px solid var(--border);
+
+    color:var(--muted);
+
+    font-size:10px;
+    font-weight:700;
+
+}
+
+.product-footer {
+
+    margin-top:24px;
+
+    padding-top:17px;
+
+    border-top:1px solid var(--border);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+}
+
+.product-code {
+
+    color:var(--muted);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.08em;
+
+}
+
+.product-actions {
+
+    display:flex;
+    gap:7px;
+
+}
+
+.details-button,
+.order-button {
+
+    min-height:36px;
+
+    padding:0 13px;
+
+    border:1px solid var(--border);
+
+    font-size:10px;
+    font-weight:800;
+
+}
+
+.details-button {
+
+    background:var(--white);
+
+    color:var(--primary);
+
+}
+
+.details-button:hover {
+
+    background:var(--accent-light);
+
+}
+
+.order-button {
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+
+    color:var(--white);
+
+}
+
+.order-button:hover {
+
+    background:var(--primary-dark);
+
+}
+
+
+.uniform-layout {
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(300px, .9fr)
+        minmax(0, 1.1fr);
+
+}
+
+.uniform-preview {
+
+    min-height:540px;
+
+    background:#edf3f8;
+
+    overflow:hidden;
+
+}
+
+.uniform-preview img {
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.uniform-information {
+
+    padding:42px;
+
+}
+
+.uniform-information .product-top h3 {
+
+    font-size:28px;
+
+}
+
+.uniform-information > p {
+
+    max-width:650px;
+
+    margin:18px 0;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+
+.uniform-switcher {
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin:25px 0 16px;
+
+}
+
+.uniform-button {
+
+    min-height:38px;
+
+    padding:0 15px;
+
+    border:1px solid var(--border);
+
+    background:var(--white);
+
+    color:var(--muted);
+
+    font-size:10px;
+    font-weight:800;
+
+}
+
+.uniform-button.active {
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+
+    color:var(--white);
+
+}
+
+.uniform-thumbs {
+
+    display:flex;
+
+    gap:9px;
+
+}
+
+.uniform-thumb {
+
+    width:66px;
+    height:66px;
+
+    border:2px solid transparent;
+
+    background:var(--light);
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+}
+
+.uniform-thumb:first-child {
+
+    border-color:var(--accent);
+
+}
+
+.uniform-thumb img {
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.uniform-details {
+
+    margin-top:24px;
+
+    padding:18px;
+
+    background:var(--light);
+
+    border:1px solid var(--border);
+
+}
+
+.uniform-details strong {
+
+    color:var(--primary);
+
+    font-size:13px;
+
+}
+
+.uniform-details p {
+
+    margin:7px 0 10px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+.uniform-details ul {
+
+    margin:0;
+    padding-left:18px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+.no-results {
+
+    display:none;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+}
+
+.no-results.show {
+
+    display:block;
+
+}
+
+.no-results-icon {
+
+    width:50px;
+    height:50px;
+
+    margin:0 auto 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--accent-light);
+
+    color:var(--primary);
+
+    font-weight:800;
+
+}
+
+.no-results h3 {
+
+    margin:0;
+
+    color:var(--dark);
+
+}
+
+.no-results p {
+
+    color:var(--muted);
+
+}
+
+
+.order-section {
+
+    margin-top:100px;
+
+    padding-bottom:30px;
+
+}
+
+.order-wrapper {
+
+    display:grid;
+
+    grid-template-columns:
+        .9fr
+        1.1fr;
+
+    gap:30px;
+
+}
+
+.order-intro {
+
+    padding:42px;
+
+    background:var(--primary);
+
+    color:var(--white);
+
+}
+
+.order-intro .section-eyebrow {
+
+    color:#8fc4ea;
+
+}
+
+.order-intro h2 {
+
+    margin:0;
+
+    font-size:36px;
+
+    line-height:1.15;
+
+}
+
+.order-intro > p {
+
+    margin:18px 0 25px;
+
+    color:rgba(255,255,255,.72);
+
+    font-size:14px;
+
+}
+
+.order-list {
+
+    display:flex;
+    flex-direction:column;
+
+    gap:13px;
+
+}
+
+.order-list-item {
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    color:rgba(255,255,255,.88);
+
+    font-size:13px;
+
+}
+
+.order-check {
+
+    width:23px;
+    height:23px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.12);
+
+    color:#a8d6f5;
+
+    font-size:12px;
+
+}
+
+.order-form {
+
+    padding:35px;
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+}
+
+.form-heading {
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+}
+
+.form-heading h3 {
+
+    margin:0;
+
+    color:var(--dark);
+
+    font-size:23px;
+
+}
+
+.form-heading span {
+
+    color:var(--accent);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.12em;
+
+}
+
+.form-grid {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+    gap:18px;
+
+}
+
+.form-field {
+
+    display:flex;
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+.form-field.full {
+
+    grid-column:1 / -1;
+
+}
+
+.form-field label {
+
+    color:var(--dark);
+
+    font-size:11px;
+    font-weight:800;
+
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+
+    width:100%;
+
+    min-height:43px;
+
+    padding:10px 12px;
+
+    border:1px solid var(--border);
+
+    background:var(--light);
+
+    color:var(--text);
+
+    outline:none;
+
+    font-size:12px;
+
+}
+
+.form-field textarea {
+
+    min-height:110px;
+
+    resize:vertical;
+
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+
+    border-color:var(--accent);
+
+}
+
+.form-submit {
+
+    width:100%;
+
+    min-height:46px;
+
+    margin-top:20px;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:.05em;
+
+}
+
+.form-submit:hover {
+
+    background:var(--primary-dark);
+
+}
+
+.form-notice {
+
+    margin-top:12px;
+
+    color:var(--success);
+
+    font-size:12px;
+
+}
+
+.cta-section {
+
+    margin-top:80px;
+
+    margin-bottom:80px;
+
+}
+
+.cta {
+
+    padding:45px 50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+
+    background:var(--accent-light);
+
+    border:1px solid #d5e5f2;
+
+}
+
+.cta h2 {
+
+    margin:0;
+
+    color:var(--dark);
+
+    font-size:30px;
+
+}
+
+.cta p {
+
+    max-width:650px;
+
+    margin:10px 0 0;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+.cta-button {
+
+    flex-shrink:0;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:46px;
+
+    padding:0 21px;
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    font-size:11px;
+    font-weight:800;
+
+}
+
+.cta-button:hover {
+
+    background:var(--primary-dark);
+
+}
+
+.modal {
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:rgba(11,29,45,.72);
+
+}
+
+.modal.open {
+
+    display:flex;
+
+}
+
+.modal-dialog {
+
+    width:min(900px, 100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:var(--white);
+
+}
+
+.modal-header {
+
+    padding:20px 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.modal-header h3 {
+
+    margin:0;
+
+    color:var(--dark);
+
+    font-size:20px;
+
+}
+
+.modal-close {
+
+    width:36px;
+    height:36px;
+
+    border:1px solid var(--border);
+
+    background:var(--white);
+
+    color:var(--muted);
+
+    font-size:22px;
+
+}
+
+.modal-body {
+
+    display:grid;
+
+    grid-template-columns:
+        .8fr
+        1.2fr;
+
+}
+
+.modal-image {
+
+    min-height:350px;
+
+    background:var(--light);
+
+}
+
+.modal-image img {
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.modal-info {
+
+    padding:30px;
+
+}
+
+.modal-info h4 {
+
+    margin:0;
+
+    color:var(--dark);
+
+    font-size:25px;
+
+}
+
+.modal-code {
+
+    margin-top:6px;
+
+    color:var(--accent);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.1em;
+
+}
+
+.modal-description {
+
+    margin:18px 0;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+.modal-info h5 {
+
+    margin:20px 0 10px;
+
+    color:var(--dark);
+
+}
+
+.modal-variants {
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:7px;
+
+}
+
+.modal-variants span {
+
+    padding:6px 9px;
+
+    background:var(--accent-light);
+
+    color:var(--secondary);
+
+    font-size:10px;
+    font-weight:700;
+
+}
+
+.modal-actions {
+
+    display:flex;
+
+    gap:8px;
+
+    margin-top:25px;
+
+}
+
+.modal-order,
+.modal-secondary {
+
+    min-height:42px;
+
+    padding:0 15px;
+
+    border:1px solid var(--border);
+
+    font-size:11px;
+    font-weight:800;
+
+}
+
+.modal-order {
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    border-color:var(--primary);
+
+}
+
+.modal-secondary {
+
+    background:var(--white);
+
+    color:var(--primary);
+
+}
+
+
+footer {
+
+    background:var(--dark);
+
+    color:var(--white);
+
+}
+
+.footer-grid {
+
+    width:min(1400px, calc(100% - 64px));
+
+    margin:0 auto;
+
+    padding:65px 0 55px;
+
+    display:grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr;
+
+    gap:45px;
+
+}
+
+.footer-brand {
+
+    max-width:430px;
+
+}
+
+.footer-logo {
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.footer-logo img {
+
+    width:42px;
+    height:42px;
+
+    object-fit:contain;
+
+}
+
+.footer-logo strong {
+
+    font-size:14px;
+
+    letter-spacing:.04em;
+
+}
+
+.footer-brand p {
+
+    margin:18px 0 0;
+
+    color:rgba(255,255,255,.58);
+
+    font-size:12px;
+
+    line-height:1.8;
+
+}
+
+.footer-column {
+
+    display:flex;
+    flex-direction:column;
+
+    gap:9px;
+
+}
+
+.footer-column h4 {
+
+    margin:0 0 8px;
+
+    color:var(--white);
+
+    font-size:11px;
+
+    letter-spacing:.1em;
+
+    text-transform:uppercase;
+
+}
+
+.footer-column a {
+
+    color:rgba(255,255,255,.58);
+
+    font-size:12px;
+
+    transition:color .2s ease;
+
+}
+
+.footer-column a:hover {
+
+    color:var(--white);
+
+}
+
+.footer-bottom {
+
+    width:min(1400px, calc(100% - 64px));
+
+    margin:0 auto;
+
+    padding:20px 0;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+    display:flex;
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:rgba(255,255,255,.42);
+
+    font-size:10px;
+
+}
+
+
+.floating-portal {
+
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    z-index:900;
+
+    min-height:44px;
+
+    padding:0 16px;
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    box-shadow:
+        0 10px 30px rgba(11,29,45,.18);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.04em;
+
+}
+
+.floating-portal:hover {
+
+    background:var(--primary-dark);
+
+}
+
+.portal-icon {
+
+    font-size:15px;
+
+}
+
+
+
+.reveal {
+
+    opacity:0;
+    transform:translateY(16px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+}
+
+.reveal.visible {
+
+    opacity:1;
+    transform:none;
+
+}
+
+
+
+@media (max-width:1150px) {
+
+    .header-container {
+
+        gap:18px;
+
+    }
+
+    .nav {
+
+        gap:0;
+
+    }
+
+    .nav a {
+
+        padding-left:8px;
+        padding-right:8px;
+
+        font-size:10px;
+
+    }
+
+    .nav a.active::after {
+
+        left:8px;
+        right:8px;
+
+    }
+
+    .header-login,
+    .header-portal {
+
+        padding-left:11px;
+        padding-right:11px;
+
+        font-size:10px;
+
+    }
+
+}
+
+
+@media (max-width:900px) {
+
+    .header-container {
+
+        min-height:76px;
+
+        width:min(100% - 40px, 1400px);
+
+    }
+
+    .nav,
+    .header-actions {
+
+        display:none;
+
+    }
+
+    .menu-button {
+
+        margin-left:auto;
+
+        display:flex;
+
+    }
+
+    .header.mobile-open {
+
+        box-shadow:
+            0 10px 30px rgba(11,29,45,.08);
+
+    }
+
+    .header.mobile-open .nav {
+
+        position:absolute;
+
+        left:0;
+        right:0;
+
+        top:76px;
+
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+
+        gap:0;
+
+        padding:10px 20px 15px;
+
+        background:var(--white);
+
+        border-top:1px solid var(--border);
+
+        border-bottom:1px solid var(--border);
+
+    }
+
+    .header.mobile-open .nav a {
+
+        padding:13px 5px;
+
+    }
+
+    .header.mobile-open .header-actions {
+
+        position:absolute;
+
+        top:76px;
+
+        right:20px;
+
+        display:none;
+
+    }
+
+    .uniform-layout,
+    .order-wrapper {
+
+        grid-template-columns:1fr;
+
+    }
+
+    .uniform-preview {
+
+        min-height:420px;
+
+    }
+
+    .products-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+    .product-card.featured {
+
+        grid-column:auto;
+
+    }
+
+    .hero-stats-inner {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .hero-stat:nth-child(2) {
+
+        border-right:none;
+
+    }
+
+    .hero-stat:nth-child(3),
+    .hero-stat:nth-child(4) {
+
+        border-top:1px solid var(--border);
+
+    }
+
+    .footer-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media (max-width:650px) {
+
+    .header-container,
+    .products-hero-content,
+    main,
+    .footer-grid,
+    .footer-bottom,
+    .hero-stats-inner {
+
+        width:calc(100% - 32px);
+
+    }
+
+    .brand-title {
+
+        font-size:12px;
+
+    }
+
+    .brand-subtitle {
+
+        font-size:8px;
+
+    }
+
+    .logo {
+
+        width:45px;
+        height:45px;
+
+    }
+
+    .products-hero {
+
+        min-height:560px;
+
+    }
+
+    .products-hero-content {
+
+        padding:75px 0;
+
+    }
+
+    .products-hero h1 {
+
+        font-size:43px;
+
+    }
+
+    .hero-description {
+
+        font-size:14px;
+
+    }
+
+    .hero-stats-inner {
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-stat {
+
+        border-right:none !important;
+
+        border-bottom:1px solid var(--border);
+
+    }
+
+    .hero-stat:last-child {
+
+        border-bottom:none;
+
+    }
+
+    .section-heading {
+
+        margin-top:65px;
+
+    }
+
+    .catalog-toolbar {
+
+        flex-direction:column;
+        align-items:stretch;
+
+    }
+
+    .search-box {
+
+        min-width:0;
+
+    }
+
+    .uniform-information {
+
+        padding:25px;
+
+    }
+
+    .product-content {
+
+        padding:22px;
+
+    }
+
+    .product-top {
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+    .product-footer {
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+    }
+
+    .product-actions {
+
+        width:100%;
+
+    }
+
+    .details-button,
+    .order-button {
+
+        flex:1;
+
+    }
+
+    .form-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+    .form-field.full {
+
+        grid-column:auto;
+
+    }
+
+    .order-intro,
+    .order-form {
+
+        padding:25px;
+
+    }
+
+    .cta {
+
+        padding:30px;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .modal-body {
+
+        grid-template-columns:1fr;
+
+    }
+
+    .modal-image {
+
+        min-height:240px;
+
+    }
+
+    .footer-grid {
+
+        grid-template-columns:1fr;
+
+        gap:30px;
+
+    }
+
+    .footer-bottom {
+
+        flex-direction:column;
+
+    }
+
+    .floating-portal {
+
+        right:16px;
+        bottom:16px;
+
+    }
+
+}
+
+
+.header {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    background: #000052;
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+}
+
+.header-container {
+    width: min(1240px, calc(100% - 48px));
+    min-height: 88px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand { gap: 13px; }
+
+.logo {
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.brand-info { line-height: 1.15; }
+
+.brand-title {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.brand-subtitle {
+    margin-top: 5px;
+    color: rgba(255,255,255,0.55);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-left: auto;
+}
+
+.nav a {
+    position: relative;
+    color: rgba(255,255,255,0.64);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 32px 0;
+    transition: color 0.25s ease;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: auto;
+    bottom: 23px;
+    width: 0;
+    height: 2px;
+    background: #A9A9A9;
+    transition: width 0.25s ease;
+}
+
+.nav a:hover,
+.nav a.active { color: #ffffff; }
+
+.nav a:hover::after,
+.nav a.active::after { width: 100%; }
+
+.nav a.active::after {
+    left: 0;
+    right: auto;
+    bottom: 23px;
+    width: 100%;
+    height: 2px;
+    transform: none;
+    border-radius: 0;
+    background: #A9A9A9;
+}
+
+.header-actions { gap: 9px; }
+
+.header-login,
+.header-portal {
+    min-height: 38px;
+    padding: 0 16px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    transition: 0.25s ease;
+}
+
+.header-login {
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.22);
+}
+
+.header-login:hover { background: rgba(255,255,255,0.08); }
+
+.header-portal {
+    color: #000052;
+    background: #A9A9A9;
+}
+
+.header-portal:hover {
+    background: #f0c66d;
+    transform: translateY(-1px);
+}
+
+.menu-button {
+    display: none;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: transparent;
+    border-radius: 4px;
+}
+
+.menu-button span {
+    display: block;
+    width: 19px;
+    height: 2px;
+    margin: 4px auto;
+    background: #ffffff;
+}
+
+@media (max-width: 1050px) {
+    .nav { gap: 18px; }
+    .nav a { font-size: 9px; }
+    .header-actions { display: none; }
+}
+
+@media (max-width: 800px) {
+    .header-container { min-height: 74px; }
+    .menu-button { display: block; margin-left: 0; }
+    .nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 74px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 24px 18px;
+        background: #000052;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav.open { display: flex; }
+    .nav a { padding: 13px 0; font-size: 10px; }
+    .nav a::after { display: none; }
+}
+
+@media (max-width: 600px) {
+    .header-container { width: min(100% - 32px, 1240px); }
+    .brand-title { font-size: 11px; }
+    .brand-subtitle { font-size: 8px; }
+    .logo { width: 42px; height: 42px; }
+}
+
+@media (min-width: 601px) and (max-width: 650px) {
+    .header-container { width: min(1240px, calc(100% - 48px)); }
+    .logo { width: 48px; height: 48px; }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="header-container">
+
+
+    <a
+        href="index.html"
+        class="brand"
+    >
+
+        <div class="logo">
+
+            <img
+                src="assets/images/branding/logo.png"
+                alt="RISE College School Logo"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="brand-info">
+
+            <div class="brand-title">
+                RISE COLLEGE SCHOOL
+            </div>
+
+            <div class="brand-subtitle">
+                Student Information System
+            </div>
+
+        </div>
+
+    </a>
+
+
+    <nav
+        class="nav"
+        id="navigation"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#programs">
+            Programs
+        </a>
+
+       
+
+        <a
+            href="products.html"
+            class="active"
+        >
+            Products
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <div class="header-actions">
+
+        <a
+            href="login.html"
+            class="header-login"
+        >
+            Sign In
+        </a>
+
+        <a
+            href="login.html"
+            class="header-portal"
+        >
+            Student Portal
+        </a>
+
+    </div>
+
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+</div>
+
+</header>
+
+<section class="products-hero">
+
+    <div class="products-hero-bg"></div>
+
+    <div class="products-hero-overlay"></div>
+
+    <div class="products-hero-content reveal">
+
+        <div class="hero-breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>/</span>
+
+            <span>
+                Products
+            </span>
+
+        </div>
+
+
+        <div class="hero-label">
+
+            <span class="hero-dot"></span>
+
+            OFFICIAL SCHOOL CATALOGUE
+
+        </div>
+
+
+        <h1>
+
+            Everything you need
+            <br>
+
+            for your
+            <span>
+                RISE journey.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Explore official RISE College School uniforms,
+            identification cards, accessories, school supplies,
+            carrying gear and school merchandise — all organized
+            in one convenient catalogue.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="#catalog"
+                class="hero-button primary"
+            >
+
+                Browse Catalogue
+
+                <span>↓</span>
+
+            </a>
+
+
+            <a
+                href="#order"
+                class="hero-button secondary"
+            >
+
+                Request an Order
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="hero-stats">
+
+<div class="hero-stats-inner">
+
+    <div class="hero-stat">
+
+        <div class="hero-stat-number">
+            6+
+        </div>
+
+        <div class="hero-stat-label">
+            Product Categories
+        </div>
+
+    </div>
+
+
+    <div class="hero-stat">
+
+        <div class="hero-stat-number">
+            20+
+        </div>
+
+        <div class="hero-stat-label">
+            Product Variations
+        </div>
+
+    </div>
+
+
+    <div class="hero-stat">
+
+        <div class="hero-stat-number">
+            7–21
+        </div>
+
+        <div class="hero-stat-label">
+            Typical Bulk Lead Time
+        </div>
+
+    </div>
+
+
+    <div class="hero-stat">
+
+        <div class="hero-stat-number">
+            100%
+        </div>
+
+        <div class="hero-stat-label">
+            School-Focused Catalogue
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<main>
+
+
+<section id="catalog">
+
+
+<div class="section-heading reveal">
+
+    <span class="section-eyebrow">
+        OFFICIAL CATALOGUE
+    </span>
+
+    <h2>
+        Find what you need.
+    </h2>
+
+    <p>
+        Browse the official products available to students,
+        staff, and school events. Select a category or search
+        for a specific product.
+    </p>
+
+</div>
+
+
+<section class="catalog-toolbar reveal">
+
+
+    <div class="category-tabs">
+
+        <button
+            class="category-tab active"
+            data-category="all"
+        >
+            All Products
+        </button>
+
+        <button
+            class="category-tab"
+            data-category="uniforms"
+        >
+            Uniforms
+        </button>
+
+        <button
+            class="category-tab"
+            data-category="idcards"
+        >
+            ID Cards
+        </button>
+
+        <button
+            class="category-tab"
+            data-category="accessories"
+        >
+            Accessories
+        </button>
+
+        <button
+            class="category-tab"
+            data-category="supplies"
+        >
+            Supplies
+        </button>
+
+        <button
+            class="category-tab"
+            data-category="carrying"
+        >
+            Carrying Gear
+        </button>
+
+        <button
+            class="category-tab"
+            data-category="merch"
+        >
+            Merchandise
+        </button>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search products..."
+            aria-label="Search products"
+        >
+
+        <button
+            class="search-button"
+            id="searchButton"
+        >
+            Search
+        </button>
+
+    </div>
+
+</section>
+
+
+<div class="info-strip reveal">
+
+    <strong>
+        Bulk orders:
+    </strong>
+
+    Discounts are available for class sets of 20+ items.
+    Custom embroidery, school badges, and event bundles
+    may also be requested.
+
+</div>
+
+
+<section
+    class="products-grid"
+    id="productsGrid"
+    aria-label="Product catalogue"
+>
+
+
+<article
+    class="product-card uniform-card featured reveal"
+    data-category="uniforms"
+    data-name="Official Uniforms and Attire"
+>
+
+    <div class="featured-label">
+        Featured
+    </div>
+
+
+    <div class="uniform-layout">
+
+
+        <div class="uniform-preview">
+
+            <img
+                src="assets/images/products/uniforms/uniform-1.jpg"
+                id="uniformMainImage"
+                alt="RISE College School boys uniform"
+            >
+
+        </div>
+
+
+        <div class="uniform-information">
+
+
+            <div class="product-top">
+
+                <h3>
+                    Official Uniforms & Attire
+                </h3>
+
+                <span class="product-category">
+                    Uniforms
+                </span>
+
+            </div>
+
+
+            <p>
+
+                Official school uniforms designed to meet
+                RISE College School standards, including
+                daily uniforms, formal attire and PE kits.
+
+            </p>
+
+
+            <div class="uniform-switcher">
+
+                <button
+                    class="uniform-button active"
+                    data-variant="boys"
+                >
+                    Boys
+                </button>
+
+                <button
+                    class="uniform-button"
+                    data-variant="girls"
+                >
+                    Girls
+                </button>
+
+                <button
+                    class="uniform-button"
+                    data-variant="pe"
+                >
+                    PE Kit
+                </button>
+
+            </div>
+
+
+            <div class="uniform-thumbs">
+
+                <div
+                    class="uniform-thumb"
+                    data-image="assets/images/products/uniforms/uniform-1.jpg"
+                >
+
+                    <img
+                        src="assets/images/products/uniforms/uniform-1.jpg"
+                        alt="Boys uniform"
+                    >
+
+                </div>
+
+
+                <div
+                    class="uniform-thumb"
+                    data-image="assets/images/products/uniforms/uniform-2.png"
+                >
+
+                    <img
+                        src="assets/images/products/uniforms/uniform-2.png"
+                        alt="Girls uniform"
+                    >
+
+                </div>
+
+
+                <div
+                    class="uniform-thumb"
+                    data-image="assets/images/products/uniforms/uniform-pe.png"
+                >
+
+                    <img
+                        src="assets/images/products/uniforms/uniform-pe.png"
+                        alt="PE uniform"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="uniform-details">
+
+                <strong id="uniformName">
+                    Boys Uniform — PHP 1,200 per set
+                </strong>
+
+                <p id="uniformDescription">
+                    Standard student daily uniform for boys
+                    with comfortable cut and reinforced seams.
+                </p>
+
+                <ul id="uniformList">
+
+                    <li>
+                        Shirt and trousers
+                    </li>
+
+                    <li>
+                        Optional embroidered crest
+                    </li>
+
+                    <li>
+                        Custom sizes available
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="product-footer">
+
+                <span class="product-code">
+                    UNIF-001
+                </span>
+
+                <div class="product-actions">
+
+                    <button
+                        class="details-button"
+                        data-product="uniforms"
+                    >
+                        View Details
+                    </button>
+
+                    <button
+                        class="order-button"
+                        data-product="uniforms"
+                    >
+                        Order
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<article
+    class="product-card reveal"
+    data-category="idcards"
+    data-name="Identification Card"
+>
+
+    <div class="product-image">
+
+        <img
+            src="assets/images/products/school-supplies/idcard.png"
+            alt="RISE College School identification card"
+        >
+
+    </div>
+
+
+    <div class="product-content">
+
+        <div class="product-top">
+
+            <h3 class="product-title">
+                Identification Card
+            </h3>
+
+            <span class="product-category">
+                ID Cards
+            </span>
+
+        </div>
+
+
+        <p class="product-description">
+
+            Durable PVC identification cards with optional
+            QR, RFID, lanyard, and badge-holder options.
+
+        </p>
+
+
+        <div class="product-tags">
+
+            <span class="product-tag">PVC</span>
+            <span class="product-tag">RFID</span>
+            <span class="product-tag">QR</span>
+            <span class="product-tag">Lanyard</span>
+
+        </div>
+
+
+        <div class="product-footer">
+
+            <span class="product-code">
+                ID-002
+            </span>
+
+            <div class="product-actions">
+
+                <button
+                    class="details-button"
+                    data-product="idcards"
+                >
+                    Details
+                </button>
+
+                <button
+                    class="order-button"
+                    data-product="idcards"
+                >
+                    Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<article
+    class="product-card reveal"
+    data-category="accessories"
+    data-name="Lace and Accessories"
+>
+
+    <div class="product-image">
+
+        <img
+            src="assets/images/products/school-supplies/lace-var.png"
+            alt="RISE College School laces and accessories"
+        >
+
+    </div>
+
+
+    <div class="product-content">
+
+        <div class="product-top">
+
+            <h3 class="product-title">
+                Lace & Accessories
+            </h3>
+
+            <span class="product-category">
+                Accessories
+            </span>
+
+        </div>
+
+
+        <p class="product-description">
+
+            Official school-branded laces, ribbons, pins,
+            badges, and ceremony accessories.
+
+        </p>
+
+
+        <div class="product-tags">
+
+            <span class="product-tag">Laces</span>
+            <span class="product-tag">Ribbons</span>
+            <span class="product-tag">Pins</span>
+            <span class="product-tag">Badges</span>
+
+        </div>
+
+
+        <div class="product-footer">
+
+            <span class="product-code">
+                ACC-010
+            </span>
+
+            <div class="product-actions">
+
+                <button
+                    class="details-button"
+                    data-product="accessories"
+                >
+                    Details
+                </button>
+
+                <button
+                    class="order-button"
+                    data-product="accessories"
+                >
+                    Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<article
+    class="product-card reveal"
+    data-category="supplies"
+    data-name="School Supplies and Stationery"
+>
+
+    <div class="product-image">
+
+        <img
+            src="assets/images/products/school-supplies/supplies-1.jpg"
+            alt="School supplies and stationery"
+        >
+
+    </div>
+
+
+    <div class="product-content">
+
+        <div class="product-top">
+
+            <h3 class="product-title">
+                School Supplies & Stationery
+            </h3>
+
+            <span class="product-category">
+                Supplies
+            </span>
+
+        </div>
+
+
+        <p class="product-description">
+
+            Official notebooks, planners, stationery starter
+            kits and course-specific lab kits.
+
+        </p>
+
+
+        <div class="product-tags">
+
+            <span class="product-tag">Notebooks</span>
+            <span class="product-tag">Planners</span>
+            <span class="product-tag">Starter Kits</span>
+            <span class="product-tag">Lab Kits</span>
+
+        </div>
+
+
+        <div class="product-footer">
+
+            <span class="product-code">
+                SUP-020
+            </span>
+
+            <div class="product-actions">
+
+                <button
+                    class="details-button"
+                    data-product="supplies"
+                >
+                    Details
+                </button>
+
+                <button
+                    class="order-button"
+                    data-product="supplies"
+                >
+                    Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<article
+    class="product-card reveal"
+    data-category="carrying"
+    data-name="Carrying Gear and Laptop Sleeves"
+>
+
+    <div class="product-image">
+
+        <img
+            src="assets/images/products/school-supplies/carrying-gear-1.jpg"
+            alt="Backpack and laptop carrying gear"
+        >
+
+    </div>
+
+
+    <div class="product-content">
+
+        <div class="product-top">
+
+            <h3 class="product-title">
+                Carrying Gear & Laptop Sleeves
+            </h3>
+
+            <span class="product-category">
+                Carrying
+            </span>
+
+        </div>
+
+
+        <p class="product-description">
+
+            Backpacks, laptop sleeves and organizers designed
+            for students and their everyday devices.
+
+        </p>
+
+
+        <div class="product-tags">
+
+            <span class="product-tag">Backpack</span>
+            <span class="product-tag">Laptop Sleeve</span>
+            <span class="product-tag">Anti-Theft</span>
+            <span class="product-tag">Organizer</span>
+
+        </div>
+
+
+        <div class="product-footer">
+
+            <span class="product-code">
+                CARRY-030
+            </span>
+
+            <div class="product-actions">
+
+                <button
+                    class="details-button"
+                    data-product="carrying"
+                >
+                    Details
+                </button>
+
+                <button
+                    class="order-button"
+                    data-product="carrying"
+                >
+                    Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<article
+    class="product-card reveal"
+    data-category="merch"
+    data-name="School Merchandise and Event Packs"
+>
+
+    <div class="product-image">
+
+        <img
+            src="assets/images/products/merchandise/merch-1.png"
+            alt="RISE College School merchandise"
+        >
+
+    </div>
+
+
+    <div class="product-content">
+
+        <div class="product-top">
+
+            <h3 class="product-title">
+                School Merchandise & Event Packs
+            </h3>
+
+            <span class="product-category">
+                Merchandise
+            </span>
+
+        </div>
+
+
+        <p class="product-description">
+
+            Hoodies, caps, stickers, posters and event
+            bundles for school activities, fundraising
+            and alumni events.
+
+        </p>
+
+
+        <div class="product-tags">
+
+            <span class="product-tag">Hoodies</span>
+            <span class="product-tag">Caps</span>
+            <span class="product-tag">Stickers</span>
+            <span class="product-tag">Event Packs</span>
+
+        </div>
+
+
+        <div class="product-footer">
+
+            <span class="product-code">
+                MERCH-040
+            </span>
+
+            <div class="product-actions">
+
+                <button
+                    class="details-button"
+                    data-product="merch"
+                >
+                    Details
+                </button>
+
+                <button
+                    class="order-button"
+                    data-product="merch"
+                >
+                    Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+</section>
+
+
+<div
+    class="no-results"
+    id="noResults"
+>
+
+    <div class="no-results-icon">
+        ?
+    </div>
+
+    <h3>
+        No products found
+    </h3>
+
+    <p>
+        Try another search term or choose a different category.
+    </p>
+
+</div>
+
+</section>
+
+
+<section
+    class="order-section"
+    id="order"
+>
+
+
+<div class="order-wrapper">
+
+
+    <div class="order-intro reveal">
+
+        <span class="section-eyebrow">
+            ORDERING
+        </span>
+
+        <h2>
+            Need a class set or custom request?
+        </h2>
+
+        <p>
+
+            Submit your requirements and the school supplies
+            office can review your request. This is ideal for
+            uniforms, event merchandise, class sets and other
+            bulk requirements.
+
+        </p>
+
+
+        <div class="order-list">
+
+            <div class="order-list-item">
+
+                <span class="order-check">
+                    ✓
+                </span>
+
+                Class and bulk orders
+
+            </div>
+
+
+            <div class="order-list-item">
+
+                <span class="order-check">
+                    ✓
+                </span>
+
+                Custom sizes and variants
+
+            </div>
+
+
+            <div class="order-list-item">
+
+                <span class="order-check">
+                    ✓
+                </span>
+
+                Embroidery and school branding
+
+            </div>
+
+
+            <div class="order-list-item">
+
+                <span class="order-check">
+                    ✓
+                </span>
+
+                Event and organization packs
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="order-form reveal">
+
+        <div class="form-heading">
+
+            <h3>
+                Quick Order Request
+            </h3>
+
+            <span>
+                REQUEST
+            </span>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-field">
+
+                <label for="orderName">
+                    Full Name
+                </label>
+
+                <input
+                    id="orderName"
+                    type="text"
+                    placeholder="Your full name"
+                >
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="orderEmail">
+                    Email Address
+                </label>
+
+                <input
+                    id="orderEmail"
+                    type="email"
+                    placeholder="you@example.com"
+                >
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="orderProduct">
+                    Product
+                </label>
+
+                <select id="orderProduct">
+
+                    <option value="uniforms">
+                        Official Uniforms & Attire
+                    </option>
+
+                    <option value="idcards">
+                        Identification Card
+                    </option>
+
+                    <option value="accessories">
+                        Lace & Accessories
+                    </option>
+
+                    <option value="supplies">
+                        School Supplies & Stationery
+                    </option>
+
+                    <option value="carrying">
+                        Carrying Gear & Laptop Sleeves
+                    </option>
+
+                    <option value="merch">
+                        School Merchandise & Event Packs
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="orderQuantity">
+                    Quantity
+                </label>
+
+                <input
+                    id="orderQuantity"
+                    type="number"
+                    min="1"
+                    value="1"
+                >
+
+            </div>
+
+
+            <div class="form-field full">
+
+                <label for="orderNotes">
+                    Requirements / Notes
+                </label>
+
+                <textarea
+                    id="orderNotes"
+                    placeholder="Include sizes, variants, deadline, class section, or other requirements."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="form-submit"
+            id="orderSubmit"
+        >
+            Send Request
+        </button>
+
+
+        <div
+            class="form-notice"
+            id="orderNotice"
+        ></div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<section class="cta-section">
+
+<div class="cta reveal">
+
+    <div>
+
+        <h2>
+            Looking for something else?
+        </h2>
+
+        <p>
+
+            Contact RISE College School for custom requirements,
+            special school events, bulk orders, or additional
+            product information.
+
+        </p>
+
+    </div>
+
+
+    <a
+        href="contact.html"
+        class="cta-button"
+    >
+        Contact School →
+    </a>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<div
+    class="modal"
+    id="productModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+>
+
+
+<div class="modal-dialog">
+
+
+    <div class="modal-header">
+
+        <h3 id="modalTitle">
+            Product Details
+        </h3>
+
+        <button
+            class="modal-close"
+            id="modalClose"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+
+        <div class="modal-image">
+
+            <img
+                src=""
+                id="modalImage"
+                alt=""
+            >
+
+        </div>
+
+
+        <div class="modal-info">
+
+            <h4 id="modalProductName">
+                Product
+            </h4>
+
+            <div
+                class="modal-code"
+                id="modalProductCode"
+            ></div>
+
+            <p
+                class="modal-description"
+                id="modalDescription"
+            ></p>
+
+
+            <h5>
+                Available Options
+            </h5>
+
+
+            <div
+                class="modal-variants"
+                id="modalVariants"
+            ></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="modal-order"
+                    id="modalOrder"
+                >
+                    Request Order
+                </button>
+
+                <button
+                    class="modal-secondary"
+                    id="modalCloseSecondary"
+                >
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<footer>
+
+
+<div class="footer-grid">
+
+
+    <div class="footer-brand">
+
+        <div class="footer-logo">
+
+            <img
+                src="assets/images/branding/logo.png"
+                alt="RISE College School Logo"
+            >
+
+            <strong>
+                RISE COLLEGE SCHOOL
+            </strong>
+
+        </div>
+
+
+        <p>
+
+            A technology-focused school dedicated to providing
+            students with a suitable learning environment,
+            practical education, proper guidance, and
+            opportunities for growth.
+
+        </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>
+            Navigation
+        </h4>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="#catalog">
+            Catalogue
+        </a>
+
+        <a href="#order">
+            Orders
+        </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>
+            Student
+        </h4>
+
+        <a href="login.html">
+            Student Portal
+        </a>
+
+        <a href="login.html">
+            Sign In
+        </a>
+
+        <a href="index.html#services">
+            Student Services
+        </a>
+
+        <a href="index.html#programs">
+            Programs
+        </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>
+            Contact
+        </h4>
+
+        <a href="contact.html">
+            Contact School
+        </a>
+
+        <a href="mailto:RiseCollege@gmail.com">
+            RiseCollege@gmail.com
+        </a>
+
+        <a href="tel:+639167398876">
+            +63 916 739 8876
+        </a>
+
+        <a href="#">
+            Caloocan, Philippines
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+    <div>
+
+        ©
+        <span id="year"></span>
+        RISE COLLEGE SCHOOL.
+        All rights reserved.
+
+    </div>
+
+    <div>
+        Official Products Catalogue
+    </div>
+
+</div>
+
+</footer>
+
+
+<a
+    href="login.html"
+    class="floating-portal"
+>
+
+    <span class="portal-icon">
+        →
+    </span>
+
+    Student Portal
+
+</a>
+
+
+
+<script>
+
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navigation =
+    document.getElementById("navigation");
+
+
+menuButton.addEventListener("click", function () {
+
+    navigation.classList.toggle("open");
+
+    const expanded =
+        navigation.classList.contains("open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        expanded
+    );
+
+});
+
+
+navigation.querySelectorAll("a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navigation.classList.remove("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+});
+
+
+const categoryTabs =
+    document.querySelectorAll(".category-tab");
+
+const productCards =
+    document.querySelectorAll(".product-card");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const noResults =
+    document.getElementById("noResults");
+
+let selectedCategory = "all";
+
+
+function filterProducts() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    let visibleCount = 0;
+
+
+    productCards.forEach(function (card) {
+
+        const category =
+            card.dataset.category;
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        const matchesCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+        const matchesSearch =
+            !search ||
+            name.includes(search) ||
+            category.includes(search);
+
+
+        if (
+            matchesCategory &&
+            matchesSearch
+        ) {
+
+            card.style.display = "";
+
+            visibleCount++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    noResults.classList.toggle(
+        "show",
+        visibleCount === 0
+    );
+
+}
+
+
+categoryTabs.forEach(function (tab) {
+
+    tab.addEventListener("click", function () {
+
+        categoryTabs.forEach(function (item) {
+
+            item.classList.remove("active");
+
+        });
+
+
+        tab.classList.add("active");
+
+        selectedCategory =
+            tab.dataset.category;
+
+        filterProducts();
+
+    });
+
+});
+
+
+searchInput.addEventListener(
+    "input",
+    filterProducts
+);
+
+
+const uniformMainImage =
+    document.getElementById("uniformMainImage");
+
+const uniformName =
+    document.getElementById("uniformName");
+
+const uniformDescription =
+    document.getElementById("uniformDescription");
+
+const uniformList =
+    document.getElementById("uniformList");
+
+const uniformButtons =
+    document.querySelectorAll(".uniform-button");
+
+const uniformThumbs =
+    document.querySelectorAll(".uniform-thumb");
+
+
+const uniformData = {
+
+    boys: {
+
+        image:"assets/images/products/uniforms/uniform-1.jpg",
+
+        name:"Boys Uniform — PHP 1,200 per set",
+
+        description:
+            "Standard student daily uniform for boys with comfortable cut and reinforced seams.",
+
+        list:[
+            "Shirt and trousers",
+            "Optional embroidered crest",
+            "Custom sizes available"
+        ]
+
+    },
+
+    girls: {
+
+        image:"assets/images/products/uniforms/uniform-2.png",
+
+        name:"Girls Uniform — PHP 1,200 per set",
+
+        description:
+            "Standard student daily uniform for girls with comfortable fit and durable construction.",
+
+        list:[
+            "Blouse and skirt",
+            "Optional embroidered crest",
+            "Custom sizes available"
+        ]
+
+    },
+
+    pe: {
+
+        image:"assets/images/products/uniforms/uniform-pe.png",
+
+        name:"PE Kit — PHP 950 per set",
+
+        description:
+            "Official physical education kit designed for student movement and everyday activity.",
+
+        list:[
+            "PE shirt and shorts",
+            "School branding",
+            "Multiple sizes available"
+        ]
+
+    }
+
+};
+
+
+function selectUniform(variant) {
+
+    const data =
+        uniformData[variant];
+
+    if (!data) return;
+
+
+    uniformMainImage.src =
+        data.image;
+
+    uniformName.textContent =
+        data.name;
+
+    uniformDescription.textContent =
+        data.description;
+
+
+    uniformList.innerHTML =
+        data.list
+            .map(function (item) {
+
+                return "<li>" +
+                    item +
+                    "</li>";
+
+            })
+            .join("");
+
+
+    uniformButtons.forEach(function (button) {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.variant === variant
+        );
+
+    });
+
+
+    uniformThumbs.forEach(function (thumb) {
+
+        thumb.style.borderColor =
+            thumb.dataset.image === data.image
+                ? "var(--accent)"
+                : "transparent";
+
+    });
+
+}
+
+
+uniformButtons.forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            selectUniform(
+                button.dataset.variant
+            );
+
+        }
+    );
+
+});
+
+
+uniformThumbs.forEach(function (thumb) {
+
+    thumb.addEventListener(
+        "click",
+        function () {
+
+            uniformMainImage.src =
+                thumb.dataset.image;
+
+            uniformThumbs.forEach(
+                function (item) {
+
+                    item.style.borderColor =
+                        "transparent";
+
+                }
+            );
+
+            thumb.style.borderColor =
+                "var(--accent)";
+
+        }
+    );
+
+});
+
+
+const productInformation = {
+
+    uniforms: {
+
+        name:"Official Uniforms & Attire",
+
+        code:"UNIF-001",
+
+        image:"assets/images/products/uniforms/uniform-1.jpg",
+
+        description:
+            "Official school uniforms designed to meet RISE College School standards, including daily uniforms, formal attire and PE kits.",
+
+        variants:[
+            "Boys",
+            "Girls",
+            "PE Kit",
+            "Custom Sizes"
+        ]
+
+    },
+
+    idcards: {
+
+        name:"Identification Card",
+
+        code:"ID-002",
+
+        image:"assets/images/products/school-supplies/idcard.png",
+
+        description:
+            "Durable PVC identification cards with optional QR, RFID, lanyard and badge-holder options.",
+
+        variants:[
+            "PVC",
+            "RFID",
+            "QR",
+            "Lanyard"
+        ]
+
+    },
+
+    accessories: {
+
+        name:"Lace & Accessories",
+
+        code:"ACC-010",
+
+        image:"assets/images/products/school-supplies/lace-var.png",
+
+        description:
+            "Official school-branded laces, ribbons, pins, badges and ceremony accessories.",
+
+        variants:[
+            "Laces",
+            "Ribbons",
+            "Pins",
+            "Badges"
+        ]
+
+    },
+
+    supplies: {
+
+        name:"School Supplies & Stationery",
+
+        code:"SUP-020",
+
+        image:"assets/images/products/school-supplies/supplies-1.jpg",
+
+        description:
+            "Official notebooks, planners, stationery starter kits and course-specific lab kits.",
+
+        variants:[
+            "Notebooks",
+            "Planners",
+            "Starter Kits",
+            "Lab Kits"
+        ]
+
+    },
+
+    carrying: {
+
+        name:"Carrying Gear & Laptop Sleeves",
+
+        code:"CARRY-030",
+
+        image:"assets/images/products/school-supplies/carrying-gear-1.jpg",
+
+        description:
+            "Backpacks, laptop sleeves and organizers designed for students and their everyday devices.",
+
+        variants:[
+            "Backpack",
+            "Laptop Sleeve",
+            "Anti-Theft",
+            "Organizer"
+        ]
+
+    },
+
+    merch: {
+
+        name:"School Merchandise & Event Packs",
+
+        code:"MERCH-040",
+
+        image:"assets/images/products/merchandise/merch-1.png",
+
+        description:
+            "Hoodies, caps, stickers, posters and event bundles for school activities, fundraising and alumni events.",
+
+        variants:[
+            "Hoodies",
+            "Caps",
+            "Stickers",
+            "Event Packs"
+        ]
+
+    }
+
+};
+
+
+const modal =
+    document.getElementById("productModal");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+const modalCloseSecondary =
+    document.getElementById(
+        "modalCloseSecondary"
+    );
+
+const modalImage =
+    document.getElementById("modalImage");
+
+const modalProductName =
+    document.getElementById(
+        "modalProductName"
+    );
+
+const modalProductCode =
+    document.getElementById(
+        "modalProductCode"
+    );
+
+const modalDescription =
+    document.getElementById(
+        "modalDescription"
+    );
+
+const modalVariants =
+    document.getElementById(
+        "modalVariants"
+    );
+
+
+function openProductModal(productKey) {
+
+    const product =
+        productInformation[productKey];
+
+    if (!product) return;
+
+
+    modalProductName.textContent =
+        product.name;
+
+    modalProductCode.textContent =
+        product.code;
+
+    modalDescription.textContent =
+        product.description;
+
+    modalImage.src =
+        product.image;
+
+    modalImage.alt =
+        product.name;
+
+
+    modalVariants.innerHTML =
+        product.variants
+            .map(function (variant) {
+
+                return "<span>" +
+                    variant +
+                    "</span>";
+
+            })
+            .join("");
+
+
+    modal.classList.add("open");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeProductModal() {
+
+    modal.classList.remove("open");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+document.querySelectorAll(
+    ".details-button"
+).forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            openProductModal(
+                button.dataset.product
+            );
+
+        }
+    );
+
+});
+
+
+document.querySelectorAll(
+    ".order-button"
+).forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            document.getElementById(
+                "orderProduct"
+            ).value =
+                button.dataset.product;
+
+            document.getElementById(
+                "order"
+            ).scrollIntoView({
+                behavior:"smooth"
+            });
+
+        }
+    );
+
+});
+
+
+modalClose.addEventListener(
+    "click",
+    closeProductModal
+);
+
+modalCloseSecondary.addEventListener(
+    "click",
+    closeProductModal
+);
+
+
+modal.addEventListener(
+    "click",
+    function (event) {
+
+        if (event.target === modal) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            modal.classList.contains("open")
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+document.getElementById(
+    "modalOrder"
+).addEventListener(
+    "click",
+    function () {
+
+        closeProductModal();
+
+        document.getElementById(
+            "order"
+        ).scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+
+document.getElementById(
+    "orderSubmit"
+).addEventListener(
+    "click",
+    function () {
+
+        const name =
+            document.getElementById(
+                "orderName"
+            ).value.trim();
+
+        const email =
+            document.getElementById(
+                "orderEmail"
+            ).value.trim();
+
+        const quantity =
+            document.getElementById(
+                "orderQuantity"
+            ).value;
+
+        const notice =
+            document.getElementById(
+                "orderNotice"
+            );
+
+
+        if (!name || !email || !quantity) {
+
+            notice.style.color =
+                "#c44b4b";
+
+            notice.textContent =
+                "Please complete your name, email address, and quantity.";
+
+            return;
+
+        }
+
+
+        notice.style.color =
+            "var(--success)";
+
+        notice.textContent =
+            "Your order request has been prepared. Please contact the school to finalize the request.";
+
+    }
+);
+
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(
+                function (entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.08
+        }
+    );
+
+
+revealElements.forEach(
+    function (element) {
+
+        revealObserver.observe(element);
+
+    }
+);
+
+
+filterProducts();
+
+</script>
+
+</body>
+</html>

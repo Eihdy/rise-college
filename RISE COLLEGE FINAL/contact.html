@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | RISE COLLEGE SCHOOL</title>
+
+<meta
+name="description"
+content="Contact RISE COLLEGE SCHOOL — Admissions, supplies, student services, and general enquiries."
+
+>
+
+<style>
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #D3D3D3;
+    color: #0F3A6B;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+
+:root {
+    --navy: #000052;
+    --navy-deep: #000052;
+    --navy-soft: #0F3A6B;
+
+    --cream: #D3D3D3;
+    --white: #ffffff;
+    --off-white: #f6f6f6;
+
+    --accent: #A9A9A9;
+    --accent-dark: #8d8d8d;
+    --accent-light: #D3D3D3;
+
+    --text: #0F3A6B;
+    --muted: #4b4f59;
+    --border: #d0d0d0;
+
+    --shadow: 0 18px 45px rgba(8, 18, 32, 0.10);
+    --shadow-soft: 0 10px 30px rgba(8, 18, 32, 0.07);
+
+    --max-width: 1240px;
+}
+
+
+
+
+.header {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+}
+
+.header-container {
+    width: min(var(--max-width), calc(100% - 48px));
+    min-height: 88px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    flex-shrink: 0;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.brand-title {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.brand-subtitle {
+    margin-top: 5px;
+    color: rgba(255,255,255,0.55);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-left: auto;
+}
+
+.nav a {
+    position: relative;
+    color: rgba(255,255,255,0.64);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    padding: 32px 0;
+
+    transition:
+        color 0.25s ease;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    bottom: 23px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--accent);
+
+    transition: width 0.25s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+    color: #ffffff;
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+}
+
+.header-login,
+.header-portal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+    padding: 0 16px;
+
+    border-radius: 4px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+
+    transition: 0.25s ease;
+}
+
+.header-login {
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.22);
+}
+
+.header-login:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.header-portal {
+    color: var(--navy);
+    background: var(--accent);
+}
+
+.header-portal:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+}
+
+.menu-button {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255,255,255,0.18);
+    background: transparent;
+    border-radius: 4px;
+}
+
+.menu-button span {
+    display: block;
+    width: 19px;
+    height: 2px;
+    margin: 4px auto;
+    background: #ffffff;
+}
+
+
+
+
+.page-hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 390px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(216,154,53,0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            var(--navy-deep),
+            var(--navy)
+        );
+}
+
+.page-hero::before {
+    content: "";
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -220px;
+    top: -250px;
+
+    border: 1px solid rgba(216,154,53,0.18);
+    border-radius: 50%;
+}
+
+.page-hero::after {
+    content: "";
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    right: -120px;
+    bottom: -260px;
+
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+}
+
+.page-hero-container {
+    position: relative;
+    z-index: 2;
+
+    width: min(var(--max-width), calc(100% - 48px));
+    margin: auto;
+
+    padding: 78px 0;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    color: var(--accent);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.hero-eyebrow::before {
+    content: "";
+
+    width: 24px;
+    height: 2px;
+
+    background: var(--accent);
+}
+
+.page-hero h1 {
+    max-width: 780px;
+
+    margin-top: 17px;
+
+    color: #ffffff;
+
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -2.5px;
+    font-weight: 800;
+}
+
+.page-hero h1 span {
+    color: var(--accent);
+}
+
+.page-hero-description {
+    max-width: 650px;
+
+    margin-top: 25px;
+
+    color: rgba(255,255,255,0.64);
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+
+main {
+    background: var(--cream);
+}
+
+.section {
+    width: min(var(--max-width), calc(100% - 48px));
+    margin: auto;
+}
+
+.section-padding {
+    padding: 92px 0;
+}
+
+.section-heading {
+    margin-bottom: 42px;
+}
+
+.section-eyebrow {
+    display: inline-block;
+
+    color: var(--accent);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.section-heading h2 {
+    max-width: 720px;
+
+    margin-top: 10px;
+
+    color: var(--navy);
+
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
+
+.section-heading p {
+    max-width: 650px;
+
+    margin-top: 15px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 25px;
+    align-items: start;
+}
+
+
+
+.contact-form-card {
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-soft);
+}
+
+.card-eyebrow {
+    color: var(--accent);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.contact-form-card h2 {
+    margin-top: 8px;
+
+    color: var(--navy);
+
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+}
+
+.form-intro {
+    max-width: 600px;
+
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+
+    color: var(--navy);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid #d9dde0;
+    border-radius: 3px;
+
+    background: #fbfbf9;
+    color: var(--text);
+
+    outline: none;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+    height: 46px;
+    padding: 0 13px;
+}
+
+.form-group textarea {
+    min-height: 145px;
+    padding: 13px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    background: #ffffff;
+
+    border-color: var(--accent);
+
+    box-shadow: 0 0 0 3px rgba(216,154,53,0.10);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ba2ab;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 44px;
+    padding: 0 19px;
+
+    border-radius: 3px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+
+    transition: 0.25s ease;
+}
+
+.btn-primary {
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--navy);
+}
+
+.btn-primary:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    border: 1px solid #cbd0d4;
+    background: transparent;
+    color: var(--navy);
+}
+
+.btn-outline:hover {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #ffffff;
+}
+
+.form-note {
+    margin-left: auto;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.form-tip {
+    margin-top: 20px;
+    padding-top: 17px;
+
+    border-top: 1px solid #e5e5e1;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.form-tip strong {
+    color: var(--navy);
+}
+
+.status {
+    display: none;
+
+    margin-top: 18px;
+    padding: 12px 14px;
+
+    border-left: 3px solid var(--accent);
+
+    background: #faf6ec;
+
+    color: var(--navy);
+
+    font-size: 11px;
+}
+
+.status.show {
+    display: block;
+}
+
+
+
+.info-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 38px;
+
+    background: var(--navy);
+
+    color: #ffffff;
+
+    box-shadow: var(--shadow);
+}
+
+.info-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -130px;
+    top: -130px;
+
+    border: 1px solid rgba(216,154,53,0.22);
+    border-radius: 50%;
+}
+
+.info-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: -80px;
+    top: -80px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+}
+
+.info-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.info-eyebrow {
+    color: var(--accent);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.info-card h2 {
+    margin-top: 8px;
+
+    font-size: 28px;
+    line-height: 1.15;
+}
+
+.info-description {
+    margin-top: 10px;
+
+    color: rgba(255,255,255,0.58);
+
+    font-size: 12px;
+}
+
+.contact-list {
+    margin-top: 35px;
+}
+
+.contact-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.contact-item:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(216,154,53,0.40);
+
+    color: var(--accent);
+
+    font-size: 14px;
+}
+
+.contact-item h3 {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.contact-item p {
+    margin-top: 4px;
+
+    color: rgba(255,255,255,0.58);
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.contact-item a {
+    color: rgba(255,255,255,0.78);
+
+    transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+    color: var(--accent-light);
+}
+
+.office-badge {
+    display: inline-flex;
+
+    margin-top: 27px;
+    padding: 8px 11px;
+
+    border: 1px solid rgba(216,154,53,0.28);
+
+    color: var(--accent-light);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+
+.support-section {
+    background: #ffffff;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.support-card {
+    position: relative;
+
+    min-height: 250px;
+
+    padding: 30px;
+
+    background: var(--off-white);
+
+    border: 1px solid var(--border);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.support-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(216,154,53,0.55);
+
+    box-shadow: var(--shadow-soft);
+}
+
+.support-number {
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.support-card h3 {
+    margin-top: 25px;
+
+    color: var(--navy);
+
+    font-size: 20px;
+    line-height: 1.25;
+}
+
+.support-card p {
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+
+
+.faq-section {
+    background: var(--cream);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+
+    border-top: 1px solid var(--border);
+}
+
+.faq-item {
+    padding: 30px 32px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.faq-item:nth-child(odd) {
+    border-right: 1px solid var(--border);
+}
+
+.faq-number {
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.faq-item h3 {
+    margin-top: 12px;
+
+    color: var(--navy);
+
+    font-size: 17px;
+    line-height: 1.35;
+}
+
+.faq-item p {
+    margin-top: 9px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.75;
+}
+
+
+
+.final-cta {
+    position: relative;
+    overflow: hidden;
+
+    background: var(--navy);
+    color: #ffffff;
+}
+
+.final-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 480px;
+    height: 480px;
+
+    right: -180px;
+    top: -250px;
+
+    border: 1px solid rgba(216,154,53,0.18);
+    border-radius: 50%;
+}
+
+.final-cta-container {
+    position: relative;
+    z-index: 2;
+
+    width: min(var(--max-width), calc(100% - 48px));
+
+    min-height: 270px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.final-cta h2 {
+    font-size: clamp(30px, 4vw, 45px);
+    line-height: 1.05;
+    letter-spacing: -1.3px;
+}
+
+.final-cta p {
+    max-width: 620px;
+
+    margin-top: 12px;
+
+    color: rgba(255,255,255,0.58);
+
+    font-size: 13px;
+}
+
+.final-cta .btn-primary {
+    flex-shrink: 0;
+}
+
+
+.footer {
+    background: #08111e;
+    color: #ffffff;
+}
+
+.footer-grid {
+    width: min(var(--max-width), calc(100% - 48px));
+
+    margin: auto;
+
+    padding: 70px 0 55px;
+
+    display: grid;
+    grid-template-columns: 1.7fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-brand {
+    max-width: 390px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.footer-logo-image {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.footer-logo strong {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.footer-brand p {
+    margin-top: 18px;
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-column h4 {
+    margin-bottom: 16px;
+
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.footer-column a {
+    margin-bottom: 9px;
+
+    color: rgba(255,255,255,0.52);
+
+    font-size: 11px;
+
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    width: min(var(--max-width), calc(100% - 48px));
+
+    min-height: 65px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    color: rgba(255,255,255,0.35);
+
+    font-size: 9px;
+    letter-spacing: 0.4px;
+}
+
+
+.floating-portal {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 90;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    min-height: 45px;
+    padding: 0 16px 0 8px;
+
+    background: var(--accent);
+    color: var(--navy);
+
+    border-radius: 30px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.20);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+
+    transition: 0.25s ease;
+}
+
+.floating-portal:hover {
+    background: var(--accent-light);
+    transform: translateY(-3px);
+}
+
+.floating-icon {
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--navy);
+    color: var(--accent);
+
+    font-size: 14px;
+}
+
+
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+
+    animation: reveal 0.7s ease forwards;
+}
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+@media (max-width: 1050px) {
+
+    .nav {
+        gap: 18px;
+    }
+
+    .nav a {
+        font-size: 9px;
+    }
+
+    .header-actions {
+        display: none;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        min-height: auto;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+
+    .footer-column:last-child {
+        grid-column: 2 / 3;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .header-container {
+        min-height: 74px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        top: 74px;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 8px 24px 18px;
+
+        background: var(--navy);
+
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav.open {
+        display: flex;
+    }
+
+    .nav a {
+        padding: 13px 0;
+
+        font-size: 10px;
+    }
+
+    .nav a::after {
+        display: none;
+    }
+
+    .support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-item:nth-child(odd) {
+        border-right: none;
+    }
+
+    .final-cta-container {
+        padding: 65px 0;
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-column:last-child {
+        grid-column: auto;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .header-container,
+    .section,
+    .page-hero-container,
+    .final-cta-container,
+    .footer-grid,
+    .footer-bottom {
+        width: min(100% - 32px, var(--max-width));
+    }
+
+    .brand-title {
+        font-size: 11px;
+    }
+
+    .brand-subtitle {
+        font-size: 8px;
+    }
+
+    .logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .page-hero {
+        min-height: 330px;
+    }
+
+    .page-hero-container {
+        padding: 60px 0;
+    }
+
+    .page-hero h1 {
+        font-size: 42px;
+    }
+
+    .section-padding {
+        padding: 65px 0;
+    }
+
+    .contact-form-card,
+    .info-card {
+        padding: 27px 22px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .form-actions {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .form-note {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .support-card {
+        min-height: auto;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-column:last-child {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        padding: 18px 0;
+
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .floating-portal {
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header class="header">
+
+
+<div class="header-container">
+
+    <a href="index.html" class="brand">
+
+        <div class="logo">
+
+            <img
+                src="assets/images/branding/logo.png"
+                alt="RISE College School Logo"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+        <div class="brand-info">
+
+            <div class="brand-title">
+                RISE COLLEGE SCHOOL
+            </div>
+
+            <div class="brand-subtitle">
+                Student Information System
+            </div>
+
+        </div>
+
+    </a>
+
+
+    <nav class="nav" id="navigation">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#programs">
+            Programs
+        </a>
+
+        
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="contact.html" class="active">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <div class="header-actions">
+
+        <a
+            href="login.html"
+            class="header-login"
+        >
+            Sign In
+        </a>
+
+        <a
+            href="login.html"
+            class="header-portal"
+        >
+            Student Portal
+        </a>
+
+    </div>
+
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</div>
+
+</header>
+
+
+<section class="page-hero">
+
+<div class="page-hero-container reveal">
+
+    <div class="hero-eyebrow">
+        SCHOOL SUPPORT
+    </div>
+
+    <h1>
+        We're here to
+        <span>help.</span>
+    </h1>
+
+    <p class="page-hero-description">
+        Have questions about admissions, school products,
+        student services, or the student portal? Reach out
+        to RISE COLLEGE SCHOOL and our team will help point
+        you in the right direction.
+    </p>
+
+</div>
+
+</section>
+
+<main>
+
+
+<section class="section section-padding">
+<div class="section-heading">
+
+    <span class="section-eyebrow">
+        CONTACT & SUPPORT
+    </span>
+
+    <h2>
+        Let’s start with what you need.
+    </h2>
+
+    <p>
+        Send us a message or use the information below
+        to connect with RISE COLLEGE SCHOOL.
+    </p>
+
+</div>
+
+
+<div class="contact-layout">
+
+
+
+    <div class="contact-form-card reveal">
+
+        <div class="card-eyebrow">
+            SEND A MESSAGE
+        </div>
+
+        <h2>
+            How can we assist you?
+        </h2>
+
+        <p class="form-intro">
+            Fill out the form below and provide as much
+            information as possible so our team can assist you.
+        </p>
+
+
+        <form
+            id="contactForm"
+            novalidate
+        >
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Juan Dela Cruz"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="+63 9XXXXXXXXX"
+                        autocomplete="tel"
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <select
+                        id="subject"
+                        name="subject"
+                    >
+
+                        <option value="orders">
+                            Orders & Supplies
+                        </option>
+
+                        <option value="uniforms">
+                            Uniforms
+                        </option>
+
+                        <option value="admissions">
+                            Admissions
+                        </option>
+
+                        <option value="events">
+                            Events & Partnerships
+                        </option>
+
+                        <option value="support">
+                            Student Portal Support
+                        </option>
+
+                        <option value="general">
+                            General Enquiry
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Describe your enquiry, include product codes and quantities..."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="formStatus"
+                class="status"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Send Message
+                    <span>→</span>
+                </button>
+
+                <button
+                    type="button"
+                    id="resetBtn"
+                    class="btn btn-outline"
+                >
+                    Clear
+                </button>
+
+                <div class="form-note">
+                    Estimated reply: 1–3 business days
+                </div>
+
+            </div>
+
+
+            <div class="form-tip">
+
+                <strong>Tip:</strong>
+
+                For order quotes, include product codes
+                such as UNIF-001 and the required quantity.
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+    <aside class="info-card reveal">
+
+        <div class="info-card-content">
+
+            <div class="info-eyebrow">
+                DIRECT CONTACT
+            </div>
+
+            <h2>
+                Contact information
+            </h2>
+
+            <p class="info-description">
+                Direct school contact details for admissions,
+                supplies, support, and general enquiries.
+            </p>
+
+
+            <div class="contact-list">
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        +
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Address
+                        </h3>
+
+                        <p>
+                            Caloocan, Philippines —
+                            Visit by appointment for pickups
+                            and bulk orders.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        →
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Phone
+                        </h3>
+
+                        <p>
+
+                            <a href="tel:+639167398876">
+                                (+63) 916 739 8876
+                            </a>
+
+                            <br>
+
+                            Admissions & Supplies Office
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        @
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Email
+                        </h3>
+
+                        <p>
+
+                            <a href="mailto:RiseCollege@gmail.com">
+                                RiseCollege@gmail.com
+                            </a>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        ◷
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Office Hours
+                        </h3>
+
+                        <p>
+                            Monday–Friday
+                            <br>
+                            08:30 — 17:00
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="office-badge">
+                RISE COLLEGE SCHOOL • CALOOCAN
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+</section>
+
+
+<section class="support-section">
+<div class="section section-padding">
+
+    <div class="section-heading">
+
+        <span class="section-eyebrow">
+            STUDENT SUPPORT
+        </span>
+
+        <h2>
+            Find the right place to start.
+        </h2>
+
+        <p>
+            Choose the area closest to your concern
+            and tell us what you need.
+        </p>
+
+    </div>
+
+
+    <div class="support-grid">
+
+
+        <article class="support-card reveal">
+
+            <div class="support-number">
+                01 / ADMISSIONS
+            </div>
+
+            <h3>
+                Admissions & Enrollment
+            </h3>
+
+            <p>
+                Questions about admissions, enrollment,
+                requirements, school information, or
+                starting your journey at RISE COLLEGE SCHOOL.
+            </p>
+
+        </article>
+
+
+        <article class="support-card reveal">
+
+            <div class="support-number">
+                02 / PRODUCTS
+            </div>
+
+            <h3>
+                Uniforms & Supplies
+            </h3>
+
+            <p>
+                Ask about uniforms, IDs, school supplies,
+                product availability, quantities, and
+                school-related orders.
+            </p>
+
+        </article>
+
+
+        <article class="support-card reveal">
+
+            <div class="support-number">
+                03 / PORTAL
+            </div>
+
+            <h3>
+                Student Portal Support
+            </h3>
+
+            <p>
+                Need help accessing your student account
+                or experiencing an issue with the school's
+                online portal? Let us know.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<section class="faq-section">
+
+<div class="section section-padding">
+
+    <div class="section-heading">
+
+        <span class="section-eyebrow">
+            FREQUENTLY ASKED
+        </span>
+
+        <h2>
+            Common questions.
+        </h2>
+
+        <p>
+            A few things students and visitors often ask.
+        </p>
+
+    </div>
+
+
+    <div class="faq-grid">
+
+
+        <article class="faq-item">
+
+            <div class="faq-number">
+                01 / RESPONSE
+            </div>
+
+            <h3>
+                How long does a reply take?
+            </h3>
+
+            <p>
+                General enquiries are typically reviewed
+                within 1–3 business days.
+            </p>
+
+        </article>
+
+
+        <article class="faq-item">
+
+            <div class="faq-number">
+                02 / LOCATION
+            </div>
+
+            <h3>
+                Where is RISE COLLEGE SCHOOL located?
+            </h3>
+
+            <p>
+                The school is located in Caloocan,
+                Philippines.
+            </p>
+
+        </article>
+
+
+        <article class="faq-item">
+
+            <div class="faq-number">
+                03 / PRODUCTS
+            </div>
+
+            <h3>
+                Can I ask about products here?
+            </h3>
+
+            <p>
+                Yes. You can use the contact form for
+                uniforms, IDs, supplies, and other
+                school product enquiries.
+            </p>
+
+        </article>
+
+
+        <article class="faq-item">
+
+            <div class="faq-number">
+                04 / ORDERS
+            </div>
+
+            <h3>
+                What should I include in an order request?
+            </h3>
+
+            <p>
+                Include the product code, product name,
+                quantity, and any relevant customization
+                or sizing requirements.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<section class="final-cta">
+
+<div class="final-cta-container">
+
+    <div>
+
+        <h2>
+            Still need assistance?
+        </h2>
+
+        <p>
+            Send us a message and we'll help point
+            you in the right direction.
+        </p>
+
+    </div>
+
+
+    <a
+        href="#contactForm"
+        class="btn btn-primary"
+    >
+        Contact the School
+        <span>→</span>
+    </a>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+<div class="footer-grid">
+
+
+    <div class="footer-brand">
+
+        <div class="footer-logo">
+
+            <img
+                class="footer-logo-image"
+                src="assets/images/branding/logo.png"
+                alt="RISE College School Logo"
+            >
+
+            <strong>
+                RISE COLLEGE SCHOOL
+            </strong>
+
+        </div>
+
+
+        <p>
+            A technology-focused school dedicated to providing
+            students with a suitable learning environment,
+            practical education, proper guidance, and opportunities
+            for growth.
+        </p>
+
+    </div>
+
+
+
+    <div class="footer-column">
+
+        <h4>
+            Navigation
+        </h4>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#programs">
+            Programs
+        </a>
+
+        <a href="index.html#services">
+            Student Services
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+    </div>
+
+
+
+    <div class="footer-column">
+
+        <h4>
+            Student
+        </h4>
+
+        <a href="login.html">
+            Student Portal
+        </a>
+
+        <a href="login.html">
+            Sign In
+        </a>
+
+        <a href="index.html#services">
+            Student Services
+        </a>
+
+        <a href="index.html#programs">
+            Academic Programs
+        </a>
+
+    </div>
+
+
+
+    <div class="footer-column">
+
+        <h4>
+            Contact
+        </h4>
+
+        <a href="contact.html">
+            Contact School
+        </a>
+
+        <a href="mailto:RiseCollege@gmail.com">
+            RiseCollege@gmail.com
+        </a>
+
+        <a href="tel:+639167398876">
+            +63 916 739 8876
+        </a>
+
+        <a href="#">
+            Caloocan, Philippines
+        </a>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="footer-bottom">
+
+    <div>
+        © <span id="year"></span> RISE COLLEGE SCHOOL.
+        All rights reserved.
+    </div>
+
+    <div>
+        Student Information System
+    </div>
+
+</div>
+
+</footer>
+
+
+<a
+href="login.html"
+class="floating-portal"
+
+>
+
+<span class="floating-icon">
+    →
+</span>
+
+Student Portal
+
+</a>
+
+<script>
+
+
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navigation =
+    document.getElementById("navigation");
+
+
+menuButton.addEventListener("click", function () {
+
+    navigation.classList.toggle("open");
+
+    const expanded =
+        navigation.classList.contains("open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        expanded
+    );
+
+});
+
+
+document.querySelectorAll(".nav a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navigation.classList.remove("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+});
+
+
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const resetButton =
+    document.getElementById("resetBtn");
+
+const formStatus =
+    document.getElementById("formStatus");
+
+
+contactForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const message =
+        document.getElementById("message").value.trim();
+
+
+    if (!name || !email || !message) {
+
+        formStatus.textContent =
+            "Please complete your name, email address, and message.";
+
+        formStatus.classList.add("show");
+
+        return;
+
+    }
+
+
+    if (!email.includes("@")) {
+
+        formStatus.textContent =
+            "Please enter a valid email address.";
+
+        formStatus.classList.add("show");
+
+        return;
+
+    }
+
+
+    formStatus.textContent =
+        "Your message has been prepared successfully. Please use the school's email or contact system to complete delivery.";
+
+    formStatus.classList.add("show");
+
+});
+
+
+resetButton.addEventListener("click", function () {
+
+    contactForm.reset();
+
+    formStatus.textContent = "";
+
+    formStatus.classList.remove("show");
+
+});
+
+
+
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+if ("IntersectionObserver" in window) {
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.animationDelay =
+                            "0.05s";
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.08
+            }
+        );
+
+
+    revealElements.forEach(function (element) {
+
+        observer.observe(element);
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
