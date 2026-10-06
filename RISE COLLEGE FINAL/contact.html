@@ -859,7 +859,7 @@ main {
 
 
 .faq-section {
-    background: var(--cream);
+    background: #eef1f5;
 }
 
 .faq-grid {
@@ -867,20 +867,24 @@ main {
     grid-template-columns: 1fr 1fr;
     gap: 0;
 
-    border-top: 1px solid var(--border);
+    border: 1px solid #b9c5d3;
+    background: #ffffff;
 }
 
 .faq-item {
     padding: 30px 32px;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #c5cfdb;
 }
 
 .faq-item:nth-child(odd) {
-    border-right: 1px solid var(--border);
+    border-right: 1px solid #c5cfdb;
 }
 
 .faq-number {
+    display: inline-block;
+    padding-bottom: 7px;
+    border-bottom: 2px solid var(--accent);
     color: var(--accent);
 
     font-size: 9px;
@@ -969,24 +973,22 @@ main {
 
 
 .footer {
-    background: #08111e;
-    color: #ffffff;
+    margin-top: 95px;
+    padding: 60px 20px 25px;
+    background: #000052;
+    color: white;
 }
 
 .footer-grid {
-    width: min(var(--max-width), calc(100% - 48px));
-
+    width: min(var(--max-width), 100%);
     margin: auto;
-
-    padding: 70px 0 55px;
-
     display: grid;
-    grid-template-columns: 1.7fr 1fr 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 45px;
 }
 
 .footer-brand {
-    max-width: 390px;
+    max-width: 340px;
 }
 
 .footer-logo {
@@ -996,27 +998,21 @@ main {
 }
 
 .footer-logo-image {
-    width: 38px;
-    height: 38px;
-
-    object-fit: contain;
-
-    background: #ffffff;
-    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.08);
+    padding: 4px;
 }
 
 .footer-logo strong {
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-size: 14px;
 }
 
 .footer-brand p {
-    margin-top: 18px;
-
-    color: rgba(255,255,255,0.45);
-
+    margin-top: 16px;
+    color: #91a5b7;
     font-size: 11px;
-    line-height: 1.8;
 }
 
 .footer-column {
@@ -1026,48 +1022,35 @@ main {
 }
 
 .footer-column h4 {
-    margin-bottom: 16px;
-
-    color: var(--accent);
-
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
+    font-size: 11px;
+    letter-spacing: .7px;
     text-transform: uppercase;
+    color: #d8e4ed;
 }
 
 .footer-column a {
-    margin-bottom: 9px;
-
-    color: rgba(255,255,255,0.52);
-
+    display: block;
+    margin-top: 10px;
+    color: #8fa2b4;
     font-size: 11px;
-
-    transition: color 0.2s ease;
+    transition: .2s ease;
 }
 
 .footer-column a:hover {
-    color: #ffffff;
+    color: white;
 }
 
 .footer-bottom {
-    width: min(var(--max-width), calc(100% - 48px));
-
-    min-height: 65px;
-
-    margin: auto;
-
+    width: min(var(--max-width), 100%);
+    margin: 45px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.08);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-
-    border-top: 1px solid rgba(255,255,255,0.08);
-
-    color: rgba(255,255,255,0.35);
-
-    font-size: 9px;
-    letter-spacing: 0.4px;
+    color: #74899b;
+    font-size: 10px;
 }
 
 
@@ -1163,11 +1146,17 @@ main {
     }
 
     .footer-grid {
-        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
     }
 
-    .footer-column:last-child {
-        grid-column: 2 / 3;
+    .footer {
+        margin-top: 70px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -1235,18 +1224,6 @@ main {
         align-items: flex-start;
     }
 
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 35px;
-    }
-
-    .footer-brand {
-        grid-column: 1 / -1;
-    }
-
-    .footer-column:last-child {
-        grid-column: auto;
-    }
 }
 
 
@@ -1319,14 +1296,6 @@ main {
 
     .footer-grid {
         grid-template-columns: 1fr;
-    }
-
-    .footer-brand {
-        grid-column: auto;
-    }
-
-    .footer-column:last-child {
-        grid-column: auto;
     }
 
     .footer-bottom {
